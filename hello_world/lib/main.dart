@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hello_world/hello-mundo.dart';
 import 'package:hello_world/hello-world.dart';
 
 void main() {
@@ -8,6 +9,6 @@ void main() {
     theme: ThemeData(
       primarySwatch: Colors.blue,
     ),
-    home: const HelloWorld(),
+    home: HelloMundo(),
   ));
 }
