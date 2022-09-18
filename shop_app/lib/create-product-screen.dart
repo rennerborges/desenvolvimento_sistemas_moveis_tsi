@@ -4,7 +4,9 @@ import 'package:intl/intl.dart';
 import 'Product.dart';
 
 class CreateProductScreen extends StatefulWidget {
-  const CreateProductScreen({super.key});
+  Product? product;
+
+  CreateProductScreen({super.key, this.product});
 
   @override
   State<CreateProductScreen> createState() => _CreateProductScreenState();
@@ -17,6 +19,24 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
   final TextEditingController _descricaoController = TextEditingController();
   final TextEditingController _precoController = TextEditingController();
 
+  String toReal(String money) {
+    double preco = double.parse(money);
+    return NumberFormat("#,##0.00", "pt_BR").format(preco / 100);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    if (widget.product != null) {
+      setState(() {
+        _tituloController.text = widget.product!.titulo;
+        _descricaoController.text = widget.product!.descricao;
+        _precoController.text = toReal(widget.product!.valor.toString());
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     createProduct() {
@@ -27,11 +47,6 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
 
       Product newProduct = Product(titulo, descricao, preco);
       Navigator.pop(context, newProduct);
-    }
-
-    String toReal(String money) {
-      double preco = double.parse(money);
-      return NumberFormat("#,##0.00", "pt_BR").format(preco / 100);
     }
 
     return Scaffold(

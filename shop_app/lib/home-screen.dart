@@ -36,20 +36,76 @@ class _HomeScreenState extends State<HomeScreen> {
         itemCount: _products.length,
         itemBuilder: (context, position) {
           Product product = _products[position];
-          return ListTile(
-            title: Text(
-              product.titulo,
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 22,
+          return Dismissible(
+            key: Key(product.titulo),
+            background: Container(
+              color: Colors.green,
+              child: const Align(
+                alignment: Alignment(-0.9, 0.0),
+                child: Icon(
+                  Icons.edit,
+                  color: Colors.white,
+                ),
               ),
             ),
-            subtitle: Text(product.descricao),
-            trailing: Text(
-              toReal(product.valor),
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 22,
+            secondaryBackground: Container(
+              color: Colors.red,
+              child: const Align(
+                alignment: Alignment(0.9, 0.0),
+                child: Icon(
+                  Icons.delete,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            onDismissed: ((direction) async {
+              if (direction == DismissDirection.endToStart) {
+                setState(() {
+                  _products.removeAt(position);
+                });
+              }
+            }),
+            confirmDismiss: ((direction) async {
+              if (direction == DismissDirection.startToEnd) {
+                Product? editedProduct = await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CreateProductScreen(
+                      product: product,
+                    ),
+                  ),
+                );
+
+                if (editedProduct != null) {
+                  setState(() {
+                    _products.removeAt(position);
+                    _products.insert(position, editedProduct);
+                  });
+                }
+
+                return false;
+              }
+
+              setState(() {
+                _products.removeAt(position);
+              });
+              return true;
+            }),
+            child: ListTile(
+              title: Text(
+                product.titulo,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 22,
+                ),
+              ),
+              subtitle: Text(product.descricao),
+              trailing: Text(
+                toReal(product.valor),
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 22,
+                ),
               ),
             ),
           );
@@ -63,9 +119,11 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         onPressed: () async {
           Product product = await Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => const CreateProductScreen()));
+            context,
+            MaterialPageRoute(
+              builder: (context) => CreateProductScreen(),
+            ),
+          );
           setState(() {
             _products.add(product);
           });
