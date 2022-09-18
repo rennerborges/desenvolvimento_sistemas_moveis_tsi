@@ -55,9 +55,9 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
           color: Colors.white, //change your color here
         ),
         backgroundColor: Theme.of(context).primaryColor,
-        title: const Text(
-          "Criar anuncio",
-          style: TextStyle(
+        title: Text(
+          widget.product != null ? "Editar produto" : "Criar produto",
+          style: const TextStyle(
             color: Colors.white,
           ),
         ),
