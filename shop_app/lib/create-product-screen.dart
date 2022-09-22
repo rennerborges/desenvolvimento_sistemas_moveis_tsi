@@ -72,13 +72,14 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
               children: [
                 Container(
                   margin: const EdgeInsets.only(bottom: 20),
-                  child: const Align(
+                  child: Align(
                     alignment: Alignment.topLeft,
                     child: Text(
-                      "Informações do produto:",
+                      "Informações do produto",
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         fontSize: 25,
+                        color: Colors.grey[600]!,
                       ),
                     ),
                   ),
@@ -87,6 +88,7 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
                   controller: _tituloController,
                   decoration: InputDecoration(
                     labelText: "Título",
+                    floatingLabelBehavior: FloatingLabelBehavior.always,
                     labelStyle: const TextStyle(fontSize: 18),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: const BorderRadius.all(Radius.circular(8)),
@@ -128,6 +130,7 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
                   child: TextFormField(
                     controller: _descricaoController,
                     decoration: InputDecoration(
+                      floatingLabelBehavior: FloatingLabelBehavior.always,
                       labelText: "Descrição",
                       labelStyle: const TextStyle(fontSize: 18),
                       enabledBorder: OutlineInputBorder(
@@ -174,6 +177,7 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
                     controller: _precoController,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
+                      floatingLabelBehavior: FloatingLabelBehavior.always,
                       prefixText: "R\$: ",
                       labelText: "Preço",
                       labelStyle: const TextStyle(fontSize: 18),
