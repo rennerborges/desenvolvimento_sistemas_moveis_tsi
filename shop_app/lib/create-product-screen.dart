@@ -70,6 +70,19 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
             margin: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
             child: Column(
               children: [
+                Container(
+                  margin: const EdgeInsets.only(bottom: 20),
+                  child: const Align(
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      "Informações do produto:",
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 25,
+                      ),
+                    ),
+                  ),
+                ),
                 TextFormField(
                   controller: _tituloController,
                   decoration: InputDecoration(
@@ -87,6 +100,20 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
                       borderSide: BorderSide(
                         width: 1,
                         color: Theme.of(context).primaryColor,
+                      ),
+                    ),
+                    errorBorder: const OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(8)),
+                      borderSide: BorderSide(
+                        width: 1,
+                        color: Colors.red,
+                      ),
+                    ),
+                    focusedErrorBorder: const OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(8)),
+                      borderSide: BorderSide(
+                        width: 1,
+                        color: Colors.red,
                       ),
                     ),
                   ),
@@ -117,6 +144,20 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
                         borderSide: BorderSide(
                           width: 1,
                           color: Theme.of(context).primaryColor,
+                        ),
+                      ),
+                      errorBorder: const OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(8)),
+                        borderSide: BorderSide(
+                          width: 1,
+                          color: Colors.red,
+                        ),
+                      ),
+                      focusedErrorBorder: const OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(8)),
+                        borderSide: BorderSide(
+                          width: 1,
+                          color: Colors.red,
                         ),
                       ),
                     ),
@@ -150,6 +191,20 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
                         borderSide: BorderSide(
                           width: 1,
                           color: Theme.of(context).primaryColor,
+                        ),
+                      ),
+                      errorBorder: const OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(8)),
+                        borderSide: BorderSide(
+                          width: 1,
+                          color: Colors.red,
+                        ),
+                      ),
+                      focusedErrorBorder: const OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(8)),
+                        borderSide: BorderSide(
+                          width: 1,
+                          color: Colors.red,
                         ),
                       ),
                     ),
