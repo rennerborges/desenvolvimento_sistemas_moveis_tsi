@@ -72,9 +72,23 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
               children: [
                 TextFormField(
                   controller: _tituloController,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     labelText: "Título",
-                    labelStyle: TextStyle(fontSize: 18),
+                    labelStyle: const TextStyle(fontSize: 18),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: const BorderRadius.all(Radius.circular(8)),
+                      borderSide: BorderSide(
+                        width: 1,
+                        color: Colors.grey[600]!,
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: const BorderRadius.all(Radius.circular(8)),
+                      borderSide: BorderSide(
+                        width: 1,
+                        color: Theme.of(context).primaryColor,
+                      ),
+                    ),
                   ),
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -82,48 +96,89 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
                     }
                   },
                 ),
-                TextFormField(
-                  controller: _descricaoController,
-                  decoration: const InputDecoration(
-                    labelText: "Descrição",
-                    labelStyle: TextStyle(fontSize: 18),
+                Container(
+                  margin: const EdgeInsets.only(top: 20),
+                  child: TextFormField(
+                    controller: _descricaoController,
+                    decoration: InputDecoration(
+                      labelText: "Descrição",
+                      labelStyle: const TextStyle(fontSize: 18),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(8)),
+                        borderSide: BorderSide(
+                          width: 1,
+                          color: Colors.grey[600]!,
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(8)),
+                        borderSide: BorderSide(
+                          width: 1,
+                          color: Theme.of(context).primaryColor,
+                        ),
+                      ),
+                    ),
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return "Preenchimento obrigatório";
+                      }
+                    },
                   ),
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return "Preenchimento obrigatório";
-                    }
-                  },
                 ),
-                TextFormField(
-                  controller: _precoController,
-                  keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(
-                    prefixText: "R\$: ",
-                    labelText: "Preço",
-                    labelStyle: TextStyle(fontSize: 18),
+                Container(
+                  margin: const EdgeInsets.only(top: 20),
+                  child: TextFormField(
+                    controller: _precoController,
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                      prefixText: "R\$: ",
+                      labelText: "Preço",
+                      labelStyle: const TextStyle(fontSize: 18),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(8)),
+                        borderSide: BorderSide(
+                          width: 1,
+                          color: Colors.grey[600]!,
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(8)),
+                        borderSide: BorderSide(
+                          width: 1,
+                          color: Theme.of(context).primaryColor,
+                        ),
+                      ),
+                    ),
+                    onChanged: (string) {
+                      string = toReal(string.replaceAll(RegExp(r'[.,]'), ''));
+                      _precoController.value = TextEditingValue(
+                        text: string,
+                        selection:
+                            TextSelection.collapsed(offset: string.length),
+                      );
+                    },
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return "Preenchimento obrigatório";
+                      }
+                    },
                   ),
-                  onChanged: (string) {
-                    string = toReal(string.replaceAll(RegExp(r'[.,]'), ''));
-                    _precoController.value = TextEditingValue(
-                      text: string,
-                      selection: TextSelection.collapsed(offset: string.length),
-                    );
-                  },
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return "Preenchimento obrigatório";
-                    }
-                  },
                 ),
                 Row(
                   children: [
                     Expanded(
                       child: Container(
-                          margin: const EdgeInsets.only(top: 20, right: 20),
-                          child: ElevatedButton(
+                          height: 45,
+                          margin: const EdgeInsets.only(top: 20, right: 10),
+                          child: ElevatedButton.icon(
                             style:
                                 ElevatedButton.styleFrom(primary: Colors.red),
-                            child: const Text(
+                            icon: const Icon(Icons.arrow_back),
+                            label: const Text(
                               "Cancelar",
                               style: TextStyle(color: Colors.white),
                             ),
@@ -134,11 +189,13 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
                     ),
                     Expanded(
                       child: Container(
-                          margin: const EdgeInsets.only(top: 20),
-                          child: ElevatedButton(
+                          height: 45,
+                          margin: const EdgeInsets.only(top: 20, left: 10),
+                          child: ElevatedButton.icon(
                             style:
                                 ElevatedButton.styleFrom(primary: Colors.green),
-                            child: const Text(
+                            icon: const Icon(Icons.check),
+                            label: const Text(
                               "Cadastrar",
                               style: TextStyle(color: Colors.white),
                             ),
