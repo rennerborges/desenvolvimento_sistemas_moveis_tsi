@@ -21,12 +21,14 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Theme.of(context).primaryColor,
-        title: const Text(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        title: Text(
           "Shopee",
           style: TextStyle(
-            color: Colors.white,
+            color: Colors.orange[900]!,
           ),
         ),
         centerTitle: true,

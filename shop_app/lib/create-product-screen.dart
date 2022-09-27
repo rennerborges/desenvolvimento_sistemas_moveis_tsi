@@ -50,15 +50,17 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
     }
 
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        iconTheme: const IconThemeData(
-          color: Colors.white, //change your color here
+        iconTheme: IconThemeData(
+          color: Colors.orange[900]!, //change your color here
         ),
-        backgroundColor: Theme.of(context).primaryColor,
+        backgroundColor: Colors.white,
+        elevation: 0,
         title: Text(
           widget.product != null ? "Editar produto" : "Criar produto",
-          style: const TextStyle(
-            color: Colors.white,
+          style: TextStyle(
+            color: Colors.orange[900]!,
           ),
         ),
         centerTitle: true,
