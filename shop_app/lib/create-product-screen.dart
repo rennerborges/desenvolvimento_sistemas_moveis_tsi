@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import 'Product.dart';
+import 'product.dart';
 
 class CreateProductScreen extends StatefulWidget {
   Product? product;
