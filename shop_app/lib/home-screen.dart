@@ -50,11 +50,12 @@ class _HomeScreenState extends State<HomeScreen> {
             _products.isEmpty
                 ? Column(
                     children: [
-                      SizedBox(
-                        width: 250,
-                        child: Image.network(
-                            'https://img.freepik.com/vetores-gratis/ilustracao-do-conceito-vazio_114360-1188.jpg?w=826&t=st=1663524248~exp=1663524848~hmac=da6fb74d293c1b31e58327cd675c07aaaae91d7e2b52bfe833cf9db1c3d592e3'),
-                      ),
+                      const SizedBox(
+                          width: 250,
+                          child: Image(
+                            image: AssetImage(
+                                'images/ilustracao-do-conceito-vazio.webp'),
+                          )),
                       Center(
                         child: Text(
                           'Nenhum produto cadastrado!',

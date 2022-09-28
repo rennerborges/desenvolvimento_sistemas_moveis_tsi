@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'home-screen.dart';
+import 'package:shop_app/splash-screen.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -9,7 +8,7 @@ void main() {
     theme: ThemeData(
       primarySwatch: generateMaterialColorFromColor(const Color(0xfff53d2d)),
     ),
-    home: const HomeScreen(),
+    home: const SplashScreen(),
   ));
 }
 
