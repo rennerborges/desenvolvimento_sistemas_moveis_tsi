@@ -65,14 +65,14 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         iconTheme: IconThemeData(
-          color: Colors.orange[900]!, //change your color here
+          color: Theme.of(context).colorScheme.primary, //change your color here
         ),
         backgroundColor: Colors.white,
         elevation: 0,
         title: Text(
           widget.product != null ? "Editar produto" : "Criar produto",
           style: TextStyle(
-            color: Colors.orange[900]!,
+            color: Theme.of(context).colorScheme.primary,
           ),
         ),
         centerTitle: true,

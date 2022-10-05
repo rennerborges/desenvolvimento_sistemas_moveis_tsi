@@ -42,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text(
           "Shopee",
           style: TextStyle(
-            color: Colors.orange[900]!,
+            color: Theme.of(context).colorScheme.primary,
           ),
         ),
         centerTitle: true,
