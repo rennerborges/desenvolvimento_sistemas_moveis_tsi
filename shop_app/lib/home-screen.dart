@@ -132,6 +132,18 @@ class _HomeScreenState extends State<HomeScreen> {
                             return true;
                           }),
                           child: ListTile(
+                            leading: product.image != null
+                                ? SizedBox(
+                                    height: 45,
+                                    width: 45,
+                                    child: ClipOval(
+                                      child: Image.file(
+                                        product.image!,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  )
+                                : const SizedBox(),
                             title: Text(
                               product.titulo,
                               style: TextStyle(

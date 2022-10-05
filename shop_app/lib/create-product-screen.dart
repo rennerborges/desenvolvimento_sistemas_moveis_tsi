@@ -1,4 +1,8 @@
+import 'dart:io';
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 
 import 'product.dart';
@@ -18,6 +22,7 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
   final TextEditingController _tituloController = TextEditingController();
   final TextEditingController _descricaoController = TextEditingController();
   final TextEditingController _precoController = TextEditingController();
+  File? _image = null;
 
   String toReal(String money) {
     double preco = double.parse(money);
@@ -33,6 +38,7 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
         _tituloController.text = widget.product!.titulo;
         _descricaoController.text = widget.product!.descricao;
         _precoController.text = toReal(widget.product!.valor.toString());
+        _image = widget.product!.image;
       });
     }
   }
@@ -45,7 +51,7 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
       double preco = double.parse(
           _precoController.text.toString().replaceAll(RegExp(r'[.,]'), ''));
 
-      Product newProduct = Product(titulo, descricao, preco);
+      Product newProduct = Product(titulo, descricao, preco, _image);
       Navigator.pop(context, newProduct);
     }
 
@@ -72,6 +78,42 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
             margin: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
             child: Column(
               children: [
+                GestureDetector(
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(vertical: 30),
+                    width: 120,
+                    height: 120,
+                    decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      border: Border.all(
+                        width: 1,
+                        color: Colors.grey[400]!,
+                      ),
+                      shape: BoxShape.circle,
+                    ),
+                    child: _image == null
+                        ? const Icon(
+                            Icons.add_a_photo,
+                            size: 30,
+                          )
+                        : ClipOval(
+                            child: Image.file(
+                              _image!,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                  ),
+                  onTap: () async {
+                    final ImagePicker picker = ImagePicker();
+                    final XFile? pickedFile =
+                        await picker.pickImage(source: ImageSource.camera);
+                    if (pickedFile != null) {
+                      setState(() {
+                        _image = File(pickedFile.path);
+                      });
+                    }
+                  },
+                ),
                 Container(
                   margin: const EdgeInsets.only(bottom: 20),
                   child: Align(
