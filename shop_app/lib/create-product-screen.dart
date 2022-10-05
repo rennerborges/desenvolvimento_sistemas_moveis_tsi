@@ -4,7 +4,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
-
+import 'package:path_provider/path_provider.dart';
 import 'product.dart';
 
 class CreateProductScreen extends StatefulWidget {
@@ -51,7 +51,13 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
       double preco = double.parse(
           _precoController.text.toString().replaceAll(RegExp(r'[.,]'), ''));
 
-      Product newProduct = Product(titulo, descricao, preco, _image);
+      Product? newProduct;
+      if (widget.product == null) {
+        newProduct = Product(titulo, descricao, preco, _image);
+      } else {
+        newProduct =
+            Product(titulo, descricao, preco, _image, widget.product!.id);
+      }
       Navigator.pop(context, newProduct);
     }
 
@@ -108,8 +114,18 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
                     final XFile? pickedFile =
                         await picker.pickImage(source: ImageSource.camera);
                     if (pickedFile != null) {
+                      File image = File(pickedFile.path);
+                      Directory directory =
+                          await getApplicationDocumentsDirectory();
+                      String _localPath = directory.path;
+
+                      String uniqueID = UniqueKey().toString();
+
+                      final File savedImage =
+                          await image.copy('$_localPath/image_$uniqueID.png');
+
                       setState(() {
-                        _image = File(pickedFile.path);
+                        _image = savedImage;
                       });
                     }
                   },

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:shop_app/product-helper.dart';
 import 'product.dart';
 import 'create-product-screen.dart';
 
@@ -16,6 +17,19 @@ class _HomeScreenState extends State<HomeScreen> {
     return NumberFormat.simpleCurrency(
       name: 'BRL',
     ).format(money / 100);
+  }
+
+  final ProductHelper _helper = ProductHelper();
+
+  @override
+  void initState() {
+    super.initState();
+
+    _helper.getAll().then((data) {
+      setState(() {
+        if (data != null) _products = data;
+      });
+    });
   }
 
   @override
@@ -98,13 +112,6 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                             ),
                           ),
-                          onDismissed: ((direction) async {
-                            if (direction == DismissDirection.endToStart) {
-                              setState(() {
-                                _products.removeAt(position);
-                              });
-                            }
-                          }),
                           confirmDismiss: ((direction) async {
                             if (direction == DismissDirection.startToEnd) {
                               Product? editedProduct = await Navigator.push(
@@ -117,19 +124,47 @@ class _HomeScreenState extends State<HomeScreen> {
                               );
 
                               if (editedProduct != null) {
+                                int? result =
+                                    await _helper.editProduct(editedProduct);
+
+                                if (result == 0) return false;
+
                                 setState(() {
                                   _products.removeAt(position);
                                   _products.insert(position, editedProduct);
+
+                                  const snackBar = SnackBar(
+                                    content:
+                                        Text('Produto editado com sucesso!'),
+                                    backgroundColor: Colors.green,
+                                  );
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(snackBar);
                                 });
                               }
 
                               return false;
                             }
 
-                            setState(() {
-                              _products.removeAt(position);
-                            });
-                            return true;
+                            if (direction == DismissDirection.endToStart) {
+                              int? result =
+                                  await _helper.deleteProduct(product);
+
+                              if (result == 0) return false;
+
+                              setState(() {
+                                _products.removeAt(position);
+
+                                const snackBar = SnackBar(
+                                  content: Text('Produto apagado com sucesso!'),
+                                  backgroundColor: Colors.red,
+                                );
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(snackBar);
+                              });
+
+                              return true;
+                            }
                           }),
                           child: ListTile(
                             leading: product.image != null
@@ -182,8 +217,18 @@ class _HomeScreenState extends State<HomeScreen> {
               builder: (context) => CreateProductScreen(),
             ),
           );
+
+          Product? savedProduct = await _helper.saveProduct(product);
+
+          if (savedProduct == null) return;
+
           setState(() {
             _products.add(product);
+            const snackBar = SnackBar(
+              content: Text('Produto criado com sucesso!'),
+              backgroundColor: Colors.green,
+            );
+            ScaffoldMessenger.of(context).showSnackBar(snackBar);
           });
         },
       ),
