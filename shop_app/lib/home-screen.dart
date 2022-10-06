@@ -91,113 +91,136 @@ class _HomeScreenState extends State<HomeScreen> {
                       itemBuilder: (context, position) {
                         Product product = _products[position];
                         return Dismissible(
-                          key: Key(product.titulo),
-                          background: Container(
-                            color: Colors.green,
-                            child: const Align(
-                              alignment: Alignment(-0.9, 0.0),
-                              child: Icon(
-                                Icons.edit,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                          secondaryBackground: Container(
-                            color: Colors.red,
-                            child: const Align(
-                              alignment: Alignment(0.9, 0.0),
-                              child: Icon(
-                                Icons.delete,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                          confirmDismiss: ((direction) async {
-                            if (direction == DismissDirection.startToEnd) {
-                              Product? editedProduct = await Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => CreateProductScreen(
-                                    product: product,
-                                  ),
+                            key: Key(product.titulo),
+                            background: Container(
+                              color: Colors.green,
+                              child: const Align(
+                                alignment: Alignment(-0.9, 0.0),
+                                child: Icon(
+                                  Icons.edit,
+                                  color: Colors.white,
                                 ),
-                              );
+                              ),
+                            ),
+                            secondaryBackground: Container(
+                              color: Colors.red,
+                              child: const Align(
+                                alignment: Alignment(0.9, 0.0),
+                                child: Icon(
+                                  Icons.delete,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                            confirmDismiss: ((direction) async {
+                              if (direction == DismissDirection.startToEnd) {
+                                Product? editedProduct = await Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => CreateProductScreen(
+                                      product: product,
+                                    ),
+                                  ),
+                                );
 
-                              if (editedProduct != null) {
+                                if (editedProduct != null) {
+                                  int? result =
+                                      await _helper.editProduct(editedProduct);
+
+                                  if (result == 0) return false;
+
+                                  setState(() {
+                                    _products.removeAt(position);
+                                    _products.insert(position, editedProduct);
+
+                                    const snackBar = SnackBar(
+                                      content:
+                                          Text('Produto editado com sucesso!'),
+                                      backgroundColor: Colors.green,
+                                    );
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(snackBar);
+                                  });
+                                }
+
+                                return false;
+                              }
+
+                              if (direction == DismissDirection.endToStart) {
                                 int? result =
-                                    await _helper.editProduct(editedProduct);
+                                    await _helper.deleteProduct(product);
 
                                 if (result == 0) return false;
 
                                 setState(() {
                                   _products.removeAt(position);
-                                  _products.insert(position, editedProduct);
 
                                   const snackBar = SnackBar(
                                     content:
-                                        Text('Produto editado com sucesso!'),
-                                    backgroundColor: Colors.green,
+                                        Text('Produto apagado com sucesso!'),
+                                    backgroundColor: Colors.red,
                                   );
                                   ScaffoldMessenger.of(context)
                                       .showSnackBar(snackBar);
                                 });
+
+                                return true;
                               }
-
-                              return false;
-                            }
-
-                            if (direction == DismissDirection.endToStart) {
-                              int? result =
-                                  await _helper.deleteProduct(product);
-
-                              if (result == 0) return false;
-
-                              setState(() {
-                                _products.removeAt(position);
-
-                                const snackBar = SnackBar(
-                                  content: Text('Produto apagado com sucesso!'),
-                                  backgroundColor: Colors.red,
-                                );
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(snackBar);
-                              });
-
-                              return true;
-                            }
-                          }),
-                          child: ListTile(
-                            leading: product.image != null
-                                ? SizedBox(
-                                    height: 45,
-                                    width: 45,
-                                    child: ClipOval(
-                                      child: Image.file(
-                                        product.image!,
-                                        fit: BoxFit.cover,
+                            }),
+                            child: Container(
+                              clipBehavior: Clip.hardEdge,
+                              margin: const EdgeInsets.symmetric(
+                                  horizontal: 20, vertical: 10),
+                              decoration: const BoxDecoration(
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(10)),
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    height: 150,
+                                    child: Stack(
+                                      fit: StackFit.expand,
+                                      children: [
+                                        Image.file(
+                                          product.image!,
+                                          alignment: Alignment.center,
+                                          fit: BoxFit.cover,
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  Container(
+                                    margin: const EdgeInsets.only(top: 10),
+                                    child: Text(
+                                      product.titulo,
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 22,
+                                        color: Colors.grey[900]!,
                                       ),
                                     ),
-                                  )
-                                : const SizedBox(),
-                            title: Text(
-                              product.titulo,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 22,
-                                color: Colors.grey[600]!,
+                                  ),
+                                  Text(
+                                    product.descricao,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 15,
+                                      color: Colors.grey[600]!,
+                                    ),
+                                  ),
+                                  Text(
+                                    toReal(product.valor),
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 22,
+                                      color: Colors.orange[900]!,
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ),
-                            subtitle: Text(product.descricao),
-                            trailing: Text(
-                              toReal(product.valor),
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 22,
-                                color: Colors.green,
-                              ),
-                            ),
-                          ),
-                        );
+                            ));
                       },
                     ),
                   ),
