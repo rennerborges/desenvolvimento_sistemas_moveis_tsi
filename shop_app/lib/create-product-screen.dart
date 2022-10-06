@@ -84,30 +84,49 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
             margin: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
             child: Column(
               children: [
-                GestureDetector(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(vertical: 30),
-                    width: 120,
-                    height: 120,
-                    decoration: BoxDecoration(
-                      color: Colors.grey[200],
-                      border: Border.all(
-                        width: 1,
-                        color: Colors.grey[400]!,
-                      ),
-                      shape: BoxShape.circle,
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    "Informações do produto",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 25,
+                      color: Colors.grey[600]!,
                     ),
-                    child: _image == null
-                        ? const Icon(
-                            Icons.add_a_photo,
-                            size: 30,
-                          )
-                        : ClipOval(
-                            child: Image.file(
-                              _image!,
-                              fit: BoxFit.cover,
+                  ),
+                ),
+                GestureDetector(
+                  child: Expanded(
+                    child: Container(
+                      clipBehavior: Clip.hardEdge,
+                      height: 160,
+                      width: double.infinity,
+                      margin: const EdgeInsets.symmetric(vertical: 30),
+                      decoration: BoxDecoration(
+                        color: Colors.grey[200],
+                        border: Border.all(
+                          width: 1,
+                          color: Colors.grey[400]!,
+                        ),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(10)),
+                      ),
+                      child: _image == null
+                          ? const Icon(
+                              Icons.add_a_photo,
+                              size: 30,
+                            )
+                          : Stack(
+                              fit: StackFit.expand,
+                              children: [
+                                Image.file(
+                                  _image!,
+                                  alignment: Alignment.center,
+                                  fit: BoxFit.cover,
+                                )
+                              ],
                             ),
-                          ),
+                    ),
                   ),
                   onTap: () async {
                     final ImagePicker picker = ImagePicker();
@@ -129,20 +148,6 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
                       });
                     }
                   },
-                ),
-                Container(
-                  margin: const EdgeInsets.only(bottom: 20),
-                  child: Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      "Informações do produto",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 25,
-                        color: Colors.grey[600]!,
-                      ),
-                    ),
-                  ),
                 ),
                 TextFormField(
                   controller: _tituloController,
