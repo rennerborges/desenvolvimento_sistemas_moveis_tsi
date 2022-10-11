@@ -1,6 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'dart:io';
+import 'dart:async';
 
+import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:intl/intl.dart';
+import 'package:path_provider/path_provider.dart';
 import 'product.dart';
 
 class CreateProductScreen extends StatefulWidget {
@@ -18,6 +22,7 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
   final TextEditingController _tituloController = TextEditingController();
   final TextEditingController _descricaoController = TextEditingController();
   final TextEditingController _precoController = TextEditingController();
+  File? _image = null;
 
   String toReal(String money) {
     double preco = double.parse(money);
@@ -33,6 +38,7 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
         _tituloController.text = widget.product!.titulo;
         _descricaoController.text = widget.product!.descricao;
         _precoController.text = toReal(widget.product!.valor.toString());
+        _image = widget.product!.image;
       });
     }
   }
@@ -45,7 +51,13 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
       double preco = double.parse(
           _precoController.text.toString().replaceAll(RegExp(r'[.,]'), ''));
 
-      Product newProduct = Product(titulo, descricao, preco);
+      Product? newProduct;
+      if (widget.product == null) {
+        newProduct = Product(titulo, descricao, preco, _image);
+      } else {
+        newProduct =
+            Product(titulo, descricao, preco, _image, widget.product!.id);
+      }
       Navigator.pop(context, newProduct);
     }
 
@@ -53,14 +65,14 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         iconTheme: IconThemeData(
-          color: Colors.orange[900]!, //change your color here
+          color: Theme.of(context).colorScheme.primary, //change your color here
         ),
         backgroundColor: Colors.white,
         elevation: 0,
         title: Text(
           widget.product != null ? "Editar produto" : "Criar produto",
           style: TextStyle(
-            color: Colors.orange[900]!,
+            color: Theme.of(context).colorScheme.primary,
           ),
         ),
         centerTitle: true,
@@ -72,19 +84,70 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
             margin: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
             child: Column(
               children: [
-                Container(
-                  margin: const EdgeInsets.only(bottom: 20),
-                  child: Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      "Informações do produto",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 25,
-                        color: Colors.grey[600]!,
-                      ),
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    "Informações do produto",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 25,
+                      color: Colors.grey[600]!,
                     ),
                   ),
+                ),
+                GestureDetector(
+                  child: Expanded(
+                    child: Container(
+                      clipBehavior: Clip.hardEdge,
+                      height: 160,
+                      width: double.infinity,
+                      margin: const EdgeInsets.symmetric(vertical: 30),
+                      decoration: BoxDecoration(
+                        color: Colors.grey[200],
+                        border: Border.all(
+                          width: 1,
+                          color: Colors.grey[400]!,
+                        ),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(10)),
+                      ),
+                      child: _image == null
+                          ? const Icon(
+                              Icons.add_a_photo,
+                              size: 30,
+                            )
+                          : Stack(
+                              fit: StackFit.expand,
+                              children: [
+                                Image.file(
+                                  _image!,
+                                  alignment: Alignment.center,
+                                  fit: BoxFit.cover,
+                                )
+                              ],
+                            ),
+                    ),
+                  ),
+                  onTap: () async {
+                    final ImagePicker picker = ImagePicker();
+                    final XFile? pickedFile =
+                        await picker.pickImage(source: ImageSource.camera);
+                    if (pickedFile != null) {
+                      File image = File(pickedFile.path);
+                      Directory directory =
+                          await getApplicationDocumentsDirectory();
+                      String _localPath = directory.path;
+
+                      String uniqueID = UniqueKey().toString();
+
+                      final File savedImage =
+                          await image.copy('$_localPath/image_$uniqueID.png');
+
+                      setState(() {
+                        _image = savedImage;
+                      });
+                    }
+                  },
                 ),
                 TextFormField(
                   controller: _tituloController,

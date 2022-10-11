@@ -1,15 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shop_app/splash-screen.dart';
 
 void main() {
-  runApp(MaterialApp(
-    title: 'Shopee',
-    debugShowCheckedModeBanner: false,
-    theme: ThemeData(
-      primarySwatch: generateMaterialColorFromColor(const Color(0xfff53d2d)),
-    ),
-    home: const SplashScreen(),
-  ));
+  runApp(const App());
+}
+
+class App extends StatelessWidget {
+  const App({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Shopee',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        fontFamily: GoogleFonts.outfit().fontFamily,
+        textTheme: GoogleFonts.outfitTextTheme(
+          Theme.of(context).textTheme,
+        ),
+        primarySwatch: generateMaterialColorFromColor(const Color(0xfff53d2d)),
+      ),
+      home: const SplashScreen(),
+    );
+  }
 }
 
 MaterialColor generateMaterialColorFromColor(Color color) {
