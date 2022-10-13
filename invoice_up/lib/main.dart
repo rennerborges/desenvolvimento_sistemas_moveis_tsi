@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:invoice_up/screens/splash-screen.dart';
+import 'package:invoice_up/screens/splash/splash-screen.dart';
+
+import 'screens/login/login-screen.dart';
 
 void main() {
   runApp(const App());
@@ -21,7 +23,7 @@ class App extends StatelessWidget {
         ),
         primarySwatch: generateMaterialColorFromColor(const Color(0xff1F59DA)),
       ),
-      home: const SplashScreen(),
+      home: const LoginScreen(),
     );
   }
 }

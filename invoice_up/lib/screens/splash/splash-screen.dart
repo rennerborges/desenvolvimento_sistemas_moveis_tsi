@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:invoice_up/components/text.dart';
 import 'package:invoice_up/utils/colors.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -65,9 +66,15 @@ class _SplashScreenState extends State<SplashScreen> {
                       ),
                     ],
                   ),
-                )
+                ),
               ],
-            )
+            ),
+            TextInvoiceUp(
+              'Olá, ',
+              textBold: 'seja bem-vindo!',
+              onlyFontBold: true,
+              fontSize: 25,
+            ),
           ],
         ),
       ),
