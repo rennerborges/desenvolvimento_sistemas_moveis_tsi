@@ -61,6 +61,9 @@ class _InputInvoiceUpState extends State<InputInvoiceUp> {
     return Container(
       margin: widget.margin ?? const EdgeInsets.all(0),
       child: TextFormField(
+        textCapitalization: widget.isPassword
+            ? TextCapitalization.none
+            : TextCapitalization.sentences,
         controller: widget.controller,
         keyboardType: widget.type ?? TextInputType.text,
         obscureText: setObscureText(),
@@ -77,7 +80,7 @@ class _InputInvoiceUpState extends State<InputInvoiceUp> {
             borderRadius: const BorderRadius.all(Radius.circular(8)),
             borderSide: BorderSide(
               width: 1,
-              color: Colors.grey[600]!,
+              color: ColorsInvoiceUp.grayText,
             ),
           ),
           focusedBorder: OutlineInputBorder(
