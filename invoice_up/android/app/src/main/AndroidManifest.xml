@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.com.rennerborges.invoice_up">
    <application
-        android:label="invoice_up"
+        android:label="InvoiceUp"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
