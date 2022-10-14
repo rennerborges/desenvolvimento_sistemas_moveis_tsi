@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:invoice_up/components/button.dart';
 import 'package:invoice_up/components/input.dart';
 import 'package:invoice_up/components/link.dart';
 import 'package:invoice_up/components/text.dart';
@@ -61,21 +62,16 @@ class _LoginScreenState extends State<LoginScreen> {
                           LinkInvoiceUp('Registrar'),
                         ],
                       ),
-                      Container(
-                        width: double.infinity,
-                        height: 50,
-                        child: ElevatedButton(
-                          child: Text('Entrar'),
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(
-                              ColorsInvoiceUp.blueMain,
-                            ),
-                            elevation: MaterialStateProperty.all(0),
-                          ),
-                          onPressed: () {
-                            print('Hello');
-                          },
-                        ),
+                      ButtonInvoiceUp(
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: const [
+                              Text('Entrar'),
+                              Icon(Icons.login),
+                            ]),
+                        onPressed: (context) {
+                          print('Hello');
+                        },
                       ),
                     ],
                   )),

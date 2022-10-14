@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:invoice_up/components/text.dart';
+import 'package:invoice_up/screens/login/login-screen.dart';
 import 'package:invoice_up/utils/colors.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -14,10 +15,10 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
 
-    // Future.delayed(const Duration(seconds: 2), () {
-    //   Navigator.push(context,
-    //       MaterialPageRoute(builder: ((context) => const HomeScreen())));
-    // });
+    Future.delayed(const Duration(seconds: 2), () {
+      Navigator.push(context,
+          MaterialPageRoute(builder: ((context) => const LoginScreen())));
+    });
   }
 
   @override
@@ -68,12 +69,6 @@ class _SplashScreenState extends State<SplashScreen> {
                   ),
                 ),
               ],
-            ),
-            TextInvoiceUp(
-              'Olá, ',
-              textBold: 'seja bem-vindo!',
-              onlyFontBold: true,
-              fontSize: 25,
             ),
           ],
         ),
