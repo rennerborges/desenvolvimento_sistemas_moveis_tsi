@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:invoice_up/components/text.dart';
-import 'package:invoice_up/providers/theme.providers.dart';
-import 'package:invoice_up/screens/login/login-screen.dart';
+import 'package:invoice_up/providers/app-settings.providers.dart';
+import 'package:invoice_up/screens/login/login.screen.dart';
 import 'package:invoice_up/utils/colors.dart';
 import 'package:provider/provider.dart';
 
@@ -29,7 +29,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     ColorsInvoiceUp colors = ColorsInvoiceUp(
-      context.watch<DarkTheme>().darkTheme,
+      context.watch<AppSettings>().darkTheme,
     );
 
     return Scaffold(

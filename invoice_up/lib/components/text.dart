@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:invoice_up/utils/colors.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/theme.providers.dart';
+import '../providers/app-settings.providers.dart';
 
 // ignore: must_be_immutable
 class TextInvoiceUp extends StatefulWidget {
@@ -31,7 +31,7 @@ class _TextInvoiceUpState extends State<TextInvoiceUp> {
   @override
   Widget build(BuildContext context) {
     ColorsInvoiceUp colors = ColorsInvoiceUp(
-      context.watch<DarkTheme>().darkTheme,
+      context.watch<AppSettings>().darkTheme,
     );
 
     return Row(

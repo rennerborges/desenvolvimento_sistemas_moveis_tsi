@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:invoice_up/utils/colors.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/theme.providers.dart';
+import '../providers/app-settings.providers.dart';
 
 class AppBarInvoiceUp extends StatefulWidget implements PreferredSizeWidget {
   @override
@@ -17,7 +17,7 @@ class AppBarInvoiceUp extends StatefulWidget implements PreferredSizeWidget {
 class _AppBarInvoiceUpState extends State<AppBarInvoiceUp> {
   @override
   Widget build(BuildContext context) {
-    bool darkTheme = context.watch<DarkTheme>().darkTheme;
+    bool darkTheme = context.watch<AppSettings>().darkTheme;
 
     ColorsInvoiceUp colors = ColorsInvoiceUp(
       darkTheme,
@@ -29,7 +29,7 @@ class _AppBarInvoiceUpState extends State<AppBarInvoiceUp> {
       actions: [
         IconButton(
           onPressed: () {
-            context.read<DarkTheme>().handleChange();
+            context.read<AppSettings>().handleChangeDarkTheme();
           },
           icon: Icon(
             darkTheme ? Icons.light_mode : Icons.dark_mode,

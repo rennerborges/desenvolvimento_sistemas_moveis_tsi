@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:invoice_up/utils/colors.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/theme.providers.dart';
+import '../providers/app-settings.providers.dart';
 
 class InputInvoiceUp extends StatefulWidget {
   TextEditingController controller;
@@ -62,12 +62,13 @@ class _InputInvoiceUpState extends State<InputInvoiceUp> {
   @override
   Widget build(BuildContext context) {
     ColorsInvoiceUp colors = ColorsInvoiceUp(
-      context.watch<DarkTheme>().darkTheme,
+      context.watch<AppSettings>().darkTheme,
     );
 
     return Container(
       margin: widget.margin ?? const EdgeInsets.all(0),
       child: TextFormField(
+        style: TextStyle(color: colors.grayText),
         textCapitalization: widget.isPassword
             ? TextCapitalization.none
             : TextCapitalization.sentences,
@@ -96,7 +97,7 @@ class _InputInvoiceUpState extends State<InputInvoiceUp> {
             fontSize: 18,
           ),
           floatingLabelStyle: TextStyle(
-            color: colors.blueMain,
+            color: colors.grayText,
             fontSize: 18,
           ),
           errorStyle: const TextStyle(
