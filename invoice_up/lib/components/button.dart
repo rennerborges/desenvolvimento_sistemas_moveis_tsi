@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../providers/theme.providers.dart';
 import '../utils/colors.dart';
 
 class ButtonInvoiceUp extends StatefulWidget {
@@ -21,13 +23,17 @@ class ButtonInvoiceUp extends StatefulWidget {
 class _ButtonInvoiceUpState extends State<ButtonInvoiceUp> {
   @override
   Widget build(BuildContext context) {
+    ColorsInvoiceUp colors = ColorsInvoiceUp(
+      context.watch<DarkTheme>().darkTheme,
+    );
+
     return SizedBox(
       width: double.infinity,
       height: 50,
       child: ElevatedButton(
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all(
-            widget.backgroundColor ?? ColorsInvoiceUp.blueMain,
+            widget.backgroundColor ?? colors.blueMain,
           ),
           elevation: MaterialStateProperty.all(0),
         ),

@@ -1,16 +1,35 @@
 import 'dart:ui';
 
 class ColorsInvoiceUp {
-  static Color blue900 = const Color(0xFF152670);
-  static Color blueMain = const Color(0xff1F59DA);
-  static Color blue300 = const Color(0xFFE3EBFF);
+  late Color blue900;
+  late Color blueMain;
+  late Color blue300;
 
-  static Color grayText = const Color(0xFF8B8B8B);
-  static Color grayTextBold = const Color(0xFF263238);
+  late Color grayText;
+  late Color grayTextBold;
 
-  static Color gray100 = const Color(0xFFF9F9F9);
+  late Color gray100;
 
-  static Color red100 = const Color(0xFFFFE3E3);
+  late Color red100;
 
-  static Color green100 = const Color(0xFFE3FFE4);
+  late Color green100;
+
+  late Color white;
+
+  ColorsInvoiceUp(bool darkTheme) {
+    blue900 = const Color(0xFF152670);
+    blueMain = const Color(0xff1F59DA);
+    blue300 = const Color(0xFFE3EBFF);
+
+    grayText = Color(darkTheme ? 0xFFe0e0e0 : 0xFF8B8B8B);
+    grayTextBold = Color(darkTheme ? 0xFFFFFFFF : 0xFF263238);
+
+    gray100 = const Color(0xFFF9F9F9);
+
+    red100 = const Color(0xFFFFE3E3);
+
+    green100 = const Color(0xFFE3FFE4);
+
+    white = Color(darkTheme ? 0xFF212121 : 0xFFFFFFFF);
+  }
 }

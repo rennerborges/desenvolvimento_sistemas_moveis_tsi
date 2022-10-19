@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:invoice_up/components/appBar.dart';
 import 'package:invoice_up/components/button.dart';
 import 'package:invoice_up/components/input.dart';
 import 'package:invoice_up/components/link.dart';
 import 'package:invoice_up/components/text.dart';
 import 'package:invoice_up/utils/colors.dart';
+import 'package:provider/provider.dart';
+
+import '../../providers/theme.providers.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -20,8 +24,13 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    ColorsInvoiceUp colors = ColorsInvoiceUp(
+      context.watch<DarkTheme>().darkTheme,
+    );
+
     return Scaffold(
-        backgroundColor: Colors.white,
+        appBar: AppBarInvoiceUp(),
+        backgroundColor: colors.white,
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

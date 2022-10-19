@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:invoice_up/components/text.dart';
+import 'package:invoice_up/providers/theme.providers.dart';
 import 'package:invoice_up/screens/login/login-screen.dart';
 import 'package:invoice_up/utils/colors.dart';
+import 'package:provider/provider.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -16,13 +18,20 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
 
     Future.delayed(const Duration(seconds: 2), () {
-      Navigator.push(context,
-          MaterialPageRoute(builder: ((context) => const LoginScreen())));
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(
+              builder: (BuildContext context) => const LoginScreen()),
+          (Route<dynamic> route) => route is LoginScreen);
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    ColorsInvoiceUp colors = ColorsInvoiceUp(
+      context.watch<DarkTheme>().darkTheme,
+    );
+
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.primary,
       body: Center(
@@ -56,7 +65,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 Text(
                   'Up',
                   style: TextStyle(
-                    color: ColorsInvoiceUp.blue900,
+                    color: colors.blue900,
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
                     shadows: const <Shadow>[

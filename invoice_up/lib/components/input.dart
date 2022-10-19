@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:invoice_up/utils/colors.dart';
+import 'package:provider/provider.dart';
+
+import '../providers/theme.providers.dart';
 
 class InputInvoiceUp extends StatefulWidget {
   TextEditingController controller;
@@ -10,8 +13,8 @@ class InputInvoiceUp extends StatefulWidget {
   TextInputType? type;
   bool isPassword = false;
   String prefixText = '';
-  Icon? prefixIcon;
-  Icon? suffixIcon;
+  IconData? prefixIcon;
+  IconData? suffixIcon;
 
   InputInvoiceUp({
     required this.controller,
@@ -34,11 +37,11 @@ class InputInvoiceUp extends StatefulWidget {
 class _InputInvoiceUpState extends State<InputInvoiceUp> {
   bool showPassword = false;
 
-  GestureDetector setIconPassword() {
+  GestureDetector setIconPassword(ColorsInvoiceUp colors) {
     return GestureDetector(
       child: Icon(
         showPassword ? Icons.visibility_off : Icons.visibility,
-        color: ColorsInvoiceUp.grayText,
+        color: colors.grayText,
       ),
       onTap: () {
         setState(() {
@@ -58,6 +61,10 @@ class _InputInvoiceUpState extends State<InputInvoiceUp> {
 
   @override
   Widget build(BuildContext context) {
+    ColorsInvoiceUp colors = ColorsInvoiceUp(
+      context.watch<DarkTheme>().darkTheme,
+    );
+
     return Container(
       margin: widget.margin ?? const EdgeInsets.all(0),
       child: TextFormField(
@@ -71,16 +78,37 @@ class _InputInvoiceUpState extends State<InputInvoiceUp> {
         autocorrect: !widget.isPassword,
         decoration: InputDecoration(
           prefixText: widget.prefixText,
-          prefixIcon: widget.prefixIcon,
-          suffixIcon: widget.isPassword ? setIconPassword() : widget.suffixIcon,
+          prefixIcon: widget.prefixIcon != null
+              ? Icon(
+                  widget.prefixIcon,
+                  color: colors.grayText,
+                )
+              : null,
+          suffixIcon: widget.isPassword
+              ? setIconPassword(colors)
+              : Icon(
+                  widget.suffixIcon,
+                  color: colors.grayText,
+                ),
           labelText: widget.labelText,
+          labelStyle: TextStyle(
+            color: colors.grayText,
+            fontSize: 18,
+          ),
+          floatingLabelStyle: TextStyle(
+            color: colors.blueMain,
+            fontSize: 18,
+          ),
+          errorStyle: const TextStyle(
+            color: Colors.red,
+          ),
+          focusColor: Colors.blue,
           floatingLabelBehavior: FloatingLabelBehavior.always,
-          labelStyle: const TextStyle(fontSize: 18),
           enabledBorder: OutlineInputBorder(
             borderRadius: const BorderRadius.all(Radius.circular(8)),
             borderSide: BorderSide(
               width: 1,
-              color: ColorsInvoiceUp.grayText,
+              color: colors.grayText,
             ),
           ),
           focusedBorder: OutlineInputBorder(

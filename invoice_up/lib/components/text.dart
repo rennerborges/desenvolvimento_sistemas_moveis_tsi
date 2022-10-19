@@ -2,6 +2,9 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:invoice_up/utils/colors.dart';
+import 'package:provider/provider.dart';
+
+import '../providers/theme.providers.dart';
 
 // ignore: must_be_immutable
 class TextInvoiceUp extends StatefulWidget {
@@ -27,13 +30,17 @@ class TextInvoiceUp extends StatefulWidget {
 class _TextInvoiceUpState extends State<TextInvoiceUp> {
   @override
   Widget build(BuildContext context) {
+    ColorsInvoiceUp colors = ColorsInvoiceUp(
+      context.watch<DarkTheme>().darkTheme,
+    );
+
     return Row(
       mainAxisAlignment: widget.mainAxisAlignment ?? MainAxisAlignment.center,
       children: [
         Text(
           widget.text,
           style: TextStyle(
-            color: ColorsInvoiceUp.grayText,
+            color: colors.grayText,
             fontSize: widget.fontSize ?? 20,
             fontWeight:
                 widget.onlyFontBold ? FontWeight.bold : FontWeight.normal,
@@ -42,7 +49,7 @@ class _TextInvoiceUpState extends State<TextInvoiceUp> {
         Text(
           widget.textBold!,
           style: TextStyle(
-            color: ColorsInvoiceUp.grayTextBold,
+            color: colors.grayTextBold,
             fontSize: widget.fontSize ?? 20,
             fontWeight: FontWeight.bold,
           ),
