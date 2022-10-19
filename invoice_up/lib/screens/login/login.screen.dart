@@ -59,29 +59,61 @@ class _LoginScreenState extends State<LoginScreen> {
                           controller: _userController,
                           labelText: S.of(context).user,
                           margin: const EdgeInsets.only(top: 20),
+                          hintText: 'user@mail.com',
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return S.of(context).requiredField;
+                            }
+                          },
                         ),
                         InputInvoiceUp(
                           controller: _passwordController,
                           labelText: S.of(context).password,
                           isPassword: true,
                           margin: const EdgeInsets.only(top: 20),
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return S.of(context).requiredField;
+                            }
+
+                            // ignore: unnecessary_string_escapes
+                            final passwordRule = RegExp(
+                                r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$\!%*?&])[A-Za-z\d@$\!%*?&]{8,}$');
+
+                            if (!passwordRule.hasMatch(value)) {
+                              SnackBar snackBar = SnackBar(
+                                content: Text(
+                                    S.of(context).passowordInvalidDescription),
+                                backgroundColor: Colors.red,
+                              );
+
+                              // Find the ScaffoldMessenger in the widget tree
+                              // and use it to show a SnackBar.
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(snackBar);
+                              return S.of(context).passwordInvalid;
+                            }
+                          },
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            LinkInvoiceUp('Esqueci a senha'),
-                            LinkInvoiceUp('Registrar'),
+                            LinkInvoiceUp(S.of(context).forgotPassword),
+                            LinkInvoiceUp(S.of(context).register),
                           ],
                         ),
                         ButtonInvoiceUp(
                           child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: const [
-                                Text('Entrar'),
-                                Icon(Icons.login),
+                              children: [
+                                Text(S.of(context).enter),
+                                const Icon(Icons.login),
                               ]),
                           onPressed: (context) {
-                            print('Hello');
+                            FocusScope.of(context).unfocus();
+                            if (_formKey.currentState!.validate()) {
+                              print('Logar');
+                            }
                           },
                         ),
                       ],

@@ -99,6 +99,66 @@ class S {
       args: [],
     );
   }
+
+  /// `Forgot password`
+  String get forgotPassword {
+    return Intl.message(
+      'Forgot password',
+      name: 'forgotPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Register`
+  String get register {
+    return Intl.message(
+      'Register',
+      name: 'register',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login`
+  String get enter {
+    return Intl.message(
+      'Login',
+      name: 'enter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Required fields`
+  String get requiredField {
+    return Intl.message(
+      'Required fields',
+      name: 'requiredField',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid password format`
+  String get passwordInvalid {
+    return Intl.message(
+      'Invalid password format',
+      name: 'passwordInvalid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The password must have at least eight characters, at least one uppercase letter, one lowercase letter, one number and one special character`
+  String get passowordInvalidDescription {
+    return Intl.message(
+      'The password must have at least eight characters, at least one uppercase letter, one lowercase letter, one number and one special character',
+      name: 'passowordInvalidDescription',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
@@ -107,6 +167,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   List<Locale> get supportedLocales {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
+      Locale.fromSubtags(languageCode: 'es'),
       Locale.fromSubtags(languageCode: 'pt'),
     ];
   }

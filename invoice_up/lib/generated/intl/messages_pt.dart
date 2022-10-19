@@ -22,7 +22,17 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "enter": MessageLookupByLibrary.simpleMessage("Entrar"),
+        "forgotPassword":
+            MessageLookupByLibrary.simpleMessage("Esqueci a senha"),
+        "passowordInvalidDescription": MessageLookupByLibrary.simpleMessage(
+            "A senha precisa ter no mínimo oito caracteres, pelo menos, uma letra maiúscula, uma letra minúscula, um número e um caractere especial"),
         "password": MessageLookupByLibrary.simpleMessage("Senha"),
+        "passwordInvalid":
+            MessageLookupByLibrary.simpleMessage("Formato de senha inválido"),
+        "register": MessageLookupByLibrary.simpleMessage("Registrar"),
+        "requiredField":
+            MessageLookupByLibrary.simpleMessage("Preenchimento obrigatório"),
         "subtitleLogin": MessageLookupByLibrary.simpleMessage(
             "Realize seu login para continuar"),
         "titleBoldLogin":

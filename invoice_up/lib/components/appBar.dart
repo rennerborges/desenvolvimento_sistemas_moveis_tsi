@@ -41,46 +41,55 @@ class _AppBarInvoiceUpState extends State<AppBarInvoiceUp> {
               // your logic
             },
             icon: Icon(
-              Icons.settings,
+              Icons.language,
               color: colors.grayText,
             ),
             itemBuilder: (BuildContext bc) {
               return [
                 PopupMenuItem(
-                  child: GestureDetector(
-                    onTap: () {
-                      context.read<AppSettings>().setLocale('pt');
-                      Navigator.pop(context);
-                    },
-                    child: Row(children: [
-                      Container(
-                        margin: const EdgeInsets.only(right: 10),
-                        width: 32,
-                        child: const Image(
-                          image: AssetImage('images/pt.png'),
-                        ),
+                  onTap: () {
+                    context.read<AppSettings>().setLocale('pt');
+                  },
+                  child: Row(children: [
+                    Container(
+                      margin: const EdgeInsets.only(right: 10),
+                      width: 32,
+                      child: const Image(
+                        image: AssetImage('images/pt.png'),
                       ),
-                      const Text('Português'),
-                    ]),
-                  ),
+                    ),
+                    const Text('Português'),
+                  ]),
                 ),
                 PopupMenuItem(
-                  child: GestureDetector(
-                    onTap: () {
-                      context.read<AppSettings>().setLocale('en');
-                      Navigator.pop(context);
-                    },
-                    child: Row(children: [
-                      Container(
-                        margin: const EdgeInsets.only(right: 10),
-                        width: 32,
-                        child: const Image(
-                          image: AssetImage('images/en.png'),
-                        ),
+                  onTap: () {
+                    context.read<AppSettings>().setLocale('en');
+                  },
+                  child: Row(children: [
+                    Container(
+                      margin: const EdgeInsets.only(right: 10),
+                      width: 32,
+                      child: const Image(
+                        image: AssetImage('images/en.png'),
                       ),
-                      const Text('Inglês'),
-                    ]),
-                  ),
+                    ),
+                    const Text('Inglês'),
+                  ]),
+                ),
+                PopupMenuItem(
+                  onTap: () {
+                    context.read<AppSettings>().setLocale('es');
+                  },
+                  child: Row(children: [
+                    Container(
+                      margin: const EdgeInsets.only(right: 10),
+                      width: 32,
+                      child: const Image(
+                        image: AssetImage('images/es.png'),
+                      ),
+                    ),
+                    const Text('Espanhol'),
+                  ]),
                 ),
               ];
             }),

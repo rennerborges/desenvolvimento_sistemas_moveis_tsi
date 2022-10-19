@@ -3,5 +3,11 @@
   "titleBoldLogin": "you are welcome!",
   "subtitleLogin": "Please login to continue",
   "user": "User",
-  "password": "Password"
+  "password": "Password",
+  "forgotPassword": "Forgot password",
+  "register": "Register",
+  "enter": "Login",
+  "requiredField": "Required fields",
+  "passwordInvalid": "Invalid password format",
+  "passowordInvalidDescription": "The password must have at least eight characters, at least one uppercase letter, one lowercase letter, one number and one special character"
 }

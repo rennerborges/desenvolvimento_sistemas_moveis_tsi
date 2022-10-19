@@ -15,6 +15,7 @@ class InputInvoiceUp extends StatefulWidget {
   String prefixText = '';
   IconData? prefixIcon;
   IconData? suffixIcon;
+  String? hintText;
 
   InputInvoiceUp({
     required this.controller,
@@ -25,6 +26,7 @@ class InputInvoiceUp extends StatefulWidget {
     this.type,
     this.isPassword = false,
     this.prefixText = '',
+    this.hintText,
     this.prefixIcon,
     this.suffixIcon,
     super.key,
@@ -68,7 +70,7 @@ class _InputInvoiceUpState extends State<InputInvoiceUp> {
     return Container(
       margin: widget.margin ?? const EdgeInsets.all(0),
       child: TextFormField(
-        style: TextStyle(color: colors.grayText),
+        style: TextStyle(color: colors.grayTextBold),
         textCapitalization: widget.isPassword
             ? TextCapitalization.none
             : TextCapitalization.sentences,
@@ -78,6 +80,8 @@ class _InputInvoiceUpState extends State<InputInvoiceUp> {
         enableSuggestions: !widget.isPassword,
         autocorrect: !widget.isPassword,
         decoration: InputDecoration(
+          hintText: widget.hintText != null ? 'Ex.: ${widget.hintText}' : null,
+          hintStyle: TextStyle(color: colors.grayHint),
           prefixText: widget.prefixText,
           prefixIcon: widget.prefixIcon != null
               ? Icon(

@@ -3,5 +3,11 @@
   "titleBoldLogin": "seja bem vindo!",
   "subtitleLogin": "Realize seu login para continuar",
   "user": "Usuário",
-  "password": "Senha"
+  "password": "Senha",
+  "forgotPassword": "Esqueci a senha",
+  "register": "Registrar",
+  "enter": "Entrar",
+  "requiredField": "Preenchimento obrigatório",
+  "passwordInvalid": "Formato de senha inválido",
+  "passowordInvalidDescription": "A senha precisa ter no mínimo oito caracteres, pelo menos, uma letra maiúscula, uma letra minúscula, um número e um caractere especial"
 }

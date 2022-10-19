@@ -1,5 +1,5 @@
 // DO NOT EDIT. This is code generated via package:intl/generate_localized.dart
-// This is a library that provides messages for a en locale. All the
+// This is a library that provides messages for a es locale. All the
 // messages from the main program should be duplicated here with the same
 // function name.
 
@@ -18,26 +18,24 @@ final messages = new MessageLookup();
 typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 
 class MessageLookup extends MessageLookupByLibrary {
-  String get localeName => 'en';
+  String get localeName => 'es';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "enter": MessageLookupByLibrary.simpleMessage("Login"),
         "forgotPassword":
-            MessageLookupByLibrary.simpleMessage("Forgot password"),
+            MessageLookupByLibrary.simpleMessage("Olvidé mi contraseña"),
         "passowordInvalidDescription": MessageLookupByLibrary.simpleMessage(
-            "The password must have at least eight characters, at least one uppercase letter, one lowercase letter, one number and one special character"),
-        "password": MessageLookupByLibrary.simpleMessage("Password"),
-        "passwordInvalid":
-            MessageLookupByLibrary.simpleMessage("Invalid password format"),
-        "register": MessageLookupByLibrary.simpleMessage("Register"),
-        "requiredField":
-            MessageLookupByLibrary.simpleMessage("Required fields"),
-        "subtitleLogin":
-            MessageLookupByLibrary.simpleMessage("Please login to continue"),
-        "titleBoldLogin":
-            MessageLookupByLibrary.simpleMessage("you are welcome!"),
-        "titleLogin": MessageLookupByLibrary.simpleMessage("Hello,  "),
-        "user": MessageLookupByLibrary.simpleMessage("User")
+            "La contraseña debe tener como mínimo ocho caracteres, al menos una letra mayúscula, una letra minúscula, un número y un carácter especial"),
+        "password": MessageLookupByLibrary.simpleMessage("Contraseña"),
+        "passwordInvalid": MessageLookupByLibrary.simpleMessage(
+            "Formato de contraseña inválido"),
+        "register": MessageLookupByLibrary.simpleMessage("Registro"),
+        "requiredField": MessageLookupByLibrary.simpleMessage("Obligatorio"),
+        "subtitleLogin": MessageLookupByLibrary.simpleMessage(
+            "Inicie sesión para continuar"),
+        "titleBoldLogin": MessageLookupByLibrary.simpleMessage("¡bienvenido!"),
+        "titleLogin": MessageLookupByLibrary.simpleMessage("Hola, "),
+        "user": MessageLookupByLibrary.simpleMessage("Usuario")
       };
 }

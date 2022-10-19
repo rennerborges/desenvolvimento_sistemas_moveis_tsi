@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class AppSettings extends ChangeNotifier {
   late SharedPreferences _prefs;
   bool darkTheme = false;
-  Locale locale = Locale('pt');
+  Locale locale = const Locale('pt');
 
   AppSettings() {
     _startSessings();
@@ -40,7 +40,6 @@ class AppSettings extends ChangeNotifier {
 
   Locale getLocale() {
     String? localeString = _prefs.getString('locale');
-    print('Teste $localeString');
     if (localeString == null) {
       return const Locale('en');
     }

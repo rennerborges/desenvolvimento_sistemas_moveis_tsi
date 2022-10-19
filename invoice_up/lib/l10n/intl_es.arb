@@ -1,0 +1,13 @@
+{
+  "titleLogin": "Hola, ",
+  "titleBoldLogin": "¡bienvenido!",
+  "subtitleLogin": "Inicie sesión para continuar",
+  "user": "Usuario",
+  "password": "Contraseña",
+  "forgotPassword": "Olvidé mi contraseña",
+  "register": "Registro",
+  "enter": "Login",
+  "requiredField": "Obligatorio",
+  "passwordInvalid": "Formato de contraseña inválido",
+  "passowordInvalidDescription": "La contraseña debe tener como mínimo ocho caracteres, al menos una letra mayúscula, una letra minúscula, un número y un carácter especial"
+}

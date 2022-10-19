@@ -9,6 +9,7 @@ class ColorsInvoiceUp {
   late Color grayTextBold;
 
   late Color gray100;
+  late Color grayHint;
 
   late Color red100;
 
@@ -25,6 +26,7 @@ class ColorsInvoiceUp {
     grayTextBold = Color(darkTheme ? 0xFFFFFFFF : 0xFF263238);
 
     gray100 = const Color(0xFFF9F9F9);
+    grayHint = Color(darkTheme ? 0xFF424242 : 0xFFe0e0e0);
 
     red100 = const Color(0xFFFFE3E3);
 
