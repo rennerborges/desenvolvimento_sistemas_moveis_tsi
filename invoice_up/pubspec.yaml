@@ -40,6 +40,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   provider: ^6.0.4
   shared_preferences: ^2.0.10
+  intl_utils: ^2.7.0
+  flutter_localizations:
+    sdk: flutter
 
 dev_dependencies:
   flutter_test:
@@ -93,3 +96,5 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+flutter_intl:
+  enabled: true

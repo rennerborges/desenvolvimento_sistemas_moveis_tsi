@@ -35,7 +35,41 @@ class _AppBarInvoiceUpState extends State<AppBarInvoiceUp> {
             darkTheme ? Icons.light_mode : Icons.dark_mode,
             color: colors.grayText,
           ),
-        )
+        ),
+        PopupMenuButton(
+            onSelected: (value) {
+              // your logic
+            },
+            icon: Icon(
+              Icons.settings,
+              color: colors.grayText,
+            ),
+            itemBuilder: (BuildContext bc) {
+              return [
+                PopupMenuItem(
+                  child: GestureDetector(
+                    onTap: () {
+                      context.read<AppSettings>().setLocale('pt');
+                      Navigator.pop(context);
+                    },
+                    child: Row(children: [
+                      Text('Português'),
+                    ]),
+                  ),
+                ),
+                PopupMenuItem(
+                  child: GestureDetector(
+                    onTap: () {
+                      context.read<AppSettings>().setLocale('en');
+                      Navigator.pop(context);
+                    },
+                    child: Row(children: [
+                      Text('Inglês'),
+                    ]),
+                  ),
+                ),
+              ];
+            }),
       ],
     );
   }

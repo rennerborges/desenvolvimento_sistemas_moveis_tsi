@@ -4,6 +4,7 @@ import 'package:invoice_up/components/button.dart';
 import 'package:invoice_up/components/input.dart';
 import 'package:invoice_up/components/link.dart';
 import 'package:invoice_up/components/text.dart';
+import 'package:invoice_up/generated/l10n.dart';
 import 'package:invoice_up/utils/colors.dart';
 import 'package:provider/provider.dart';
 
@@ -42,12 +43,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               TextInvoiceUp(
-                'Olá, ',
-                textBold: 'seja bem vindo!',
+                S.of(context).titleLogin,
+                textBold: S.of(context).titleBoldLogin,
                 fontSize: 25,
                 onlyFontBold: true,
               ),
-              TextInvoiceUp('Realize seu login para continuar'),
+              TextInvoiceUp(S.of(context).subtitleLogin),
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 20),
                 child: Form(
@@ -56,12 +57,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       children: [
                         InputInvoiceUp(
                           controller: _userController,
-                          labelText: 'Usuário',
+                          labelText: S.of(context).user,
                           margin: const EdgeInsets.only(top: 20),
                         ),
                         InputInvoiceUp(
                           controller: _passwordController,
-                          labelText: 'Senha',
+                          labelText: S.of(context).password,
                           isPassword: true,
                           margin: const EdgeInsets.only(top: 20),
                         ),
