@@ -53,7 +53,14 @@ class _AppBarInvoiceUpState extends State<AppBarInvoiceUp> {
                       Navigator.pop(context);
                     },
                     child: Row(children: [
-                      Text('Português'),
+                      Container(
+                        margin: const EdgeInsets.only(right: 10),
+                        width: 32,
+                        child: const Image(
+                          image: AssetImage('images/pt.png'),
+                        ),
+                      ),
+                      const Text('Português'),
                     ]),
                   ),
                 ),
@@ -64,7 +71,14 @@ class _AppBarInvoiceUpState extends State<AppBarInvoiceUp> {
                       Navigator.pop(context);
                     },
                     child: Row(children: [
-                      Text('Inglês'),
+                      Container(
+                        margin: const EdgeInsets.only(right: 10),
+                        width: 32,
+                        child: const Image(
+                          image: AssetImage('images/en.png'),
+                        ),
+                      ),
+                      const Text('Inglês'),
                     ]),
                   ),
                 ),
