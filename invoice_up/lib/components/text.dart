@@ -34,8 +34,8 @@ class _TextInvoiceUpState extends State<TextInvoiceUp> {
       context.watch<AppSettings>().darkTheme,
     );
 
-    return Row(
-      mainAxisAlignment: widget.mainAxisAlignment ?? MainAxisAlignment.center,
+    return Wrap(
+      direction: Axis.horizontal,
       children: [
         Text(
           widget.text,
@@ -45,6 +45,7 @@ class _TextInvoiceUpState extends State<TextInvoiceUp> {
             fontWeight:
                 widget.onlyFontBold ? FontWeight.bold : FontWeight.normal,
           ),
+          textAlign: TextAlign.center,
         ),
         Text(
           widget.textBold!,
@@ -53,6 +54,7 @@ class _TextInvoiceUpState extends State<TextInvoiceUp> {
             fontSize: widget.fontSize ?? 20,
             fontWeight: FontWeight.bold,
           ),
+          textAlign: TextAlign.center,
         ),
       ],
     );

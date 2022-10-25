@@ -24,6 +24,9 @@ class _AppBarInvoiceUpState extends State<AppBarInvoiceUp> {
     );
 
     return AppBar(
+      iconTheme: IconThemeData(
+        color: colors.grayText, //change your color here
+      ),
       elevation: 0,
       backgroundColor: colors.white,
       actions: [

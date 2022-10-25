@@ -80,6 +80,16 @@ class S {
     );
   }
 
+  /// `Name`
+  String get name {
+    return Intl.message(
+      'Name',
+      name: 'name',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `User`
   String get user {
     return Intl.message(
@@ -155,6 +165,16 @@ class S {
     return Intl.message(
       'The password must have at least eight characters, at least one uppercase letter, one lowercase letter, one number and one special character',
       name: 'passowordInvalidDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter the data to make your registration`
+  String get subtitleRegister {
+    return Intl.message(
+      'Enter the data to make your registration',
+      name: 'subtitleRegister',
       desc: '',
       args: [],
     );

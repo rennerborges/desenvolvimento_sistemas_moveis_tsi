@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "enter": MessageLookupByLibrary.simpleMessage("Entrar"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Esqueci a senha"),
+        "name": MessageLookupByLibrary.simpleMessage("Nome"),
         "passowordInvalidDescription": MessageLookupByLibrary.simpleMessage(
             "A senha precisa ter no mínimo oito caracteres, pelo menos, uma letra maiúscula, uma letra minúscula, um número e um caractere especial"),
         "password": MessageLookupByLibrary.simpleMessage("Senha"),
@@ -35,6 +36,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Preenchimento obrigatório"),
         "subtitleLogin": MessageLookupByLibrary.simpleMessage(
             "Realize seu login para continuar"),
+        "subtitleRegister": MessageLookupByLibrary.simpleMessage(
+            "Informe os dados para realizar seu cadastro"),
         "titleBoldLogin":
             MessageLookupByLibrary.simpleMessage("seja bem vindo!"),
         "titleLogin": MessageLookupByLibrary.simpleMessage("Olá, "),

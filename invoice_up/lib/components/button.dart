@@ -7,12 +7,15 @@ import '../utils/colors.dart';
 class ButtonInvoiceUp extends StatefulWidget {
   late Widget child;
   Color? backgroundColor;
+  EdgeInsets? margin;
+
   void Function(BuildContext context)? onPressed;
 
   ButtonInvoiceUp({
     required this.child,
     required this.onPressed,
     this.backgroundColor,
+    this.margin,
     super.key,
   });
 
@@ -27,9 +30,10 @@ class _ButtonInvoiceUpState extends State<ButtonInvoiceUp> {
       context.watch<AppSettings>().darkTheme,
     );
 
-    return SizedBox(
+    return Container(
       width: double.infinity,
       height: 50,
+      margin: widget.margin ?? const EdgeInsets.all(0),
       child: ElevatedButton(
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all(

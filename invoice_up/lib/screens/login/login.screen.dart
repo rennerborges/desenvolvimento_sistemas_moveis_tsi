@@ -5,6 +5,7 @@ import 'package:invoice_up/components/input.dart';
 import 'package:invoice_up/components/link.dart';
 import 'package:invoice_up/components/text.dart';
 import 'package:invoice_up/generated/l10n.dart';
+import 'package:invoice_up/screens/register/register.screen.dart';
 import 'package:invoice_up/utils/colors.dart';
 import 'package:provider/provider.dart';
 
@@ -99,7 +100,17 @@ class _LoginScreenState extends State<LoginScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             LinkInvoiceUp(S.of(context).forgotPassword),
-                            LinkInvoiceUp(S.of(context).register),
+                            LinkInvoiceUp(
+                              S.of(context).register,
+                              onTap: (_) {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const RegisterScreen()),
+                                );
+                              },
+                            ),
                           ],
                         ),
                         ButtonInvoiceUp(
