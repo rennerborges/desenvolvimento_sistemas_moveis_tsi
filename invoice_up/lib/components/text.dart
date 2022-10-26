@@ -13,6 +13,7 @@ class TextInvoiceUp extends StatefulWidget {
   MainAxisAlignment? mainAxisAlignment;
   double? fontSize;
   bool onlyFontBold = false;
+  TextAlign? textAlign;
 
   TextInvoiceUp(
     this.text, {
@@ -20,6 +21,7 @@ class TextInvoiceUp extends StatefulWidget {
     this.textBold = '',
     this.mainAxisAlignment,
     this.fontSize,
+    this.textAlign,
     this.onlyFontBold = false,
   });
 
@@ -45,7 +47,7 @@ class _TextInvoiceUpState extends State<TextInvoiceUp> {
             fontWeight:
                 widget.onlyFontBold ? FontWeight.bold : FontWeight.normal,
           ),
-          textAlign: TextAlign.center,
+          textAlign: widget.textAlign ?? TextAlign.center,
         ),
         Text(
           widget.textBold!,
@@ -54,7 +56,7 @@ class _TextInvoiceUpState extends State<TextInvoiceUp> {
             fontSize: widget.fontSize ?? 20,
             fontWeight: FontWeight.bold,
           ),
-          textAlign: TextAlign.center,
+          textAlign: widget.textAlign ?? TextAlign.center,
         ),
       ],
     );

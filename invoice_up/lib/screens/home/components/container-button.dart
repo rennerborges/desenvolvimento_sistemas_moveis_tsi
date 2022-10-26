@@ -1,0 +1,103 @@
+import 'package:flutter/material.dart';
+import 'package:invoice_up/providers/app-settings.providers.dart';
+import 'package:invoice_up/utils/colors.dart';
+import 'package:provider/provider.dart';
+
+class ContainerButton extends StatefulWidget {
+  const ContainerButton({super.key});
+
+  @override
+  State<ContainerButton> createState() => _ContainerButtonState();
+}
+
+class _ContainerButtonState extends State<ContainerButton> {
+  @override
+  Widget build(BuildContext context) {
+    ColorsInvoiceUp colors = ColorsInvoiceUp(
+      context.watch<AppSettings>().darkTheme,
+    );
+
+    return Container(
+      margin: const EdgeInsets.only(top: 20),
+      child: Row(
+        children: [
+          Expanded(
+            child: Container(
+              height: 150,
+              margin: const EdgeInsets.only(right: 5),
+              decoration: BoxDecoration(
+                color: colors.blueMain,
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(20),
+                ),
+              ),
+              child: Container(
+                padding: const EdgeInsets.all(20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: const [
+                    SizedBox(
+                      width: 40,
+                      height: 40,
+                      child: CircleAvatar(
+                        backgroundColor: Colors.white,
+                        child: Icon(Icons.shield, size: 20),
+                      ),
+                    ),
+                    Text(
+                      'Produtos na garantia',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Expanded(
+            child: Container(
+              height: 150,
+              margin: const EdgeInsets.only(left: 5),
+              decoration: BoxDecoration(
+                color: colors.blue300,
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(20),
+                ),
+              ),
+              child: Container(
+                padding: const EdgeInsets.all(20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SizedBox(
+                      width: 40,
+                      height: 40,
+                      child: CircleAvatar(
+                        backgroundColor: colors.blueMain,
+                        child: Icon(Icons.playlist_add,
+                            size: 25, color: Colors.white),
+                      ),
+                    ),
+                    Text(
+                      'Criar nova nota',
+                      style: TextStyle(
+                        color: colors.blueMain,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
