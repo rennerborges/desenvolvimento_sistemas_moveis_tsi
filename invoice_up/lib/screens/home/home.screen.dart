@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:invoice_up/components/appBar.dart';
 import 'package:invoice_up/components/text.dart';
 import 'package:invoice_up/generated/l10n.dart';
+import 'package:invoice_up/interfaces/auth.dart';
 import 'package:invoice_up/screens/home/components/container-button.dart';
 import 'package:invoice_up/screens/home/components/list-container.dart';
 import 'package:invoice_up/utils/colors.dart';
@@ -23,6 +24,8 @@ class _HomeScreenState extends State<HomeScreen> {
       context.watch<AppSettings>().darkTheme,
     );
 
+    Auth auth = Provider.of<AppSettings>(context, listen: false).getAuth()!;
+
     return Scaffold(
       appBar: AppBarInvoiceUp(),
       backgroundColor: colors.white,
@@ -34,10 +37,10 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               TextInvoiceUp(
                 S.of(context).titleLogin,
-                textBold: "Renner Borges!",
+                textBold: "${auth.name}!",
               ),
-              ContainerButton(),
-              ListContainerInvoiceUp(),
+              const ContainerButton(),
+              const ListContainerInvoiceUp(),
             ],
           ),
         ),

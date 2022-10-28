@@ -9,6 +9,7 @@ import 'package:invoice_up/api/invoice-up-api.dart';
 import 'package:invoice_up/interfaces/auth.dart';
 import 'package:invoice_up/providers/app-settings.providers.dart';
 import 'package:invoice_up/screens/home/home.screen.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:provider/provider.dart';
 
 class Login {
@@ -33,9 +34,11 @@ class Login {
       throw data['message'];
     }
 
-    token = data['token'];
+    String token = data['token'];
+    Map<String, dynamic> decodedToken = JwtDecoder.decode(token);
 
-    Auth auth = Auth(user: user, token: token!);
+    Auth auth = Auth(
+        user: decodedToken['email'], token: token, name: decodedToken['name']);
 
     context.read<AppSettings>().setAuth(auth);
 

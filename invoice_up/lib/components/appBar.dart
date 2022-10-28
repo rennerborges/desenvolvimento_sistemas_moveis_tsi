@@ -45,7 +45,8 @@ class _AppBarInvoiceUpState extends State<AppBarInvoiceUp> {
       actions: [
         IconButton(
           onPressed: () {
-            context.read<AppSettings>().handleChangeDarkTheme();
+            Provider.of<AppSettings>(context, listen: false)
+                .handleChangeDarkTheme();
           },
           icon: Icon(
             darkTheme ? Icons.light_mode : Icons.dark_mode,
