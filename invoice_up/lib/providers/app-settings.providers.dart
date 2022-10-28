@@ -1,10 +1,13 @@
 import 'package:flutter/widgets.dart';
+import 'package:invoice_up/interfaces/login.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AppSettings extends ChangeNotifier {
   late SharedPreferences _prefs;
   bool darkTheme = false;
   Locale locale = const Locale('pt');
+  String? token;
+  String? lastUser;
 
   AppSettings() {
     _startSessings();
@@ -44,5 +47,21 @@ class AppSettings extends ChangeNotifier {
       return const Locale('en');
     }
     return Locale(localeString);
+  }
+
+  String? getToken() {
+    String? token = _prefs.getString('token');
+    if (token == null) {
+      return null;
+    }
+    return token;
+  }
+
+  void setToken(String token, String lastUser) async {
+    await _prefs.setString('token', token);
+    await _prefs.setString('lastUser', lastUser);
+    token = token;
+    lastUser = lastUser;
+    notifyListeners();
   }
 }

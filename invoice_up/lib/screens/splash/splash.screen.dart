@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:invoice_up/components/text.dart';
 import 'package:invoice_up/providers/app-settings.providers.dart';
+import 'package:invoice_up/screens/home/home.screen.dart';
 import 'package:invoice_up/screens/login/login.screen.dart';
 import 'package:invoice_up/utils/colors.dart';
 import 'package:provider/provider.dart';
@@ -13,16 +14,28 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  redirect() {
+    String? token = Provider.of<AppSettings>(context, listen: false).getToken();
+
+    if (token != null) {
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (BuildContext context) => HomeScreen()),
+          (Route<dynamic> route) => route is HomeScreen);
+    } else {
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (BuildContext context) => LoginScreen()),
+          (Route<dynamic> route) => route is LoginScreen);
+    }
+  }
+
   @override
   void initState() {
     super.initState();
 
     Future.delayed(const Duration(seconds: 2), () {
-      Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(
-              builder: (BuildContext context) => const LoginScreen()),
-          (Route<dynamic> route) => route is LoginScreen);
+      redirect();
     });
   }
 

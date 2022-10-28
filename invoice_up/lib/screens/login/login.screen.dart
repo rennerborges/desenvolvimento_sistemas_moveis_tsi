@@ -5,6 +5,7 @@ import 'package:invoice_up/components/input.dart';
 import 'package:invoice_up/components/link.dart';
 import 'package:invoice_up/components/text.dart';
 import 'package:invoice_up/generated/l10n.dart';
+import 'package:invoice_up/interfaces/login.dart';
 import 'package:invoice_up/screens/register/register.screen.dart';
 import 'package:invoice_up/utils/colors.dart';
 import 'package:provider/provider.dart';
@@ -23,6 +24,23 @@ class _LoginScreenState extends State<LoginScreen> {
 
   final TextEditingController _userController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
+  login() async {
+    try {
+      await Login(
+        _userController.text.toString(),
+        _passwordController.text.toString(),
+      ).execute(context);
+    } catch (e) {
+      SnackBar snackBar =
+          SnackBar(content: Text(e.toString()), backgroundColor: Colors.red);
+
+      // Find the ScaffoldMessenger in the widget tree
+      // and use it to show a SnackBar.
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      return S.of(context).passwordInvalid;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -124,6 +142,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             FocusScope.of(context).unfocus();
                             if (_formKey.currentState!.validate()) {
                               print('Logar');
+                              login();
                             }
                           },
                         ),
