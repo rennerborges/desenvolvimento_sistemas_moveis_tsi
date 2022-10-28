@@ -22,6 +22,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "createInvoice": MessageLookupByLibrary.simpleMessage("Create invoice"),
+        "date": MessageLookupByLibrary.simpleMessage("Date"),
         "enter": MessageLookupByLibrary.simpleMessage("Login"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot password"),
@@ -31,6 +33,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "passwordInvalid":
             MessageLookupByLibrary.simpleMessage("Invalid password format"),
+        "productsUnderWarranty":
+            MessageLookupByLibrary.simpleMessage("Products under warranty"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "requiredField":
             MessageLookupByLibrary.simpleMessage("Required fields"),
@@ -41,6 +45,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "titleBoldLogin":
             MessageLookupByLibrary.simpleMessage("you are welcome!"),
         "titleLogin": MessageLookupByLibrary.simpleMessage("Hello,  "),
-        "user": MessageLookupByLibrary.simpleMessage("User")
+        "user": MessageLookupByLibrary.simpleMessage("User"),
+        "warranty": MessageLookupByLibrary.simpleMessage("Warranty"),
+        "yourInvoices": MessageLookupByLibrary.simpleMessage("Your invoices")
       };
 }

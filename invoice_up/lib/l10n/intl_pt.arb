@@ -11,5 +11,10 @@
   "requiredField": "Preenchimento obrigatório",
   "passwordInvalid": "Formato de senha inválido",
   "passowordInvalidDescription": "A senha precisa ter no mínimo oito caracteres, pelo menos, uma letra maiúscula, uma letra minúscula, um número e um caractere especial",
-  "subtitleRegister": "Informe os dados para realizar seu cadastro"
+  "subtitleRegister": "Informe os dados para realizar seu cadastro",
+  "productsUnderWarranty": "Produtos na garantia",
+  "createInvoice": "Criar nova nota",
+  "yourInvoices": "Suas notas fiscais",
+  "date": "Data",
+  "warranty": "Garantia"
 }

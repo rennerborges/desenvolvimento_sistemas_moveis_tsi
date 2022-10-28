@@ -22,6 +22,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "createInvoice":
+            MessageLookupByLibrary.simpleMessage("Crear nueva factura"),
+        "date": MessageLookupByLibrary.simpleMessage("Fecha"),
         "enter": MessageLookupByLibrary.simpleMessage("Login"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Olvidé mi contraseña"),
@@ -31,6 +34,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "password": MessageLookupByLibrary.simpleMessage("Contraseña"),
         "passwordInvalid": MessageLookupByLibrary.simpleMessage(
             "Formato de contraseña inválido"),
+        "productsUnderWarranty":
+            MessageLookupByLibrary.simpleMessage("Productos en garantía"),
         "register": MessageLookupByLibrary.simpleMessage("Registro"),
         "requiredField": MessageLookupByLibrary.simpleMessage("Obligatorio"),
         "subtitleLogin": MessageLookupByLibrary.simpleMessage(
@@ -39,6 +44,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Introduzca los datos para completar su registro"),
         "titleBoldLogin": MessageLookupByLibrary.simpleMessage("¡bienvenido!"),
         "titleLogin": MessageLookupByLibrary.simpleMessage("Hola, "),
-        "user": MessageLookupByLibrary.simpleMessage("Usuario")
+        "user": MessageLookupByLibrary.simpleMessage("Usuario"),
+        "warranty": MessageLookupByLibrary.simpleMessage("Garantía"),
+        "yourInvoices": MessageLookupByLibrary.simpleMessage("Sus facturas")
       };
 }

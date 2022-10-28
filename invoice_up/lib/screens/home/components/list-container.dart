@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:invoice_up/components/text.dart';
+import 'package:invoice_up/generated/l10n.dart';
 import 'package:invoice_up/providers/app-settings.providers.dart';
 import 'package:invoice_up/utils/colors.dart';
 import 'package:provider/provider.dart';
@@ -23,7 +24,7 @@ class _ListContainerInvoiceUpState extends State<ListContainerInvoiceUp> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          TextInvoiceUp('', textBold: 'Suas notas fiscais'),
+          TextInvoiceUp('', textBold: S.of(context).yourInvoices),
           SizedBox(
             height: MediaQuery.of(context).size.height - 340,
             child: Container(
@@ -58,13 +59,13 @@ class _ListContainerInvoiceUpState extends State<ListContainerInvoiceUp> {
                                 ),
                               ),
                               Text(
-                                'Data: 23/11/2022',
+                                '${S.of(context).date}: 23/11/2022',
                                 style: TextStyle(
                                   color: colors.grayText,
                                 ),
                               ),
                               Text(
-                                'Garantia: 23/11/2022',
+                                '${S.of(context).warranty}: 23/11/2022',
                                 style: TextStyle(
                                   color: colors.grayText,
                                 ),

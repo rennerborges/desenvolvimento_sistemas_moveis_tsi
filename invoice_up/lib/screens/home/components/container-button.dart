@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:invoice_up/generated/l10n.dart';
 import 'package:invoice_up/providers/app-settings.providers.dart';
 import 'package:invoice_up/utils/colors.dart';
 import 'package:provider/provider.dart';
@@ -23,7 +24,7 @@ class _ContainerButtonState extends State<ContainerButton> {
         children: [
           Expanded(
             child: Container(
-              height: 150,
+              height: 160,
               margin: const EdgeInsets.only(right: 5),
               decoration: BoxDecoration(
                 color: colors.blueMain,
@@ -36,8 +37,8 @@ class _ContainerButtonState extends State<ContainerButton> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    SizedBox(
+                  children: [
+                    const SizedBox(
                       width: 40,
                       height: 40,
                       child: CircleAvatar(
@@ -46,8 +47,8 @@ class _ContainerButtonState extends State<ContainerButton> {
                       ),
                     ),
                     Text(
-                      'Produtos na garantia',
-                      style: TextStyle(
+                      S.of(context).productsUnderWarranty,
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -60,7 +61,7 @@ class _ContainerButtonState extends State<ContainerButton> {
           ),
           Expanded(
             child: Container(
-              height: 150,
+              height: 160,
               margin: const EdgeInsets.only(left: 5),
               decoration: BoxDecoration(
                 color: colors.blue300,
@@ -79,12 +80,12 @@ class _ContainerButtonState extends State<ContainerButton> {
                       height: 40,
                       child: CircleAvatar(
                         backgroundColor: colors.blueMain,
-                        child: Icon(Icons.playlist_add,
+                        child: const Icon(Icons.playlist_add,
                             size: 25, color: Colors.white),
                       ),
                     ),
                     Text(
-                      'Criar nova nota',
+                      S.of(context).createInvoice,
                       style: TextStyle(
                         color: colors.blueMain,
                         fontSize: 20,

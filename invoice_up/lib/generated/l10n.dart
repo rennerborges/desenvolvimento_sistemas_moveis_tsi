@@ -179,6 +179,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Products under warranty`
+  String get productsUnderWarranty {
+    return Intl.message(
+      'Products under warranty',
+      name: 'productsUnderWarranty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create invoice`
+  String get createInvoice {
+    return Intl.message(
+      'Create invoice',
+      name: 'createInvoice',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your invoices`
+  String get yourInvoices {
+    return Intl.message(
+      'Your invoices',
+      name: 'yourInvoices',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Date`
+  String get date {
+    return Intl.message(
+      'Date',
+      name: 'date',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Warranty`
+  String get warranty {
+    return Intl.message(
+      'Warranty',
+      name: 'warranty',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

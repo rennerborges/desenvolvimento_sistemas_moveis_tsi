@@ -24,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
       context.watch<AppSettings>().darkTheme,
     );
 
-    Auth auth = Provider.of<AppSettings>(context, listen: false).getAuth()!;
+    Auth? auth = Provider.of<AppSettings>(context, listen: false).getAuth();
 
     return Scaffold(
       appBar: AppBarInvoiceUp(),
@@ -37,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               TextInvoiceUp(
                 S.of(context).titleLogin,
-                textBold: "${auth.name}!",
+                textBold: auth != null ? "${auth.name}!" : '',
               ),
               const ContainerButton(),
               const ListContainerInvoiceUp(),

@@ -11,5 +11,10 @@
   "requiredField": "Obligatorio",
   "passwordInvalid": "Formato de contraseña inválido",
   "passowordInvalidDescription": "La contraseña debe tener como mínimo ocho caracteres, al menos una letra mayúscula, una letra minúscula, un número y un carácter especial",
-  "subtitleRegister": "Introduzca los datos para completar su registro"
+  "subtitleRegister": "Introduzca los datos para completar su registro",
+  "productsUnderWarranty": "Productos en garantía",
+  "createInvoice": "Crear nueva factura",
+  "yourInvoices": "Sus facturas",
+  "date": "Fecha",
+  "warranty": "Garantía"
 }
