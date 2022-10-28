@@ -16,6 +16,7 @@ class InputInvoiceUp extends StatefulWidget {
   IconData? prefixIcon;
   IconData? suffixIcon;
   String? hintText;
+  bool readOnly = false;
 
   InputInvoiceUp({
     required this.controller,
@@ -29,6 +30,7 @@ class InputInvoiceUp extends StatefulWidget {
     this.hintText,
     this.prefixIcon,
     this.suffixIcon,
+    this.readOnly = false,
     super.key,
   });
 
@@ -70,6 +72,7 @@ class _InputInvoiceUpState extends State<InputInvoiceUp> {
     return Container(
       margin: widget.margin ?? const EdgeInsets.all(0),
       child: TextFormField(
+        readOnly: widget.readOnly,
         style: TextStyle(color: colors.grayTextBold),
         textCapitalization: widget.isPassword
             ? TextCapitalization.none

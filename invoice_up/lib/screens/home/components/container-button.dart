@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:invoice_up/generated/l10n.dart';
 import 'package:invoice_up/providers/app-settings.providers.dart';
+import 'package:invoice_up/screens/invoice/invoice-screen.dart';
 import 'package:invoice_up/utils/colors.dart';
 import 'package:provider/provider.dart';
 
@@ -60,39 +61,48 @@ class _ContainerButtonState extends State<ContainerButton> {
             ),
           ),
           Expanded(
-            child: Container(
-              height: 160,
-              margin: const EdgeInsets.only(left: 5),
-              decoration: BoxDecoration(
-                color: colors.blue300,
-                borderRadius: const BorderRadius.all(
-                  Radius.circular(20),
-                ),
-              ),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const InvoiceScreen()),
+                );
+              },
               child: Container(
-                padding: const EdgeInsets.all(20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SizedBox(
-                      width: 40,
-                      height: 40,
-                      child: CircleAvatar(
-                        backgroundColor: colors.blueMain,
-                        child: const Icon(Icons.playlist_add,
-                            size: 25, color: Colors.white),
+                height: 160,
+                margin: const EdgeInsets.only(left: 5),
+                decoration: BoxDecoration(
+                  color: colors.blue300,
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(20),
+                  ),
+                ),
+                child: Container(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(
+                        width: 40,
+                        height: 40,
+                        child: CircleAvatar(
+                          backgroundColor: colors.blueMain,
+                          child: const Icon(Icons.playlist_add,
+                              size: 25, color: Colors.white),
+                        ),
                       ),
-                    ),
-                    Text(
-                      S.of(context).createInvoice,
-                      style: TextStyle(
-                        color: colors.blueMain,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    )
-                  ],
+                      Text(
+                        S.of(context).createInvoice,
+                        style: TextStyle(
+                          color: colors.blueMain,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),

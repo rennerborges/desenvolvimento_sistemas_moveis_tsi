@@ -7,6 +7,7 @@ import '../utils/colors.dart';
 class ButtonInvoiceUp extends StatefulWidget {
   late Widget child;
   Color? backgroundColor;
+  Color? color;
   EdgeInsets? margin;
 
   void Function(BuildContext context)? onPressed;
@@ -15,6 +16,7 @@ class ButtonInvoiceUp extends StatefulWidget {
     required this.child,
     required this.onPressed,
     this.backgroundColor,
+    this.color,
     this.margin,
     super.key,
   });
