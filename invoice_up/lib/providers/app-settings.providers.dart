@@ -1,12 +1,15 @@
+import 'dart:convert';
+
 import 'package:flutter/widgets.dart';
-import 'package:invoice_up/interfaces/login.dart';
+import 'package:invoice_up/api/login.dart';
+import 'package:invoice_up/interfaces/auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AppSettings extends ChangeNotifier {
   late SharedPreferences _prefs;
   bool darkTheme = false;
   Locale locale = const Locale('pt');
-  String? token;
+  Auth? auth;
   String? lastUser;
 
   AppSettings() {
@@ -17,6 +20,7 @@ class AppSettings extends ChangeNotifier {
     _prefs = await SharedPreferences.getInstance();
     darkTheme = getDarkTheme();
     locale = getLocale();
+    lastUser = getLastUser();
     notifyListeners();
   }
 
@@ -49,19 +53,32 @@ class AppSettings extends ChangeNotifier {
     return Locale(localeString);
   }
 
-  String? getToken() {
-    String? token = _prefs.getString('token');
-    if (token == null) {
-      return null;
-    }
-    return token;
+  String? getLastUser() {
+    String? lastUser = _prefs.getString('lastUser');
+    return lastUser;
   }
 
-  void setToken(String token, String lastUser) async {
-    await _prefs.setString('token', token);
-    await _prefs.setString('lastUser', lastUser);
-    token = token;
-    lastUser = lastUser;
+  Auth? getAuth() {
+    String? authString = _prefs.getString('auth');
+
+    if (authString == null) {
+      return null;
+    }
+    Map<String, dynamic> authMap = jsonDecode(authString);
+
+    return Auth.fromJson(authMap);
+  }
+
+  void setAuth(Auth auth) async {
+    await _prefs.setString('auth', jsonEncode(auth.toJson()));
+    await _prefs.setString('lastUser', auth.user);
+    this.auth = auth;
+    lastUser = auth.user;
+    notifyListeners();
+  }
+
+  void logout() {
+    _prefs.remove('auth');
     notifyListeners();
   }
 }

@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
 import 'package:invoice_up/api/invoice-up-api.dart';
+import 'package:invoice_up/interfaces/auth.dart';
 import 'package:invoice_up/providers/app-settings.providers.dart';
 import 'package:invoice_up/screens/home/home.screen.dart';
 import 'package:provider/provider.dart';
@@ -34,7 +35,9 @@ class Login {
 
     token = data['token'];
 
-    context.read<AppSettings>().setToken(token!, user);
+    Auth auth = Auth(user: user, token: token!);
+
+    context.read<AppSettings>().setAuth(auth);
 
     Navigator.pushAndRemoveUntil(
         context,

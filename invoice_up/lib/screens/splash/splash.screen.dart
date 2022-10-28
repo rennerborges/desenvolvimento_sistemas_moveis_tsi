@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:invoice_up/components/text.dart';
+import 'package:invoice_up/interfaces/auth.dart';
 import 'package:invoice_up/providers/app-settings.providers.dart';
 import 'package:invoice_up/screens/home/home.screen.dart';
 import 'package:invoice_up/screens/login/login.screen.dart';
@@ -15,9 +16,9 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   redirect() {
-    String? token = Provider.of<AppSettings>(context, listen: false).getToken();
+    Auth? auth = Provider.of<AppSettings>(context, listen: false).getAuth();
 
-    if (token != null) {
+    if (auth != null) {
       Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(builder: (BuildContext context) => HomeScreen()),

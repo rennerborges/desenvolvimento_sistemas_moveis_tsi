@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:invoice_up/interfaces/auth.dart';
+import 'package:invoice_up/screens/login/login.screen.dart';
 import 'package:invoice_up/utils/colors.dart';
 import 'package:provider/provider.dart';
 
@@ -17,6 +19,7 @@ class AppBarInvoiceUp extends StatefulWidget implements PreferredSizeWidget {
 class _AppBarInvoiceUpState extends State<AppBarInvoiceUp> {
   @override
   Widget build(BuildContext context) {
+    Auth? auth = Provider.of<AppSettings>(context).getAuth();
     bool darkTheme = context.watch<AppSettings>().darkTheme;
 
     ColorsInvoiceUp colors = ColorsInvoiceUp(
@@ -96,6 +99,23 @@ class _AppBarInvoiceUpState extends State<AppBarInvoiceUp> {
                 ),
               ];
             }),
+        auth != null
+            ? IconButton(
+                onPressed: () {
+                  Provider.of<AppSettings>(context, listen: false).logout();
+
+                  Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                          builder: (BuildContext context) =>
+                              const LoginScreen()),
+                      (Route<dynamic> route) => route is LoginScreen);
+                },
+                icon: Icon(
+                  Icons.logout,
+                  color: colors.grayText,
+                ))
+            : const SizedBox(),
       ],
     );
   }

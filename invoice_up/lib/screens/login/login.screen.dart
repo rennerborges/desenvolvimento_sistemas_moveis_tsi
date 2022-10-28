@@ -5,7 +5,7 @@ import 'package:invoice_up/components/input.dart';
 import 'package:invoice_up/components/link.dart';
 import 'package:invoice_up/components/text.dart';
 import 'package:invoice_up/generated/l10n.dart';
-import 'package:invoice_up/interfaces/login.dart';
+import 'package:invoice_up/api/login.dart';
 import 'package:invoice_up/screens/register/register.screen.dart';
 import 'package:invoice_up/utils/colors.dart';
 import 'package:provider/provider.dart';
@@ -24,6 +24,21 @@ class _LoginScreenState extends State<LoginScreen> {
 
   final TextEditingController _userController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    String? lastUser =
+        Provider.of<AppSettings>(context, listen: false).lastUser;
+
+    print('Last user $lastUser');
+
+    if (lastUser != null) {
+      _userController.value = TextEditingValue(text: lastUser);
+    }
+  }
 
   login() async {
     try {
