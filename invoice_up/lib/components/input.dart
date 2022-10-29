@@ -17,6 +17,7 @@ class InputInvoiceUp extends StatefulWidget {
   IconData? suffixIcon;
   String? hintText;
   bool readOnly = false;
+  TextCapitalization? textCapitalization;
 
   InputInvoiceUp({
     required this.controller,
@@ -31,6 +32,7 @@ class InputInvoiceUp extends StatefulWidget {
     this.prefixIcon,
     this.suffixIcon,
     this.readOnly = false,
+    this.textCapitalization,
     super.key,
   });
 
@@ -63,6 +65,14 @@ class _InputInvoiceUpState extends State<InputInvoiceUp> {
     return false;
   }
 
+  TextCapitalization getTextCapitalization() {
+    if (widget.isPassword) {
+      return TextCapitalization.none;
+    }
+
+    return widget.textCapitalization ?? TextCapitalization.sentences;
+  }
+
   @override
   Widget build(BuildContext context) {
     ColorsInvoiceUp colors = ColorsInvoiceUp(
@@ -74,9 +84,7 @@ class _InputInvoiceUpState extends State<InputInvoiceUp> {
       child: TextFormField(
         readOnly: widget.readOnly,
         style: TextStyle(color: colors.grayTextBold),
-        textCapitalization: widget.isPassword
-            ? TextCapitalization.none
-            : TextCapitalization.sentences,
+        textCapitalization: getTextCapitalization(),
         controller: widget.controller,
         keyboardType: widget.type ?? TextInputType.text,
         obscureText: setObscureText(),

@@ -94,6 +94,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         },
                       ),
                       InputInvoiceUp(
+                        textCapitalization: TextCapitalization.none,
                         controller: _emailController,
                         labelText: 'E-mail',
                         margin: const EdgeInsets.only(top: 20),

@@ -100,6 +100,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Column(
                     children: [
                       InputInvoiceUp(
+                        textCapitalization: TextCapitalization.none,
                         controller: _userController,
                         labelText: 'E-mail',
                         margin: const EdgeInsets.only(top: 20),
