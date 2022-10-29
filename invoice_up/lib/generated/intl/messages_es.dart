@@ -28,6 +28,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "enter": MessageLookupByLibrary.simpleMessage("Login"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Olvidé mi contraseña"),
+        "invalidEmail": MessageLookupByLibrary.simpleMessage(
+            "Dirección de e-mail inválida"),
         "name": MessageLookupByLibrary.simpleMessage("Nombre"),
         "passowordInvalidDescription": MessageLookupByLibrary.simpleMessage(
             "La contraseña debe tener como mínimo ocho caracteres, al menos una letra mayúscula, una letra minúscula, un número y un carácter especial"),
@@ -45,6 +47,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "titleBoldLogin": MessageLookupByLibrary.simpleMessage("¡bienvenido!"),
         "titleLogin": MessageLookupByLibrary.simpleMessage("Hola, "),
         "user": MessageLookupByLibrary.simpleMessage("Usuario"),
+        "userCreated":
+            MessageLookupByLibrary.simpleMessage("¡Usuario creado con éxito!"),
         "warranty": MessageLookupByLibrary.simpleMessage("Garantía"),
         "yourInvoices": MessageLookupByLibrary.simpleMessage("Sus facturas")
       };

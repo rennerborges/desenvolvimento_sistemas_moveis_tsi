@@ -229,6 +229,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Invalid e-mail`
+  String get invalidEmail {
+    return Intl.message(
+      'Invalid e-mail',
+      name: 'invalidEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User created successfully!`
+  String get userCreated {
+    return Intl.message(
+      'User created successfully!',
+      name: 'userCreated',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

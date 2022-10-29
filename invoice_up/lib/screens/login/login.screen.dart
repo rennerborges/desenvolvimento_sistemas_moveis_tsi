@@ -25,6 +25,8 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _userController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
+  bool _preloader = false;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -42,6 +44,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
   login() async {
     try {
+      setState(() {
+        _preloader = true;
+      });
+
       await Login(
         _userController.text.toString(),
         _passwordController.text.toString(),
@@ -54,6 +60,10 @@ class _LoginScreenState extends State<LoginScreen> {
       // and use it to show a SnackBar.
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
       return S.of(context).passwordInvalid;
+    } finally {
+      setState(() {
+        _preloader = false;
+      });
     }
   }
 
@@ -91,12 +101,19 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       InputInvoiceUp(
                         controller: _userController,
-                        labelText: S.of(context).user,
+                        labelText: 'E-mail',
                         margin: const EdgeInsets.only(top: 20),
                         hintText: 'user@mail.com',
                         validator: (value) {
                           if (value!.isEmpty) {
                             return S.of(context).requiredField;
+                          }
+
+                          final emailRule = RegExp(
+                              r'^([0-9a-zA-Z]+([_.-]?[0-9a-zA-Z]+)*@[0-9a-zA-Z]+[0-9,a-z,A-Z,.,-]*(.){1}[a-zA-Z]{2,4})+$');
+
+                          if (!emailRule.hasMatch(value)) {
+                            return S.of(context).invalidEmail;
                           }
                         },
                       ),
@@ -147,6 +164,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ],
                       ),
                       ButtonInvoiceUp(
+                        loading: _preloader,
                         child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -156,7 +174,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         onPressed: (context) {
                           FocusScope.of(context).unfocus();
                           if (_formKey.currentState!.validate()) {
-                            print('Logar');
                             login();
                           }
                         },

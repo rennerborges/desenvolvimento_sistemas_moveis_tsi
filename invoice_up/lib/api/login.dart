@@ -22,7 +22,7 @@ class Login {
     this.password,
   );
 
-  Future<void> execute(BuildContext context) async {
+  Future<bool?> execute(BuildContext context) async {
     Uri url = Uri.parse("${ApiInvoiceUp.baseUrl}/login");
 
     final response =
@@ -47,5 +47,7 @@ class Login {
         MaterialPageRoute(
             builder: (BuildContext context) => const HomeScreen()),
         (Route<dynamic> route) => route is HomeScreen);
+
+    return true;
   }
 }

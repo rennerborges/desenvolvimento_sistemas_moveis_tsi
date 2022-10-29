@@ -81,4 +81,10 @@ class AppSettings extends ChangeNotifier {
     _prefs.remove('auth');
     notifyListeners();
   }
+
+  void setLastUser(String lastUser) async {
+    await _prefs.setString('lastUser', lastUser);
+    this.lastUser = lastUser;
+    notifyListeners();
+  }
 }

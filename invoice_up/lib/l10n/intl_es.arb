@@ -16,5 +16,7 @@
   "createInvoice": "Crear nueva factura",
   "yourInvoices": "Sus facturas",
   "date": "Fecha",
-  "warranty": "Garantía"
+  "warranty": "Garantía",
+  "invalidEmail": "Dirección de e-mail inválida",
+  "userCreated": "¡Usuario creado con éxito!"
 }

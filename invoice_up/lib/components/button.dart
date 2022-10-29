@@ -9,6 +9,7 @@ class ButtonInvoiceUp extends StatefulWidget {
   Color? backgroundColor;
   Color? color;
   EdgeInsets? margin;
+  bool loading = false;
 
   void Function(BuildContext context)? onPressed;
 
@@ -18,6 +19,7 @@ class ButtonInvoiceUp extends StatefulWidget {
     this.backgroundColor,
     this.color,
     this.margin,
+    this.loading = false,
     super.key,
   });
 
@@ -26,6 +28,14 @@ class ButtonInvoiceUp extends StatefulWidget {
 }
 
 class _ButtonInvoiceUpState extends State<ButtonInvoiceUp> {
+  Color getBackgroundColor(ColorsInvoiceUp colors) {
+    if (widget.loading) {
+      return Colors.grey[400]!;
+    }
+
+    return widget.backgroundColor ?? colors.blueMain;
+  }
+
   @override
   Widget build(BuildContext context) {
     ColorsInvoiceUp colors = ColorsInvoiceUp(
@@ -38,15 +48,25 @@ class _ButtonInvoiceUpState extends State<ButtonInvoiceUp> {
       margin: widget.margin ?? const EdgeInsets.all(0),
       child: ElevatedButton(
         style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(
-            widget.backgroundColor ?? colors.blueMain,
-          ),
+          backgroundColor:
+              MaterialStateProperty.all(getBackgroundColor(colors)),
           elevation: MaterialStateProperty.all(0),
         ),
         onPressed: () {
-          widget.onPressed!(context);
+          if (!widget.loading) {
+            widget.onPressed!(context);
+          }
         },
-        child: widget.child,
+        child: widget.loading
+            ? SizedBox(
+                width: 20,
+                height: 20,
+                child: CircularProgressIndicator(
+                  backgroundColor: Colors.grey[400]!,
+                  color: Colors.grey[800]!,
+                ),
+              )
+            : widget.child,
       ),
     );
   }

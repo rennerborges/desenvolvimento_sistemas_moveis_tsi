@@ -16,5 +16,7 @@
   "createInvoice": "Create invoice",
   "yourInvoices": "Your invoices",
   "date": "Date",
-  "warranty": "Warranty"
+  "warranty": "Warranty",
+  "invalidEmail": "Invalid e-mail",
+  "userCreated": "User created successfully!"
 }

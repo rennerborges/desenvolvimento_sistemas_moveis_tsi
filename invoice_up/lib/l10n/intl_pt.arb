@@ -16,5 +16,7 @@
   "createInvoice": "Criar nova nota",
   "yourInvoices": "Suas notas fiscais",
   "date": "Data",
-  "warranty": "Garantia"
+  "warranty": "Garantia",
+  "invalidEmail": "E-mail inválido",
+  "userCreated": "Usuário criado com sucesso!"
 }

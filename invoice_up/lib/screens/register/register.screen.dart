@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:invoice_up/api/register-user.dart';
 import 'package:invoice_up/components/appBar.dart';
 import 'package:invoice_up/components/button.dart';
 import 'package:invoice_up/components/input.dart';
@@ -20,8 +21,34 @@ class RegisterScreen extends StatefulWidget {
 class _RegisterScreenState extends State<RegisterScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  final TextEditingController _userController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
+  bool _preloader = false;
+
+  register() async {
+    try {
+      setState(() {
+        _preloader = true;
+      });
+
+      await RegisterUser(
+        name: _nameController.text.toString(),
+        email: _emailController.text.toString(),
+        password: _passwordController.text.toString(),
+      ).execute(context);
+    } catch (e) {
+      SnackBar snackBar =
+          SnackBar(content: Text(e.toString()), backgroundColor: Colors.red);
+
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    } finally {
+      setState(() {
+        _preloader = false;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +83,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   child: Column(
                     children: [
                       InputInvoiceUp(
-                        controller: _userController,
+                        controller: _nameController,
                         labelText: S.of(context).name,
                         margin: const EdgeInsets.only(top: 20),
                         hintText: 'João Silva',
@@ -67,13 +94,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         },
                       ),
                       InputInvoiceUp(
-                        controller: _userController,
-                        labelText: S.of(context).user,
+                        controller: _emailController,
+                        labelText: 'E-mail',
                         margin: const EdgeInsets.only(top: 20),
                         hintText: 'user@mail.com',
                         validator: (value) {
                           if (value!.isEmpty) {
                             return S.of(context).requiredField;
+                          }
+
+                          final emailRule = RegExp(
+                              r'^([0-9a-zA-Z]+([_.-]?[0-9a-zA-Z]+)*@[0-9a-zA-Z]+[0-9,a-z,A-Z,.,-]*(.){1}[a-zA-Z]{2,4})+$');
+
+                          if (!emailRule.hasMatch(value)) {
+                            return S.of(context).invalidEmail;
                           }
                         },
                       ),
@@ -87,7 +121,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             return S.of(context).requiredField;
                           }
 
-                          // ignore: unnecessary_string_escapes
                           final passwordRule = RegExp(
                               r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$\!%*?&])[A-Za-z\d@$\!%*?&]{8,}$');
 
@@ -107,6 +140,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         },
                       ),
                       ButtonInvoiceUp(
+                        loading: _preloader,
                         margin: const EdgeInsets.only(top: 20),
                         child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -117,7 +151,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         onPressed: (context) {
                           FocusScope.of(context).unfocus();
                           if (_formKey.currentState!.validate()) {
-                            print('Logar');
+                            register();
                           }
                         },
                       ),
