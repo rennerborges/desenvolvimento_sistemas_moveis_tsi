@@ -28,9 +28,9 @@ class ColorsInvoiceUp {
     gray100 = const Color(0xFFF9F9F9);
     grayHint = Color(darkTheme ? 0xFF424242 : 0xFFe0e0e0);
 
-    red100 = const Color(0xFFFFE3E3);
+    red100 = Color(darkTheme ? 0xFFFF1414 : 0xFFFFE3E3);
 
-    green100 = const Color(0xFFE3FFE4);
+    green100 = Color(darkTheme ? 0xFF00F00A : 0xFFE3FFE4);
 
     white = Color(darkTheme ? 0xFF212121 : 0xFFFFFFFF);
   }

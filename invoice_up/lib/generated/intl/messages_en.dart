@@ -22,8 +22,20 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "back": MessageLookupByLibrary.simpleMessage("Return"),
+        "create": MessageLookupByLibrary.simpleMessage("Create"),
         "createInvoice": MessageLookupByLibrary.simpleMessage("Create invoice"),
         "date": MessageLookupByLibrary.simpleMessage("Date"),
+        "dateOfPurchase":
+            MessageLookupByLibrary.simpleMessage("Date purchased"),
+        "dateOfWarranty": MessageLookupByLibrary.simpleMessage("Warranty Date"),
+        "descriptionCreateInvoice":
+            MessageLookupByLibrary.simpleMessage("Create your invoice"),
+        "descriptionEditInvoice":
+            MessageLookupByLibrary.simpleMessage("Edit your invoice"),
+        "descriptionRequiredFields":
+            MessageLookupByLibrary.simpleMessage("Fields with * are requireds"),
+        "edit": MessageLookupByLibrary.simpleMessage("Edit"),
         "enter": MessageLookupByLibrary.simpleMessage("Login"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot password"),
@@ -34,15 +46,22 @@ class MessageLookup extends MessageLookupByLibrary {
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "passwordInvalid":
             MessageLookupByLibrary.simpleMessage("Invalid password format"),
+        "placeOfPurchase":
+            MessageLookupByLibrary.simpleMessage("Place of purchase"),
+        "price": MessageLookupByLibrary.simpleMessage("Price"),
+        "product": MessageLookupByLibrary.simpleMessage("Product"),
         "productsUnderWarranty":
             MessageLookupByLibrary.simpleMessage("Products under warranty"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
+        "requiredDateOfPurchase": MessageLookupByLibrary.simpleMessage(
+            "Please enter the date of purchase first"),
         "requiredField":
             MessageLookupByLibrary.simpleMessage("Required fields"),
         "subtitleLogin":
             MessageLookupByLibrary.simpleMessage("Please login to continue"),
         "subtitleRegister": MessageLookupByLibrary.simpleMessage(
             "Enter the data to make your registration"),
+        "title": MessageLookupByLibrary.simpleMessage("Title"),
         "titleBoldLogin":
             MessageLookupByLibrary.simpleMessage("you are welcome!"),
         "titleLogin": MessageLookupByLibrary.simpleMessage("Hello,  "),

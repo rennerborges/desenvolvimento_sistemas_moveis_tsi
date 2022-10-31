@@ -240,11 +240,141 @@ class S {
     );
   }
 
+  /// `Fields with * are requireds`
+  String get descriptionRequiredFields {
+    return Intl.message(
+      'Fields with * are requireds',
+      name: 'descriptionRequiredFields',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `User created successfully!`
   String get userCreated {
     return Intl.message(
       'User created successfully!',
       name: 'userCreated',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter the date of purchase first`
+  String get requiredDateOfPurchase {
+    return Intl.message(
+      'Please enter the date of purchase first',
+      name: 'requiredDateOfPurchase',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Product`
+  String get product {
+    return Intl.message(
+      'Product',
+      name: 'product',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Place of purchase`
+  String get placeOfPurchase {
+    return Intl.message(
+      'Place of purchase',
+      name: 'placeOfPurchase',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Date purchased`
+  String get dateOfPurchase {
+    return Intl.message(
+      'Date purchased',
+      name: 'dateOfPurchase',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Warranty Date`
+  String get dateOfWarranty {
+    return Intl.message(
+      'Warranty Date',
+      name: 'dateOfWarranty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Price`
+  String get price {
+    return Intl.message(
+      'Price',
+      name: 'price',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create`
+  String get create {
+    return Intl.message(
+      'Create',
+      name: 'create',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit`
+  String get edit {
+    return Intl.message(
+      'Edit',
+      name: 'edit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Return`
+  String get back {
+    return Intl.message(
+      'Return',
+      name: 'back',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Title`
+  String get title {
+    return Intl.message(
+      'Title',
+      name: 'title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create your invoice`
+  String get descriptionCreateInvoice {
+    return Intl.message(
+      'Create your invoice',
+      name: 'descriptionCreateInvoice',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit your invoice`
+  String get descriptionEditInvoice {
+    return Intl.message(
+      'Edit your invoice',
+      name: 'descriptionEditInvoice',
       desc: '',
       args: [],
     );

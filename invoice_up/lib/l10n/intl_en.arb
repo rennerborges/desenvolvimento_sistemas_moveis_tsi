@@ -18,5 +18,18 @@
   "date": "Date",
   "warranty": "Warranty",
   "invalidEmail": "Invalid e-mail",
-  "userCreated": "User created successfully!"
+  "descriptionRequiredFields": "Fields with * are requireds",
+  "userCreated": "User created successfully!",
+  "requiredDateOfPurchase": "Please enter the date of purchase first",
+  "product": "Product",
+  "placeOfPurchase": "Place of purchase",
+  "dateOfPurchase": "Date purchased",
+  "dateOfWarranty": "Warranty Date",
+  "price": "Price",
+  "create": "Create",
+  "edit": "Edit",
+  "back": "Return",
+  "title": "Title",
+  "descriptionCreateInvoice": "Create your invoice",
+  "descriptionEditInvoice": "Edit your invoice"
 }

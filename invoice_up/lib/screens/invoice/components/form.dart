@@ -4,6 +4,7 @@ import 'package:invoice_up/components/button.dart';
 import 'package:invoice_up/components/input.dart';
 import 'package:invoice_up/generated/l10n.dart';
 import 'package:invoice_up/providers/app-settings.providers.dart';
+import 'package:invoice_up/screens/invoice/components/add-image.dart';
 import 'package:invoice_up/utils/colors.dart';
 import 'package:provider/provider.dart';
 
@@ -57,6 +58,11 @@ class _FormInvoiceScreenState extends State<FormInvoiceScreen> {
     }
   }
 
+  String toReal(String money) {
+    double preco = double.parse(money);
+    return NumberFormat("#,##0.00", "pt_BR").format(preco / 100);
+  }
+
   @override
   Widget build(BuildContext context) {
     ColorsInvoiceUp colors = ColorsInvoiceUp(
@@ -69,8 +75,9 @@ class _FormInvoiceScreenState extends State<FormInvoiceScreen> {
         child: Column(
           children: [
             InputInvoiceUp(
+              required: true,
               controller: _titleController,
-              labelText: 'Título',
+              labelText: S.of(context).title,
               margin: const EdgeInsets.only(top: 20),
               hintText: 'Xbox one',
               validator: (value) {
@@ -80,8 +87,9 @@ class _FormInvoiceScreenState extends State<FormInvoiceScreen> {
               },
             ),
             InputInvoiceUp(
+              required: true,
               controller: _localeController,
-              labelText: 'Local da compra',
+              labelText: S.of(context).placeOfPurchase,
               hintText: 'Americanas',
               margin: const EdgeInsets.only(top: 20),
               validator: (value) {
@@ -101,9 +109,10 @@ class _FormInvoiceScreenState extends State<FormInvoiceScreen> {
                       child: Container(
                         margin: const EdgeInsets.only(right: 5),
                         child: InputInvoiceUp(
+                          required: true,
                           readOnly: true,
                           controller: _dateController,
-                          labelText: 'Data compra',
+                          labelText: S.of(context).dateOfPurchase,
                           type: TextInputType.datetime,
                           margin: const EdgeInsets.only(top: 20),
                           validator: (value) {
@@ -118,7 +127,20 @@ class _FormInvoiceScreenState extends State<FormInvoiceScreen> {
                 ),
                 Expanded(
                   child: GestureDetector(
+                    onLongPress: () {
+                      setState(() {
+                        _warrancyController.clear();
+                      });
+                    },
                     onTap: () {
+                      if (_dateController.text.isEmpty) {
+                        SnackBar snackBar = SnackBar(
+                            content: Text(S.of(context).requiredDateOfPurchase),
+                            backgroundColor: Colors.orange);
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        return;
+                      }
+
                       _selectWarrancy(context);
                     },
                     child: AbsorbPointer(
@@ -126,7 +148,7 @@ class _FormInvoiceScreenState extends State<FormInvoiceScreen> {
                         margin: const EdgeInsets.only(left: 5),
                         child: InputInvoiceUp(
                           controller: _warrancyController,
-                          labelText: 'Data garantia',
+                          labelText: S.of(context).dateOfWarranty,
                           type: TextInputType.datetime,
                           margin: const EdgeInsets.only(top: 20),
                           validator: (value) {
@@ -142,15 +164,26 @@ class _FormInvoiceScreenState extends State<FormInvoiceScreen> {
               ],
             ),
             InputInvoiceUp(
+              required: true,
               controller: _priceController,
-              labelText: 'Valor',
+              labelText: S.of(context).price,
               margin: const EdgeInsets.only(top: 20),
+              type: TextInputType.number,
+              prefixText: "R\$: ",
+              onChanged: (string) {
+                string = toReal(string!.replaceAll(RegExp(r'[.,]'), ''));
+                _priceController.value = TextEditingValue(
+                  text: string,
+                  selection: TextSelection.collapsed(offset: string.length),
+                );
+              },
               validator: (value) {
                 if (value!.isEmpty) {
                   return S.of(context).requiredField;
                 }
               },
             ),
+            AddImage(),
             Container(
               margin: const EdgeInsets.only(top: 20),
               child: Row(
@@ -160,14 +193,11 @@ class _FormInvoiceScreenState extends State<FormInvoiceScreen> {
                       margin: const EdgeInsets.only(right: 5),
                       backgroundColor: colors.red100,
                       onPressed: (context) {
-                        FocusScope.of(context).unfocus();
-                        if (_formKey.currentState!.validate()) {
-                          print('Voltar');
-                        }
+                        Navigator.pop(context);
                       },
                       child: Text(
-                        'Voltar',
-                        style: TextStyle(color: colors.grayText),
+                        S.of(context).back,
+                        style: TextStyle(color: colors.grayTextBold),
                       ),
                     ),
                   ),
@@ -176,8 +206,8 @@ class _FormInvoiceScreenState extends State<FormInvoiceScreen> {
                       margin: const EdgeInsets.only(left: 5),
                       backgroundColor: colors.green100,
                       child: Text(
-                        'Criar',
-                        style: TextStyle(color: colors.grayText),
+                        S.of(context).create,
+                        style: TextStyle(color: colors.grayTextBold),
                       ),
                       onPressed: (context) {
                         FocusScope.of(context).unfocus();

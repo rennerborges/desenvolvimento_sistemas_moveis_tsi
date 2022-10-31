@@ -18,6 +18,7 @@ class InputInvoiceUp extends StatefulWidget {
   String? hintText;
   bool readOnly = false;
   TextCapitalization? textCapitalization;
+  bool required = false;
 
   InputInvoiceUp({
     required this.controller,
@@ -33,6 +34,7 @@ class InputInvoiceUp extends StatefulWidget {
     this.suffixIcon,
     this.readOnly = false,
     this.textCapitalization,
+    this.required = false,
     super.key,
   });
 
@@ -106,7 +108,8 @@ class _InputInvoiceUpState extends State<InputInvoiceUp> {
                   widget.suffixIcon,
                   color: colors.grayText,
                 ),
-          labelText: widget.labelText,
+          labelText:
+              widget.required ? "${widget.labelText}*" : widget.labelText,
           labelStyle: TextStyle(
             color: colors.grayText,
             fontSize: 18,

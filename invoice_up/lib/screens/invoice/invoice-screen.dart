@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:invoice_up/components/appBar.dart';
 import 'package:invoice_up/components/text.dart';
+import 'package:invoice_up/generated/l10n.dart';
 import 'package:invoice_up/providers/app-settings.providers.dart';
 import 'package:invoice_up/screens/invoice/components/form.dart';
 import 'package:invoice_up/utils/colors.dart';
@@ -29,8 +30,12 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              TextInvoiceUp('', textBold: 'Crie sua nota fiscal'),
-              TextInvoiceUp('Os campos com * são obrigatórios'),
+              TextInvoiceUp('',
+                  textBold: S.of(context).descriptionCreateInvoice),
+              TextInvoiceUp(
+                S.of(context).descriptionRequiredFields,
+                textAlign: TextAlign.start,
+              ),
               FormInvoiceScreen(),
             ],
           ),

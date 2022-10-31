@@ -18,5 +18,18 @@
   "date": "Fecha",
   "warranty": "Garantía",
   "invalidEmail": "Dirección de e-mail inválida",
-  "userCreated": "¡Usuario creado con éxito!"
+  "userCreated": "¡Usuario creado con éxito!",
+  "descriptionRequiredFields": "Los campos marcados con * son obligatorios",
+  "requiredDateOfPurchase": "Por favor, introduzca primero la fecha de compra",
+  "product": "Producto",
+  "placeOfPurchase": "Lugar de compra",
+  "dateOfPurchase": "Fecha compra",
+  "dateOfWarranty": "Fecha garantía",
+  "price": "Valor",
+  "create": "Crear",
+  "edit": "editar",
+  "back": "Volver",
+  "title": "Título",
+  "descriptionCreateInvoice": "Cree su factura",
+  "descriptionEditInvoice": "Editar la factura"
 }
