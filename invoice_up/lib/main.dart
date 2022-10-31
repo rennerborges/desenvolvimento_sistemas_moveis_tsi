@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:invoice_up/generated/l10n.dart';
+import 'package:invoice_up/screens/photo-view/photo-view.dart';
 import 'package:invoice_up/screens/splash/splash.screen.dart';
 import 'package:provider/provider.dart';
 

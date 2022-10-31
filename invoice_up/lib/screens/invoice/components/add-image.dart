@@ -6,7 +6,9 @@ import 'package:image_picker/image_picker.dart';
 import 'package:invoice_up/components/text.dart';
 import 'package:invoice_up/generated/l10n.dart';
 import 'package:invoice_up/providers/app-settings.providers.dart';
+import 'package:invoice_up/screens/photo-view/photo-view.dart';
 import 'package:invoice_up/utils/colors.dart';
+import 'package:photo_view/photo_view.dart';
 import 'package:provider/provider.dart';
 
 class AddImage extends StatefulWidget {
@@ -100,6 +102,16 @@ class _AddImageState extends State<AddImage> {
     );
 
     return GestureDetector(
+      onLongPress: () => {
+        if (_photo != null)
+          {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => PhotoViewInvoiceUp(_photo!)),
+            )
+          }
+      },
       onTap: () {
         openOptions(context);
       },
