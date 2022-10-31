@@ -30,7 +30,6 @@ class _PhotoViewInvoiceUpState extends State<PhotoViewInvoiceUp> {
       appBar: AppBarInvoiceUp(),
       body: Container(
         child: PhotoView(
-          backgroundDecoration: BoxDecoration(color: colors.grayText),
           imageProvider: MemoryImage(base64Decode(widget.image)),
           enableRotation: true,
         ),
