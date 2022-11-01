@@ -31,5 +31,15 @@
   "back": "Voltar",
   "title": "Título",
   "descriptionCreateInvoice": "Crie sua nota fiscal",
-  "descriptionEditInvoice": "Edite sua nota fiscal"
+  "descriptionEditInvoice": "Edite sua nota fiscal",
+  "chooseAnOption": "Escolha uma opção:",
+  "camera": "Câmera",
+  "gallery": "Galeria",
+  "imagePreview": "Prévia da imagem",
+  "attachment": "Anexo",
+  "attachImage": "Anexar imagem*",
+  "attachedImage": "Imagem anexada*",
+  "portuguese": "Português",
+  "english": "Inglês",
+  "spanish": "Espanhol"
 }

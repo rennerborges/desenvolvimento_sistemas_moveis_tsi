@@ -22,13 +22,20 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "attachImage": MessageLookupByLibrary.simpleMessage("Attach image*"),
+        "attachedImage":
+            MessageLookupByLibrary.simpleMessage("Image attached*"),
+        "attachment": MessageLookupByLibrary.simpleMessage("Attachment"),
         "back": MessageLookupByLibrary.simpleMessage("Return"),
+        "camera": MessageLookupByLibrary.simpleMessage("Camera"),
+        "chooseAnOption":
+            MessageLookupByLibrary.simpleMessage("Choose an option:"),
         "create": MessageLookupByLibrary.simpleMessage("Create"),
         "createInvoice": MessageLookupByLibrary.simpleMessage("Create invoice"),
         "date": MessageLookupByLibrary.simpleMessage("Date"),
         "dateOfPurchase":
             MessageLookupByLibrary.simpleMessage("Date purchased"),
-        "dateOfWarranty": MessageLookupByLibrary.simpleMessage("Warranty Date"),
+        "dateOfWarranty": MessageLookupByLibrary.simpleMessage("Warranty date"),
         "descriptionCreateInvoice":
             MessageLookupByLibrary.simpleMessage("Create your invoice"),
         "descriptionEditInvoice":
@@ -36,9 +43,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "descriptionRequiredFields":
             MessageLookupByLibrary.simpleMessage("Fields with * are requireds"),
         "edit": MessageLookupByLibrary.simpleMessage("Edit"),
+        "english": MessageLookupByLibrary.simpleMessage("English"),
         "enter": MessageLookupByLibrary.simpleMessage("Login"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot password"),
+        "gallery": MessageLookupByLibrary.simpleMessage("Gallery"),
+        "imagePreview": MessageLookupByLibrary.simpleMessage("Image preview"),
         "invalidEmail": MessageLookupByLibrary.simpleMessage("Invalid e-mail"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "passowordInvalidDescription": MessageLookupByLibrary.simpleMessage(
@@ -48,6 +58,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Invalid password format"),
         "placeOfPurchase":
             MessageLookupByLibrary.simpleMessage("Place of purchase"),
+        "portuguese": MessageLookupByLibrary.simpleMessage("Portuguese"),
         "price": MessageLookupByLibrary.simpleMessage("Price"),
         "product": MessageLookupByLibrary.simpleMessage("Product"),
         "productsUnderWarranty":
@@ -57,6 +68,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Please enter the date of purchase first"),
         "requiredField":
             MessageLookupByLibrary.simpleMessage("Required fields"),
+        "spanish": MessageLookupByLibrary.simpleMessage("Spanish"),
         "subtitleLogin":
             MessageLookupByLibrary.simpleMessage("Please login to continue"),
         "subtitleRegister": MessageLookupByLibrary.simpleMessage(

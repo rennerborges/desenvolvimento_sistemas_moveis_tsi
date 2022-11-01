@@ -31,5 +31,15 @@
   "back": "Volver",
   "title": "Título",
   "descriptionCreateInvoice": "Cree su factura",
-  "descriptionEditInvoice": "Editar la factura"
+  "descriptionEditInvoice": "Editar la factura",
+  "chooseAnOption": "Elige una opción:",
+  "camera": "Cámara",
+  "gallery": "Galería",
+  "imagePreview": "Vista previa de la imagen",
+  "attachment": "Anexo",
+  "attachImage": "Adjuntar imagen*",
+  "attachedImage": "Imagen adjunta*",
+  "portuguese": "Portugués",
+  "english": "Inglés",
+  "spanish": "Español"
 }

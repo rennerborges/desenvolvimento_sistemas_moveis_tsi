@@ -49,28 +49,41 @@ class _AddImageState extends State<AddImage> {
     setPhoto(photo);
   }
 
-  openOptions(BuildContext context) {
+  openOptions(BuildContext context, ColorsInvoiceUp colors) {
     showBottomSheet(
         context: context,
         builder: (context) {
           return Container(
-            padding: EdgeInsets.all(20),
+            decoration: BoxDecoration(color: colors.white),
+            padding: const EdgeInsets.all(20),
             height: 240,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                TextInvoiceUp('', textBold: "Escolha uma opção:"),
+                TextInvoiceUp('', textBold: S.of(context).chooseAnOption),
                 ListTile(
-                  leading: const Icon(Icons.camera_alt),
-                  title: const Text('Câmera'),
+                  leading: Icon(
+                    Icons.camera_alt,
+                    color: colors.grayText,
+                  ),
+                  title: Text(
+                    S.of(context).camera,
+                    style: TextStyle(color: colors.grayText),
+                  ),
                   onTap: () async {
                     Navigator.pop(context);
                     getImage();
                   },
                 ),
                 ListTile(
-                  leading: const Icon(Icons.photo),
-                  title: const Text('Galeria'),
+                  leading: Icon(
+                    Icons.photo,
+                    color: colors.grayText,
+                  ),
+                  title: Text(
+                    S.of(context).gallery,
+                    style: TextStyle(color: colors.grayText),
+                  ),
                   onTap: () async {
                     Navigator.pop(context);
                     getGalery();
@@ -81,7 +94,7 @@ class _AddImageState extends State<AddImage> {
                       const Icon(Icons.keyboard_backspace, color: Colors.red),
                   title: Text(
                     S.of(context).back,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.red,
                     ),
                   ),
@@ -113,11 +126,11 @@ class _AddImageState extends State<AddImage> {
           }
       },
       onTap: () {
-        openOptions(context);
+        openOptions(context, colors);
       },
       child: Container(
-        padding: EdgeInsets.all(10),
-        margin: EdgeInsets.only(top: 20),
+        padding: const EdgeInsets.all(10),
+        margin: const EdgeInsets.only(top: 20),
         height: _photo != null ? 280 : 50,
         width: double.infinity,
         decoration: BoxDecoration(
@@ -127,16 +140,20 @@ class _AddImageState extends State<AddImage> {
           ),
         ),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Icon(Icons.image, color: colors.grayTextBold),
+                Icon(Icons.image, color: Colors.grey[800]),
                 Container(
                   margin: const EdgeInsets.only(left: 10),
                   child: Text(
-                    _photo == null ? 'Anexar imagem*' : 'Imagem anexada*',
+                    _photo == null
+                        ? S.of(context).attachImage
+                        : S.of(context).attachedImage,
                     style: TextStyle(
-                      color: colors.grayTextBold,
+                      color: Colors.grey[800],
                       fontSize: 18,
                     ),
                   ),
@@ -159,7 +176,7 @@ class _AddImageState extends State<AddImage> {
                       ],
                     ),
                   )
-                : SizedBox(),
+                : const SizedBox(),
           ],
         ),
       ),

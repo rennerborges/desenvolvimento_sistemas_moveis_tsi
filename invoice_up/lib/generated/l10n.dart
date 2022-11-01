@@ -300,10 +300,10 @@ class S {
     );
   }
 
-  /// `Warranty Date`
+  /// `Warranty date`
   String get dateOfWarranty {
     return Intl.message(
-      'Warranty Date',
+      'Warranty date',
       name: 'dateOfWarranty',
       desc: '',
       args: [],
@@ -375,6 +375,106 @@ class S {
     return Intl.message(
       'Edit your invoice',
       name: 'descriptionEditInvoice',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose an option:`
+  String get chooseAnOption {
+    return Intl.message(
+      'Choose an option:',
+      name: 'chooseAnOption',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Camera`
+  String get camera {
+    return Intl.message(
+      'Camera',
+      name: 'camera',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Gallery`
+  String get gallery {
+    return Intl.message(
+      'Gallery',
+      name: 'gallery',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Image preview`
+  String get imagePreview {
+    return Intl.message(
+      'Image preview',
+      name: 'imagePreview',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Attachment`
+  String get attachment {
+    return Intl.message(
+      'Attachment',
+      name: 'attachment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Attach image*`
+  String get attachImage {
+    return Intl.message(
+      'Attach image*',
+      name: 'attachImage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Image attached*`
+  String get attachedImage {
+    return Intl.message(
+      'Image attached*',
+      name: 'attachedImage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Portuguese`
+  String get portuguese {
+    return Intl.message(
+      'Portuguese',
+      name: 'portuguese',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `English`
+  String get english {
+    return Intl.message(
+      'English',
+      name: 'english',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Spanish`
+  String get spanish {
+    return Intl.message(
+      'Spanish',
+      name: 'spanish',
       desc: '',
       args: [],
     );

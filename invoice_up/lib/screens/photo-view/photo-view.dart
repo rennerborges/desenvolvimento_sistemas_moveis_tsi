@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:invoice_up/components/appBar.dart';
+import 'package:invoice_up/generated/l10n.dart';
 import 'package:invoice_up/providers/app-settings.providers.dart';
 import 'package:invoice_up/utils/colors.dart';
 import 'package:path_provider/path_provider.dart';
@@ -27,12 +28,14 @@ class _PhotoViewInvoiceUpState extends State<PhotoViewInvoiceUp> {
     );
 
     return Scaffold(
-      appBar: AppBarInvoiceUp(),
-      body: Container(
-        child: PhotoView(
-          imageProvider: MemoryImage(base64Decode(widget.image)),
-          enableRotation: true,
-        ),
+      appBar: AppBarInvoiceUp(
+        title: S.of(context).imagePreview,
+        forceDarkTheme: true,
+        disabledActions: true,
+      ),
+      body: PhotoView(
+        imageProvider: MemoryImage(base64Decode(widget.image)),
+        enableRotation: true,
       ),
     );
   }
