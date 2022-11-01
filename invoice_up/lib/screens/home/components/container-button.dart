@@ -6,7 +6,14 @@ import 'package:invoice_up/utils/colors.dart';
 import 'package:provider/provider.dart';
 
 class ContainerButton extends StatefulWidget {
-  const ContainerButton({super.key});
+  GlobalKey? keyWarrancy;
+  GlobalKey? keyCreateInvoice;
+
+  ContainerButton({
+    this.keyWarrancy,
+    this.keyCreateInvoice,
+    super.key,
+  });
 
   @override
   State<ContainerButton> createState() => _ContainerButtonState();
@@ -39,7 +46,8 @@ class _ContainerButtonState extends State<ContainerButton> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const SizedBox(
+                    SizedBox(
+                      key: widget.keyWarrancy,
                       width: 40,
                       height: 40,
                       child: CircleAvatar(
@@ -85,6 +93,7 @@ class _ContainerButtonState extends State<ContainerButton> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       SizedBox(
+                        key: widget.keyCreateInvoice,
                         width: 40,
                         height: 40,
                         child: CircleAvatar(

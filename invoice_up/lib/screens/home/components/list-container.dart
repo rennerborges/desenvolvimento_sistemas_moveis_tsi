@@ -7,7 +7,12 @@ import 'package:invoice_up/utils/colors.dart';
 import 'package:provider/provider.dart';
 
 class ListContainerInvoiceUp extends StatefulWidget {
-  const ListContainerInvoiceUp({super.key});
+  GlobalKey? keyList;
+
+  ListContainerInvoiceUp({
+    this.keyList,
+    super.key,
+  });
 
   @override
   State<ListContainerInvoiceUp> createState() => _ListContainerInvoiceUpState();
@@ -25,7 +30,8 @@ class _ListContainerInvoiceUpState extends State<ListContainerInvoiceUp> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          TextInvoiceUp('', textBold: S.of(context).yourInvoices),
+          TextInvoiceUp('',
+              textBold: S.of(context).yourInvoices, key: widget.keyList),
           SizedBox(
             height: MediaQuery.of(context).size.height - 340,
             child: Container(

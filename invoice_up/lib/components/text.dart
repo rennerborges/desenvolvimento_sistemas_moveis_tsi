@@ -14,6 +14,8 @@ class TextInvoiceUp extends StatefulWidget {
   double? fontSize;
   bool onlyFontBold = false;
   TextAlign? textAlign;
+  Color? color;
+  Color? colorBold;
 
   TextInvoiceUp(
     this.text, {
@@ -23,6 +25,8 @@ class TextInvoiceUp extends StatefulWidget {
     this.fontSize,
     this.textAlign,
     this.onlyFontBold = false,
+    this.color,
+    this.colorBold,
   });
 
   @override
@@ -42,7 +46,7 @@ class _TextInvoiceUpState extends State<TextInvoiceUp> {
         Text(
           widget.text,
           style: TextStyle(
-            color: colors.grayText,
+            color: widget.color ?? colors.grayText,
             fontSize: widget.fontSize ?? 20,
             fontWeight:
                 widget.onlyFontBold ? FontWeight.bold : FontWeight.normal,
@@ -52,7 +56,7 @@ class _TextInvoiceUpState extends State<TextInvoiceUp> {
         Text(
           widget.textBold!,
           style: TextStyle(
-            color: colors.grayTextBold,
+            color: widget.colorBold ?? colors.grayTextBold,
             fontSize: widget.fontSize ?? 20,
             fontWeight: FontWeight.bold,
           ),
