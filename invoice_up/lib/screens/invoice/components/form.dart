@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:invoice_up/api/register-invoice.dart';
 import 'package:invoice_up/components/button.dart';
 import 'package:invoice_up/components/input.dart';
 import 'package:invoice_up/generated/l10n.dart';
+import 'package:invoice_up/interfaces/auth.dart';
+import 'package:invoice_up/interfaces/invoice.dart';
 import 'package:invoice_up/providers/app-settings.providers.dart';
 import 'package:invoice_up/screens/invoice/components/add-image.dart';
 import 'package:invoice_up/utils/colors.dart';
@@ -24,6 +27,8 @@ class _FormInvoiceScreenState extends State<FormInvoiceScreen> {
   final TextEditingController _warrancyController = TextEditingController();
   final TextEditingController _priceController = TextEditingController();
   DateTime dateInvoice = DateTime.now();
+  DateTime? dateWarrancy;
+  String? image = null;
 
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -52,6 +57,7 @@ class _FormInvoiceScreenState extends State<FormInvoiceScreen> {
     );
     if (picked != null && picked != dateInvoice) {
       setState(() {
+        dateWarrancy = picked;
         _warrancyController.value =
             TextEditingValue(text: DateFormat.yMd().format(picked));
       });
@@ -61,6 +67,43 @@ class _FormInvoiceScreenState extends State<FormInvoiceScreen> {
   String toReal(String money) {
     double preco = double.parse(money);
     return NumberFormat("#,##0.00", "pt_BR").format(preco / 100);
+  }
+
+  bool _preloader = false;
+
+  register() async {
+    Auth? auth = Provider.of<AppSettings>(context, listen: false).getAuth();
+
+    try {
+      setState(() {
+        _preloader = true;
+      });
+
+      Invoice invoice = Invoice(
+        title: _titleController.text.toString(),
+        placeOfPurchase: _localeController.text.toString(),
+        dateOfPurchase: dateInvoice.toIso8601String(),
+        dateOfWarranty:
+            dateWarrancy != null ? dateWarrancy?.toIso8601String() : null,
+        price: double.parse(
+            _priceController.text.toString().replaceAll(RegExp(r'[.,]'), '')),
+        image: image!,
+        emailUser: auth!.user,
+      );
+
+      await RegisterInvoice(invoice, context: context).execute();
+    } catch (e) {
+      SnackBar snackBar =
+          SnackBar(content: Text(e.toString()), backgroundColor: Colors.red);
+
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
+      throw e;
+    } finally {
+      setState(() {
+        _preloader = false;
+      });
+    }
   }
 
   @override
@@ -151,11 +194,6 @@ class _FormInvoiceScreenState extends State<FormInvoiceScreen> {
                           labelText: S.of(context).dateOfWarranty,
                           type: TextInputType.datetime,
                           margin: const EdgeInsets.only(top: 20),
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return S.of(context).requiredField;
-                            }
-                          },
                         ),
                       ),
                     ),
@@ -183,13 +221,20 @@ class _FormInvoiceScreenState extends State<FormInvoiceScreen> {
                 }
               },
             ),
-            AddImage(),
+            AddImage(
+                image: image,
+                onChanged: (String? value) {
+                  setState(() {
+                    image = value;
+                  });
+                }),
             Container(
               margin: const EdgeInsets.only(top: 20),
               child: Row(
                 children: [
                   Expanded(
                     child: ButtonInvoiceUp(
+                      loading: _preloader,
                       margin: const EdgeInsets.only(right: 5),
                       backgroundColor: colors.red100,
                       onPressed: (context) {
@@ -203,6 +248,7 @@ class _FormInvoiceScreenState extends State<FormInvoiceScreen> {
                   ),
                   Expanded(
                     child: ButtonInvoiceUp(
+                      loading: _preloader,
                       margin: const EdgeInsets.only(left: 5),
                       backgroundColor: colors.green100,
                       child: Text(
@@ -211,8 +257,17 @@ class _FormInvoiceScreenState extends State<FormInvoiceScreen> {
                       ),
                       onPressed: (context) {
                         FocusScope.of(context).unfocus();
+
+                        if (image == null) {
+                          SnackBar snackBar = SnackBar(
+                              content: Text('Adicione uma imagem'),
+                              backgroundColor: Colors.red);
+                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        }
+
                         if (_formKey.currentState!.validate()) {
                           print('Logar');
+                          register();
                         }
                       },
                     ),

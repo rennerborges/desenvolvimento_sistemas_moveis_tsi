@@ -12,7 +12,10 @@ import 'package:photo_view/photo_view.dart';
 import 'package:provider/provider.dart';
 
 class AddImage extends StatefulWidget {
-  const AddImage({super.key});
+  String? image;
+  void Function(String?) onChanged;
+
+  AddImage({this.image, required this.onChanged, super.key});
 
   @override
   State<AddImage> createState() => _AddImageState();
@@ -33,6 +36,8 @@ class _AddImageState extends State<AddImage> {
     List<int> imageBytes = image.readAsBytesSync();
     String base64Image = base64Encode(imageBytes);
     print(base64Image);
+
+    widget.onChanged(base64Image);
 
     setState(() {
       _photo = base64Image;
