@@ -1,9 +1,13 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:invoice_up/api/get-invoices-user.dart';
 import 'package:invoice_up/components/appBar.dart';
 import 'package:invoice_up/components/container-tour-guide.dart';
 import 'package:invoice_up/components/text.dart';
 import 'package:invoice_up/generated/l10n.dart';
 import 'package:invoice_up/interfaces/auth.dart';
+import 'package:invoice_up/interfaces/invoice.dart';
 import 'package:invoice_up/screens/home/components/container-button.dart';
 import 'package:invoice_up/screens/home/components/list-container.dart';
 import 'package:invoice_up/utils/colors.dart';
@@ -29,11 +33,46 @@ class _HomeScreenState extends State<HomeScreen> {
       GlobalKeysInvoiceUp.keyButtonCreateInvoices;
   GlobalKey keyList = GlobalKeysInvoiceUp.keyList;
 
+  List<Invoice> invoices = List.empty(growable: true);
+  bool preloader = false;
+
   @override
   void initState() {
+    super.initState();
     createTutorial();
     Future.delayed(Duration.zero, showTutorial);
-    super.initState();
+    getInvoices();
+  }
+
+  getInvoices() async {
+    try {
+      setState(() {
+        preloader = true;
+      });
+
+      List<Invoice>? invoicesRes =
+          await GetInvoicesUser(context: context).execute();
+
+      if (invoicesRes == null) {
+        return;
+      }
+
+      setState(() {
+        invoices = invoicesRes;
+      });
+    } catch (e) {
+      SnackBar snackBar =
+          SnackBar(content: Text(e.toString()), backgroundColor: Colors.red);
+
+      // Find the ScaffoldMessenger in the widget tree
+      // and use it to show a SnackBar.
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      throw e;
+    } finally {
+      setState(() {
+        preloader = false;
+      });
+    }
   }
 
   @override
@@ -63,6 +102,8 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               ListContainerInvoiceUp(
                 keyList: keyList,
+                invoices: invoices,
+                loading: preloader,
               ),
             ],
           ),

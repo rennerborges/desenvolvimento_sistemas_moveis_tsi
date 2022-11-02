@@ -10,28 +10,24 @@ import 'package:invoice_up/api/invoice-up-api.dart';
 import 'package:invoice_up/interfaces/invoice.dart';
 import 'package:invoice_up/screens/home/home.screen.dart';
 
-class RegisterInvoice extends AuthApi {
+class GetInvoicesUser extends AuthApi {
   late Invoice invoice;
 
-  RegisterInvoice(this.invoice, {required BuildContext context})
-      : super(context);
+  GetInvoicesUser({required BuildContext context}) : super(context);
 
-  Future<bool?> execute() async {
-    Uri url = Uri.parse("${ApiInvoiceUp.baseUrl}/invoice");
+  Future<List<Invoice>?> execute() async {
+    Uri url = Uri.parse("${ApiInvoiceUp.baseUrl}/invoice/my");
 
-    final response = await http.post(
+    final response = await http.get(
       url,
       headers: {
         "Content-Type": "application/json",
         "Accept": "application/json",
         "token": getToken().token,
       },
-      body: json.encode(invoice.toJson()),
     );
 
     Map data = json.decode(response.body);
-
-    print(json.decode(response.body).toString());
 
     if (response.statusCode == 401) {
       super.logout();
@@ -42,18 +38,13 @@ class RegisterInvoice extends AuthApi {
       throw data['response']['message'];
     }
 
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const HomeScreen()),
-    );
+    List<Invoice> invoices = List.empty(growable: true);
 
-    SnackBar snackBar = SnackBar(
-      content: Text('Nota fiscal criada com sucesso!'),
-      backgroundColor: Colors.green,
-    );
+    data['invoices'].forEach((invoice) {
+      print('invoice ${invoice}');
+      invoices.add(Invoice.fromJson(invoice));
+    });
 
-    ScaffoldMessenger.of(context).showSnackBar(snackBar);
-
-    return true;
+    return invoices;
   }
 }

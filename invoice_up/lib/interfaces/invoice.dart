@@ -4,7 +4,7 @@ class Invoice {
   late String placeOfPurchase;
   late String dateOfPurchase;
   String? dateOfWarranty;
-  late double price;
+  late int price;
   late String image;
   late String emailUser;
 
@@ -26,7 +26,7 @@ class Invoice {
         dateOfPurchase: json['dateOfPurchase'],
         dateOfWarranty: json['dateOfWarranty'],
         emailUser: json['emailUser'],
-        price: double.parse(json['price']),
+        price: json['price'],
         image: json['image'],
       );
 

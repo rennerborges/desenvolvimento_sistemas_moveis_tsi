@@ -17,6 +17,10 @@ class AuthApi {
     }
   }
 
+  Auth getToken() {
+    return Provider.of<AppSettings>(context, listen: false).getAuth()!;
+  }
+
   logout() {
     Provider.of<AppSettings>(context, listen: false).logout();
 

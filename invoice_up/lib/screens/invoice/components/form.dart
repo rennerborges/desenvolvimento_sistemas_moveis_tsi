@@ -85,7 +85,7 @@ class _FormInvoiceScreenState extends State<FormInvoiceScreen> {
         dateOfPurchase: dateInvoice.toIso8601String(),
         dateOfWarranty:
             dateWarrancy != null ? dateWarrancy?.toIso8601String() : null,
-        price: double.parse(
+        price: int.parse(
             _priceController.text.toString().replaceAll(RegExp(r'[.,]'), '')),
         image: image!,
         emailUser: auth!.user,
