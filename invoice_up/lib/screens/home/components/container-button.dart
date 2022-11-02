@@ -75,8 +75,7 @@ class _ContainerButtonState extends State<ContainerButton> {
               onTap: () async {
                 await Navigator.push(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) => const InvoiceScreen()),
+                  MaterialPageRoute(builder: (context) => InvoiceScreen()),
                 );
 
                 widget.getInvoices();

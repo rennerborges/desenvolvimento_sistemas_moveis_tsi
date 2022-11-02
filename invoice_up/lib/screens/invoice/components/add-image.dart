@@ -25,6 +25,15 @@ class _AddImageState extends State<AddImage> {
   final ImagePicker _picker = ImagePicker();
   String? _photo;
 
+  @override
+  initState() {
+    super.initState();
+
+    if (widget.image != null) {
+      _photo = widget.image;
+    }
+  }
+
   decodedImage() {
     return base64Decode(_photo!);
   }

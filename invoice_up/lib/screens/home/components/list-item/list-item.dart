@@ -3,7 +3,9 @@ import 'package:intl/intl.dart';
 import 'package:invoice_up/generated/l10n.dart';
 import 'package:invoice_up/interfaces/invoice.dart';
 import 'package:invoice_up/screens/home/components/list-item/list-item-skeleton.dart';
+import 'package:invoice_up/screens/invoice/invoice-screen.dart';
 import 'package:invoice_up/screens/photo-view/photo-view.dart';
+import 'package:invoice_up/screens/register/register.screen.dart';
 import 'package:invoice_up/utils/colors.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:provider/provider.dart';
@@ -41,6 +43,18 @@ class _ListItemState extends State<ListItem> {
           context,
           MaterialPageRoute(
             builder: (context) => PhotoViewInvoiceUp(widget.invoice!.image),
+          ),
+        );
+      },
+      onTap: () async {
+        if (widget.loading) {
+          return;
+        }
+
+        await Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => InvoiceScreen(invoice: widget.invoice),
           ),
         );
       },

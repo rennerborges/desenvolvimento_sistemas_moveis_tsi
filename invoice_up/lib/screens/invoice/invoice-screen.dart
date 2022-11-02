@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:invoice_up/components/appBar.dart';
 import 'package:invoice_up/components/text.dart';
 import 'package:invoice_up/generated/l10n.dart';
+import 'package:invoice_up/interfaces/invoice.dart';
 import 'package:invoice_up/providers/app-settings.providers.dart';
 import 'package:invoice_up/screens/invoice/components/form.dart';
 import 'package:invoice_up/utils/colors.dart';
 import 'package:provider/provider.dart';
 
 class InvoiceScreen extends StatefulWidget {
-  const InvoiceScreen({super.key});
+  Invoice? invoice;
+
+  InvoiceScreen({this.invoice, super.key});
 
   @override
   State<InvoiceScreen> createState() => _InvoiceScreenState();
@@ -36,7 +39,7 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
                 S.of(context).descriptionRequiredFields,
                 textAlign: TextAlign.start,
               ),
-              FormInvoiceScreen(),
+              FormInvoiceScreen(widget.invoice),
             ],
           ),
         ),

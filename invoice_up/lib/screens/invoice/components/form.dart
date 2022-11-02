@@ -12,7 +12,9 @@ import 'package:invoice_up/utils/colors.dart';
 import 'package:provider/provider.dart';
 
 class FormInvoiceScreen extends StatefulWidget {
-  const FormInvoiceScreen({super.key});
+  Invoice? invoice;
+
+  FormInvoiceScreen(this.invoice, {super.key});
 
   @override
   State<FormInvoiceScreen> createState() => _FormInvoiceScreenState();
@@ -28,7 +30,7 @@ class _FormInvoiceScreenState extends State<FormInvoiceScreen> {
   final TextEditingController _priceController = TextEditingController();
   DateTime dateInvoice = DateTime.now();
   DateTime? dateWarrancy;
-  String? image = null;
+  String? image;
 
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -69,6 +71,12 @@ class _FormInvoiceScreenState extends State<FormInvoiceScreen> {
     return NumberFormat("#,##0.00", "pt_BR").format(preco / 100);
   }
 
+  String formatDate(String date) {
+    DateTime parse = DateTime.parse(date);
+
+    return DateFormat.yMd().format(parse);
+  }
+
   bool _preloader = false;
 
   register() async {
@@ -103,6 +111,30 @@ class _FormInvoiceScreenState extends State<FormInvoiceScreen> {
       setState(() {
         _preloader = false;
       });
+    }
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    if (widget.invoice != null) {
+      _titleController.value = TextEditingValue(text: widget.invoice!.title);
+      _localeController.value =
+          TextEditingValue(text: widget.invoice!.placeOfPurchase);
+      _dateController.value =
+          TextEditingValue(text: formatDate(widget.invoice!.dateOfPurchase));
+      dateInvoice = DateTime.parse(widget.invoice!.dateOfPurchase);
+      _priceController.value =
+          TextEditingValue(text: toReal(widget.invoice!.price.toString()));
+      image = widget.invoice!.image;
+
+      if (widget.invoice!.dateOfWarranty != null) {
+        dateWarrancy = DateTime.parse(widget.invoice!.dateOfWarranty!);
+        _warrancyController.value =
+            TextEditingValue(text: formatDate(widget.invoice!.dateOfWarranty!));
+      }
     }
   }
 
