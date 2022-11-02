@@ -42,10 +42,7 @@ class RegisterInvoice extends AuthApi {
       throw data['response']['message'];
     }
 
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const HomeScreen()),
-    );
+    Navigator.pop(context);
 
     SnackBar snackBar = SnackBar(
       content: Text('Nota fiscal criada com sucesso!'),

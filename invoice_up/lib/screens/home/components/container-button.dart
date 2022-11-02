@@ -8,10 +8,12 @@ import 'package:provider/provider.dart';
 class ContainerButton extends StatefulWidget {
   GlobalKey? keyWarrancy;
   GlobalKey? keyCreateInvoice;
+  void Function() getInvoices;
 
   ContainerButton({
     this.keyWarrancy,
     this.keyCreateInvoice,
+    required this.getInvoices,
     super.key,
   });
 
@@ -70,12 +72,14 @@ class _ContainerButtonState extends State<ContainerButton> {
           ),
           Expanded(
             child: GestureDetector(
-              onTap: () {
-                Navigator.push(
+              onTap: () async {
+                await Navigator.push(
                   context,
                   MaterialPageRoute(
                       builder: (context) => const InvoiceScreen()),
                 );
+
+                widget.getInvoices();
               },
               child: Container(
                 height: 160,

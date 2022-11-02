@@ -99,6 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ContainerButton(
                 keyCreateInvoice: keyButtonCreateInvoices,
                 keyWarrancy: keyButtonProductsWarrancy,
+                getInvoices: getInvoices,
               ),
               ListContainerInvoiceUp(
                 keyList: keyList,

@@ -8,7 +8,6 @@ import 'package:http/http.dart' as http;
 import 'package:invoice_up/api/auth-api.dart';
 import 'package:invoice_up/api/invoice-up-api.dart';
 import 'package:invoice_up/interfaces/invoice.dart';
-import 'package:invoice_up/screens/home/home.screen.dart';
 
 class GetInvoicesUser extends AuthApi {
   late Invoice invoice;
@@ -41,7 +40,6 @@ class GetInvoicesUser extends AuthApi {
     List<Invoice> invoices = List.empty(growable: true);
 
     data['invoices'].forEach((invoice) {
-      print('invoice ${invoice}');
       invoices.add(Invoice.fromJson(invoice));
     });
 
