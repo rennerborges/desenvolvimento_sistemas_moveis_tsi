@@ -114,7 +114,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void showTutorial() {
-    tutorialCoachMark.show(context: context);
+    // tutorialCoachMark.show(context: context);
   }
 
   void createTutorial() {

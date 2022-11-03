@@ -34,7 +34,9 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TextInvoiceUp('',
-                  textBold: S.of(context).descriptionCreateInvoice),
+                  textBold: widget.invoice != null
+                      ? S.of(context).descriptionEditInvoice
+                      : S.of(context).descriptionCreateInvoice),
               TextInvoiceUp(
                 S.of(context).descriptionRequiredFields,
                 textAlign: TextAlign.start,

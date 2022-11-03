@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:invoice_up/api/register-invoice.dart';
+import 'package:invoice_up/api/update-invoice.dart';
 import 'package:invoice_up/components/button.dart';
 import 'package:invoice_up/components/input.dart';
 import 'package:invoice_up/generated/l10n.dart';
@@ -100,6 +101,42 @@ class _FormInvoiceScreenState extends State<FormInvoiceScreen> {
       );
 
       await RegisterInvoice(invoice, context: context).execute();
+    } catch (e) {
+      SnackBar snackBar =
+          SnackBar(content: Text(e.toString()), backgroundColor: Colors.red);
+
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
+      throw e;
+    } finally {
+      setState(() {
+        _preloader = false;
+      });
+    }
+  }
+
+  edit() async {
+    Auth? auth = Provider.of<AppSettings>(context, listen: false).getAuth();
+    print('Edit');
+    try {
+      setState(() {
+        _preloader = true;
+      });
+
+      Invoice invoice = Invoice(
+        id: widget.invoice!.id!,
+        title: _titleController.text.toString(),
+        placeOfPurchase: _localeController.text.toString(),
+        dateOfPurchase: dateInvoice.toIso8601String(),
+        dateOfWarranty:
+            dateWarrancy != null ? dateWarrancy?.toIso8601String() : null,
+        price: int.parse(
+            _priceController.text.toString().replaceAll(RegExp(r'[.,]'), '')),
+        image: image!,
+        emailUser: auth!.user,
+      );
+
+      await UpdateInvoice(invoice, context: context).execute();
     } catch (e) {
       SnackBar snackBar =
           SnackBar(content: Text(e.toString()), backgroundColor: Colors.red);
@@ -284,7 +321,9 @@ class _FormInvoiceScreenState extends State<FormInvoiceScreen> {
                       margin: const EdgeInsets.only(left: 5),
                       backgroundColor: colors.green100,
                       child: Text(
-                        S.of(context).create,
+                        widget.invoice != null
+                            ? S.of(context).edit
+                            : S.of(context).create,
                         style: TextStyle(color: colors.grayTextBold),
                       ),
                       onPressed: (context) {
@@ -299,7 +338,12 @@ class _FormInvoiceScreenState extends State<FormInvoiceScreen> {
 
                         if (_formKey.currentState!.validate()) {
                           print('Logar');
-                          register();
+
+                          if (widget.invoice != null) {
+                            edit();
+                          } else {
+                            register();
+                          }
                         }
                       },
                     ),
