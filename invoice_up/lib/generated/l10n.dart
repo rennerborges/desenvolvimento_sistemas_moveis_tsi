@@ -479,6 +479,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Invoice created successfully!`
+  String get createdInvoiceSuccess {
+    return Intl.message(
+      'Invoice created successfully!',
+      name: 'createdInvoiceSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `successfully edited!`
+  String get editSuccess {
+    return Intl.message(
+      'successfully edited!',
+      name: 'editSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add an image`
+  String get addImage {
+    return Intl.message(
+      'Add an image',
+      name: 'addImage',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

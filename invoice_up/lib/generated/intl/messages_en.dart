@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "addImage": MessageLookupByLibrary.simpleMessage("Add an image"),
         "attachImage": MessageLookupByLibrary.simpleMessage("Attach image*"),
         "attachedImage":
             MessageLookupByLibrary.simpleMessage("Image attached*"),
@@ -32,6 +33,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Choose an option:"),
         "create": MessageLookupByLibrary.simpleMessage("Create"),
         "createInvoice": MessageLookupByLibrary.simpleMessage("Create invoice"),
+        "createdInvoiceSuccess": MessageLookupByLibrary.simpleMessage(
+            "Invoice created successfully!"),
         "date": MessageLookupByLibrary.simpleMessage("Date"),
         "dateOfPurchase":
             MessageLookupByLibrary.simpleMessage("Date purchased"),
@@ -43,6 +46,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "descriptionRequiredFields":
             MessageLookupByLibrary.simpleMessage("Fields with * are requireds"),
         "edit": MessageLookupByLibrary.simpleMessage("Edit"),
+        "editSuccess":
+            MessageLookupByLibrary.simpleMessage("successfully edited!"),
         "english": MessageLookupByLibrary.simpleMessage("English"),
         "enter": MessageLookupByLibrary.simpleMessage("Login"),
         "forgotPassword":

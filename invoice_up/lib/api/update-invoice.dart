@@ -7,6 +7,7 @@ import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
 import 'package:invoice_up/api/auth-api.dart';
 import 'package:invoice_up/api/invoice-up-api.dart';
+import 'package:invoice_up/generated/l10n.dart';
 import 'package:invoice_up/interfaces/invoice.dart';
 import 'package:invoice_up/screens/home/home.screen.dart';
 
@@ -46,7 +47,7 @@ class UpdateInvoice extends AuthApi {
         (Route<dynamic> route) => route is HomeScreen);
 
     SnackBar snackBar = SnackBar(
-      content: Text('${invoice.title} editada com sucesso!'),
+      content: Text('${invoice.title} ${S.of(context).editSuccess}'),
       backgroundColor: Colors.green,
     );
 

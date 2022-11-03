@@ -41,5 +41,8 @@
   "attachedImage": "Image attached*",
   "portuguese": "Portuguese",
   "english": "English",
-  "spanish": "Spanish"
+  "spanish": "Spanish",
+  "createdInvoiceSuccess": "Invoice created successfully!",
+  "editSuccess": "successfully edited!",
+  "addImage": "Add an image"
 }

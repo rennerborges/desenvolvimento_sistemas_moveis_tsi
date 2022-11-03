@@ -331,7 +331,7 @@ class _FormInvoiceScreenState extends State<FormInvoiceScreen> {
 
                         if (image == null) {
                           SnackBar snackBar = SnackBar(
-                              content: Text('Adicione uma imagem'),
+                              content: Text(S.of(context).addImage),
                               backgroundColor: Colors.red);
                           ScaffoldMessenger.of(context).showSnackBar(snackBar);
                         }

@@ -7,6 +7,7 @@ import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
 import 'package:invoice_up/api/auth-api.dart';
 import 'package:invoice_up/api/invoice-up-api.dart';
+import 'package:invoice_up/generated/l10n.dart';
 import 'package:invoice_up/interfaces/invoice.dart';
 import 'package:invoice_up/screens/home/home.screen.dart';
 
@@ -45,7 +46,7 @@ class RegisterInvoice extends AuthApi {
     Navigator.pop(context);
 
     SnackBar snackBar = SnackBar(
-      content: Text('Nota fiscal criada com sucesso!'),
+      content: Text(S.of(context).createdInvoiceSuccess),
       backgroundColor: Colors.green,
     );
 

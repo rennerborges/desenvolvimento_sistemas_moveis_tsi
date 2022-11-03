@@ -41,5 +41,8 @@
   "attachedImage": "Imagen adjunta*",
   "portuguese": "Portugués",
   "english": "Inglés",
-  "spanish": "Español"
+  "spanish": "Español",
+  "createdInvoiceSuccess": "¡Factura creada con éxito!",
+  "editSuccess": "editado con éxito!",
+  "addImage": "Agregar una imagen"
 }
