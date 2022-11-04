@@ -1,3 +1,3 @@
 class ApiInvoiceUp {
-  static String baseUrl = 'http://192.168.1.18:7780';
+  static String baseUrl = 'https://invoice-up.herokuapp.com';
 }
