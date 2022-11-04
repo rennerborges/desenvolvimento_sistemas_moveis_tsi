@@ -509,6 +509,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Todas as notas ficais`
+  String get allInvoices {
+    return Intl.message(
+      'Todas as notas ficais',
+      name: 'allInvoices',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

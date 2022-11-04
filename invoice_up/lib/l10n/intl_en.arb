@@ -44,5 +44,6 @@
   "spanish": "Spanish",
   "createdInvoiceSuccess": "Invoice created successfully!",
   "editSuccess": "successfully edited!",
-  "addImage": "Add an image"
+  "addImage": "Add an image",
+  "allInvoices": "Todas as notas ficais"
 }

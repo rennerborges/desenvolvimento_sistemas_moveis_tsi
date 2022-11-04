@@ -96,13 +96,15 @@ class _ListItemState extends State<ListItem> {
                                 color: colors.grayText,
                               ),
                             )
-                          : SizedBox(),
+                          : const SizedBox(),
                     ],
                   ),
-                  Icon(
-                    Icons.shield,
-                    color: colors.blueMain,
-                  )
+                  widget.invoice!.isWarranty
+                      ? Icon(
+                          Icons.shield,
+                          color: colors.blueMain,
+                        )
+                      : const SizedBox()
                 ],
               )
             : ListItemSkeleton(),

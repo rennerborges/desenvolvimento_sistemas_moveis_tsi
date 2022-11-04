@@ -44,5 +44,6 @@
   "spanish": "Espanhol",
   "createdInvoiceSuccess": "Nota fiscal criada com sucesso!",
   "editSuccess": "editada com sucesso!",
-  "addImage": "Adicione uma imagem"
+  "addImage": "Adicione uma imagem",
+  "allInvoices": "Todas as notas ficais"
 }

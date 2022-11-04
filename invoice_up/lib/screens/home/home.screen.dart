@@ -35,6 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List<Invoice> invoices = List.empty(growable: true);
   bool preloader = false;
+  bool onlyWarranty = false;
 
   @override
   void initState() {
@@ -42,6 +43,14 @@ class _HomeScreenState extends State<HomeScreen> {
     createTutorial();
     Future.delayed(Duration.zero, showTutorial);
     getInvoices();
+  }
+
+  filterInvoices() {
+    if (onlyWarranty) {
+      return invoices.where((i) => i.isWarranty).toList();
+    }
+
+    return invoices;
   }
 
   getInvoices() async {
@@ -97,13 +106,18 @@ class _HomeScreenState extends State<HomeScreen> {
                 textBold: auth != null ? "${auth.name}!" : '',
               ),
               ContainerButton(
-                keyCreateInvoice: keyButtonCreateInvoices,
-                keyWarrancy: keyButtonProductsWarrancy,
-                getInvoices: getInvoices,
-              ),
+                  keyCreateInvoice: keyButtonCreateInvoices,
+                  keyWarrancy: keyButtonProductsWarrancy,
+                  getInvoices: getInvoices,
+                  onlyWarranty: onlyWarranty,
+                  changeOnlyWarranty: () {
+                    setState(() {
+                      onlyWarranty = !onlyWarranty;
+                    });
+                  }),
               ListContainerInvoiceUp(
                 keyList: keyList,
-                invoices: invoices,
+                invoices: filterInvoices(),
                 loading: preloader,
               ),
             ],

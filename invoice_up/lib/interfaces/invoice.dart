@@ -7,10 +7,12 @@ class Invoice {
   late int price;
   late String image;
   late String emailUser;
+  bool isWarranty = false;
 
   Invoice({
     this.id,
     this.dateOfWarranty,
+    this.isWarranty = false,
     required this.emailUser,
     required this.title,
     required this.placeOfPurchase,
@@ -28,6 +30,7 @@ class Invoice {
         emailUser: json['emailUser'],
         price: json['price'],
         image: json['image'],
+        isWarranty: json['isWarranty'],
       );
 
   Map<String, dynamic> toJson() {

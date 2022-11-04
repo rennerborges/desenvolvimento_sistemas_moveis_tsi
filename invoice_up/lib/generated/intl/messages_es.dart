@@ -23,6 +23,8 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "addImage": MessageLookupByLibrary.simpleMessage("Agregar una imagen"),
+        "allInvoices":
+            MessageLookupByLibrary.simpleMessage("Todas las facturas"),
         "attachImage": MessageLookupByLibrary.simpleMessage("Adjuntar imagen*"),
         "attachedImage":
             MessageLookupByLibrary.simpleMessage("Imagen adjunta*"),

@@ -8,11 +8,15 @@ import 'package:provider/provider.dart';
 class ContainerButton extends StatefulWidget {
   GlobalKey? keyWarrancy;
   GlobalKey? keyCreateInvoice;
+  bool onlyWarranty;
   void Function() getInvoices;
+  void Function() changeOnlyWarranty;
 
   ContainerButton({
     this.keyWarrancy,
     this.keyCreateInvoice,
+    required this.onlyWarranty,
+    required this.changeOnlyWarranty,
     required this.getInvoices,
     super.key,
   });
@@ -33,39 +37,46 @@ class _ContainerButtonState extends State<ContainerButton> {
       child: Row(
         children: [
           Expanded(
-            child: Container(
-              height: 160,
-              margin: const EdgeInsets.only(right: 5),
-              decoration: BoxDecoration(
-                color: colors.blueMain,
-                borderRadius: const BorderRadius.all(
-                  Radius.circular(20),
-                ),
-              ),
+            child: GestureDetector(
+              onTap: () {
+                widget.changeOnlyWarranty();
+              },
               child: Container(
-                padding: const EdgeInsets.all(20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SizedBox(
-                      key: widget.keyWarrancy,
-                      width: 40,
-                      height: 40,
-                      child: CircleAvatar(
-                        backgroundColor: Colors.white,
-                        child: Icon(Icons.shield, size: 20),
+                height: 160,
+                margin: const EdgeInsets.only(right: 5),
+                decoration: BoxDecoration(
+                  color: colors.blueMain,
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(20),
+                  ),
+                ),
+                child: Container(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(
+                        key: widget.keyWarrancy,
+                        width: 40,
+                        height: 40,
+                        child: CircleAvatar(
+                          backgroundColor: Colors.white,
+                          child: Icon(Icons.shield, size: 20),
+                        ),
                       ),
-                    ),
-                    Text(
-                      S.of(context).productsUnderWarranty,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    )
-                  ],
+                      Text(
+                        widget.onlyWarranty
+                            ? S.of(context).allInvoices
+                            : S.of(context).productsUnderWarranty,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),

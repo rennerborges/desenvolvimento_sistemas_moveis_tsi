@@ -44,5 +44,6 @@
   "spanish": "Español",
   "createdInvoiceSuccess": "¡Factura creada con éxito!",
   "editSuccess": "editado con éxito!",
-  "addImage": "Agregar una imagen"
+  "addImage": "Agregar una imagen",
+  "allInvoices": "Todas las facturas"
 }
