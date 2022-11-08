@@ -11,16 +11,16 @@ import 'package:invoice_up/generated/l10n.dart';
 import 'package:invoice_up/interfaces/invoice.dart';
 import 'package:invoice_up/screens/home/home.screen.dart';
 
-class UpdateInvoiceApi extends AuthApi {
+class DeleteInvoiceApi extends AuthApi {
   late Invoice invoice;
 
-  UpdateInvoiceApi(this.invoice, {required BuildContext context})
+  DeleteInvoiceApi(this.invoice, {required BuildContext context})
       : super(context);
 
   Future<bool?> execute() async {
     Uri url = Uri.parse("${ApiInvoiceUp.baseUrl}/invoice/${invoice.id}");
 
-    final response = await http.patch(
+    final response = await http.delete(
       url,
       headers: {
         "Content-Type": "application/json",
@@ -41,14 +41,8 @@ class UpdateInvoiceApi extends AuthApi {
       throw data['response']['message'];
     }
 
-    Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(
-            builder: (BuildContext context) => const HomeScreen()),
-        (Route<dynamic> route) => route is HomeScreen);
-
     SnackBar snackBar = SnackBar(
-      content: Text('${invoice.title} ${S.of(context).editSuccess}'),
+      content: Text('${invoice.title} ${S.of(context).deleteSuccess}'),
       backgroundColor: Colors.green,
     );
 

@@ -42,6 +42,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "dateOfPurchase": MessageLookupByLibrary.simpleMessage("Fecha compra"),
         "dateOfWarranty":
             MessageLookupByLibrary.simpleMessage("Fecha garantía"),
+        "deleteSuccess":
+            MessageLookupByLibrary.simpleMessage("borrado con éxito!"),
         "descriptionCreateInvoice":
             MessageLookupByLibrary.simpleMessage("Cree su factura"),
         "descriptionEditInvoice":

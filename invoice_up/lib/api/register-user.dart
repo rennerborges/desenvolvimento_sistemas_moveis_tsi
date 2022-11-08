@@ -10,13 +10,13 @@ import 'package:invoice_up/providers/app-settings.providers.dart';
 import 'package:invoice_up/screens/login/login.screen.dart';
 import 'package:provider/provider.dart';
 
-class RegisterUser {
+class RegisterUserApi {
   late String name;
   late String password;
   late String email;
   String? token;
 
-  RegisterUser({
+  RegisterUserApi({
     required this.name,
     required this.email,
     required this.password,

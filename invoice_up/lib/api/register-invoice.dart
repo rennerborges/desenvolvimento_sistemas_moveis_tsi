@@ -11,10 +11,10 @@ import 'package:invoice_up/generated/l10n.dart';
 import 'package:invoice_up/interfaces/invoice.dart';
 import 'package:invoice_up/screens/home/home.screen.dart';
 
-class RegisterInvoice extends AuthApi {
+class RegisterInvoiceApi extends AuthApi {
   late Invoice invoice;
 
-  RegisterInvoice(this.invoice, {required BuildContext context})
+  RegisterInvoiceApi(this.invoice, {required BuildContext context})
       : super(context);
 
   Future<bool?> execute() async {

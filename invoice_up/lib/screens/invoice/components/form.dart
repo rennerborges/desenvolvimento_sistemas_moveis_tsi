@@ -100,7 +100,7 @@ class _FormInvoiceScreenState extends State<FormInvoiceScreen> {
         emailUser: auth!.user,
       );
 
-      await RegisterInvoice(invoice, context: context).execute();
+      await RegisterInvoiceApi(invoice, context: context).execute();
     } catch (e) {
       SnackBar snackBar =
           SnackBar(content: Text(e.toString()), backgroundColor: Colors.red);
@@ -136,7 +136,7 @@ class _FormInvoiceScreenState extends State<FormInvoiceScreen> {
         emailUser: auth!.user,
       );
 
-      await UpdateInvoice(invoice, context: context).execute();
+      await UpdateInvoiceApi(invoice, context: context).execute();
     } catch (e) {
       SnackBar snackBar =
           SnackBar(content: Text(e.toString()), backgroundColor: Colors.red);

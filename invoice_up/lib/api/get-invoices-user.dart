@@ -9,10 +9,10 @@ import 'package:invoice_up/api/auth-api.dart';
 import 'package:invoice_up/api/invoice-up-api.dart';
 import 'package:invoice_up/interfaces/invoice.dart';
 
-class GetInvoicesUser extends AuthApi {
+class GetInvoicesUserApi extends AuthApi {
   late Invoice invoice;
 
-  GetInvoicesUser({required BuildContext context}) : super(context);
+  GetInvoicesUserApi({required BuildContext context}) : super(context);
 
   Future<List<Invoice>?> execute() async {
     Uri url = Uri.parse("${ApiInvoiceUp.baseUrl}/invoice/my");

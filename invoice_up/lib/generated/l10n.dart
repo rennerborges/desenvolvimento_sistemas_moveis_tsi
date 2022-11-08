@@ -500,6 +500,16 @@ class S {
     );
   }
 
+  /// `successfully deleted!`
+  String get deleteSuccess {
+    return Intl.message(
+      'successfully deleted!',
+      name: 'deleteSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Add an image`
   String get addImage {
     return Intl.message(

@@ -33,7 +33,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         _preloader = true;
       });
 
-      await RegisterUser(
+      await RegisterUserApi(
         name: _nameController.text.toString(),
         email: _emailController.text.toString(),
         password: _passwordController.text.toString(),

@@ -60,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
       });
 
       List<Invoice>? invoicesRes =
-          await GetInvoicesUser(context: context).execute();
+          await GetInvoicesUserApi(context: context).execute();
 
       if (invoicesRes == null) {
         return;
