@@ -1,7 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:invoice_up/components/text.dart';
 import 'package:invoice_up/generated/l10n.dart';
@@ -38,13 +40,21 @@ class _AddImageState extends State<AddImage> {
     return base64Decode(_photo!);
   }
 
-  setPhoto(XFile? photo) {
+  setPhoto(XFile? photo) async {
     if (photo == null) return;
 
     File image = File(photo.path);
-    List<int> imageBytes = image.readAsBytesSync();
-    String base64Image = base64Encode(imageBytes);
-    print(base64Image);
+
+    Uint8List imageBytes = image.readAsBytesSync();
+
+    Uint8List imageCompress = await FlutterImageCompress.compressWithList(
+      imageBytes,
+      quality: 70,
+    );
+
+    print('image $imageCompress');
+
+    String base64Image = base64Encode(imageCompress);
 
     widget.onChanged(base64Image);
 
