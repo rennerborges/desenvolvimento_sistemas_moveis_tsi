@@ -123,7 +123,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void showTutorial() {
-    if (viewScreen.home) {
+    if (!viewScreen.home) {
       tutorialCoachMark.show(context: context);
     }
   }
