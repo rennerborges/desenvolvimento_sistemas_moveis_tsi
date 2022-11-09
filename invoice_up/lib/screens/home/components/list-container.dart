@@ -39,27 +39,41 @@ class _ListContainerInvoiceUpState extends State<ListContainerInvoiceUp> {
             textBold: S.of(context).yourInvoices,
             key: GlobalKeysInvoiceUp.keyList,
           ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height - 340,
-            child: Container(
-              margin: const EdgeInsets.only(top: 20),
-              child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: widget.loading ? 5 : widget.invoices.length,
-                  itemBuilder: (context, position) {
-                    if (widget.loading) {
-                      return ListItem(
-                        loading: widget.loading,
-                      );
-                    }
+          !widget.loading && widget.invoices.isEmpty
+              ? Column(
+                  children: [
+                    const SizedBox(
+                      width: 250,
+                      child: Image(
+                        image: AssetImage('images/notfound.png'),
+                      ),
+                    ),
+                    TextInvoiceUp(
+                      'Nenhuma nota fiscal foi encontrada',
+                    ),
+                  ],
+                )
+              : SizedBox(
+                  height: MediaQuery.of(context).size.height - 340,
+                  child: Container(
+                    margin: const EdgeInsets.only(top: 20),
+                    child: ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: widget.loading ? 5 : widget.invoices.length,
+                        itemBuilder: (context, position) {
+                          if (widget.loading) {
+                            return ListItem(
+                              loading: widget.loading,
+                            );
+                          }
 
-                    Invoice invoice = widget.invoices[position];
-                    return ListItem(
-                      invoice: invoice,
-                    );
-                  }),
-            ),
-          ),
+                          Invoice invoice = widget.invoices[position];
+                          return ListItem(
+                            invoice: invoice,
+                          );
+                        }),
+                  ),
+                ),
         ],
       ),
     );
