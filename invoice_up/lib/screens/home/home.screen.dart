@@ -6,6 +6,7 @@ import 'package:invoice_up/components/appBar.dart';
 import 'package:invoice_up/components/container-tour-guide.dart';
 import 'package:invoice_up/components/text.dart';
 import 'package:invoice_up/generated/l10n.dart';
+import 'package:invoice_up/interfaces/ViewScreen.dart';
 import 'package:invoice_up/interfaces/auth.dart';
 import 'package:invoice_up/interfaces/invoice.dart';
 import 'package:invoice_up/screens/home/components/container-button.dart';
@@ -26,12 +27,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late TutorialCoachMark tutorialCoachMark;
-
-  GlobalKey keyButtonProductsWarrancy =
-      GlobalKeysInvoiceUp.keyButtonProductsWarrancy;
-  GlobalKey keyButtonCreateInvoices =
-      GlobalKeysInvoiceUp.keyButtonCreateInvoices;
-  GlobalKey keyList = GlobalKeysInvoiceUp.keyList;
+  late ViewScreen viewScreen;
 
   List<Invoice> invoices = List.empty(growable: true);
   bool preloader = false;
@@ -42,6 +38,8 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     createTutorial();
     Future.delayed(Duration.zero, showTutorial);
+    viewScreen =
+        Provider.of<AppSettings>(context, listen: false).getViewScreen();
     getInvoices();
   }
 
@@ -106,8 +104,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 textBold: auth != null ? "${auth.name}!" : '',
               ),
               ContainerButton(
-                  keyCreateInvoice: keyButtonCreateInvoices,
-                  keyWarrancy: keyButtonProductsWarrancy,
                   getInvoices: getInvoices,
                   onlyWarranty: onlyWarranty,
                   changeOnlyWarranty: () {
@@ -116,7 +112,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     });
                   }),
               ListContainerInvoiceUp(
-                keyList: keyList,
                 invoices: filterInvoices(),
                 loading: preloader,
               ),
@@ -128,7 +123,9 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void showTutorial() {
-    // tutorialCoachMark.show(context: context);
+    if (viewScreen.home) {
+      tutorialCoachMark.show(context: context);
+    }
   }
 
   void createTutorial() {
@@ -139,7 +136,10 @@ class _HomeScreenState extends State<HomeScreen> {
       paddingFocus: 10,
       opacityShadow: 0.8,
       onFinish: () {
-        print("finish");
+        viewScreen.home = true;
+
+        Provider.of<AppSettings>(context, listen: false)
+            .setViewScreen(viewScreen);
       },
       onClickTarget: (target) {
         print('onClickTarget: $target');
@@ -153,7 +153,10 @@ class _HomeScreenState extends State<HomeScreen> {
         print('onClickOverlay: $target');
       },
       onSkip: () {
-        print("skip");
+        viewScreen.home = true;
+
+        Provider.of<AppSettings>(context, listen: false)
+            .setViewScreen(viewScreen);
       },
     );
   }
@@ -163,7 +166,7 @@ class _HomeScreenState extends State<HomeScreen> {
     targets.add(
       TargetFocus(
         identify: "keyButtonProductsWarrancy",
-        keyTarget: keyButtonProductsWarrancy,
+        keyTarget: GlobalKeysInvoiceUp.keyButtonProductsWarrancy,
         alignSkip: Alignment.topRight,
         contents: [
           TargetContent(
@@ -183,7 +186,7 @@ class _HomeScreenState extends State<HomeScreen> {
     targets.add(
       TargetFocus(
         identify: "keyButtonCreateInvoices",
-        keyTarget: keyButtonCreateInvoices,
+        keyTarget: GlobalKeysInvoiceUp.keyButtonCreateInvoices,
         alignSkip: Alignment.topRight,
         contents: [
           TargetContent(
@@ -202,16 +205,24 @@ class _HomeScreenState extends State<HomeScreen> {
     targets.add(
       TargetFocus(
         identify: "keyList",
-        keyTarget: keyList,
         alignSkip: Alignment.topRight,
+        keyTarget: GlobalKeysInvoiceUp.keyList,
         contents: [
           TargetContent(
-            padding: EdgeInsets.only(top: 100),
+            padding: EdgeInsets.only(top: 75, right: 20),
             align: ContentAlign.right,
             builder: (context, controller) {
-              return ContainerTourGuide(
-                title: 'Notas fiscais',
-                description: 'Aqui ficarão as suas notas fiscais',
+              return Column(
+                children: [
+                  ContainerTourGuide(
+                    title: 'Notas fiscais',
+                    description: 'Aqui ficarão as suas notas fiscais',
+                  ),
+                  ContainerTourGuide(
+                      title: 'Preview da nota fiscal',
+                      description:
+                          'Se você pressionar os itens que ficarão aqui em baixo é possível visualizar a imagem'),
+                ],
               );
             },
           ),
@@ -219,6 +230,34 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
 
+    targets.add(
+      TargetFocus(
+        identify: "keyList",
+        alignSkip: Alignment.topRight,
+        keyTarget: GlobalKeysInvoiceUp.keyList,
+        contents: [
+          TargetContent(
+            padding: EdgeInsets.only(top: 75, right: 20),
+            align: ContentAlign.right,
+            builder: (context, controller) {
+              return Column(
+                children: [
+                  ContainerTourGuide(
+                    title: 'Editar',
+                    description:
+                        'Clique em um item para editar ou ver mais informações do mesmo',
+                  ),
+                  ContainerTourGuide(
+                      title: 'Excluir',
+                      description:
+                          'Se você deslizar da esquerda para a direita será possível deletar a nota fiscal'),
+                ],
+              );
+            },
+          ),
+        ],
+      ),
+    );
     return targets;
   }
 }

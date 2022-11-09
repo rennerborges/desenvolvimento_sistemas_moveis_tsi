@@ -3,18 +3,15 @@ import 'package:invoice_up/generated/l10n.dart';
 import 'package:invoice_up/providers/app-settings.providers.dart';
 import 'package:invoice_up/screens/invoice/invoice-screen.dart';
 import 'package:invoice_up/utils/colors.dart';
+import 'package:invoice_up/utils/global-keys.dart';
 import 'package:provider/provider.dart';
 
 class ContainerButton extends StatefulWidget {
-  GlobalKey? keyWarrancy;
-  GlobalKey? keyCreateInvoice;
   bool onlyWarranty;
   void Function() getInvoices;
   void Function() changeOnlyWarranty;
 
   ContainerButton({
-    this.keyWarrancy,
-    this.keyCreateInvoice,
     required this.onlyWarranty,
     required this.changeOnlyWarranty,
     required this.getInvoices,
@@ -57,7 +54,7 @@ class _ContainerButtonState extends State<ContainerButton> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       SizedBox(
-                        key: widget.keyWarrancy,
+                        key: GlobalKeysInvoiceUp.keyButtonProductsWarrancy,
                         width: 40,
                         height: 40,
                         child: CircleAvatar(
@@ -107,7 +104,7 @@ class _ContainerButtonState extends State<ContainerButton> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       SizedBox(
-                        key: widget.keyCreateInvoice,
+                        key: GlobalKeysInvoiceUp.keyButtonCreateInvoices,
                         width: 40,
                         height: 40,
                         child: CircleAvatar(

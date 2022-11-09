@@ -29,6 +29,7 @@ class _ContainerTourGuideState extends State<ContainerTourGuide> {
             widget.title,
             onlyFontBold: true,
             color: Colors.white,
+            textAlign: TextAlign.start,
           ),
           Container(
             margin: const EdgeInsets.only(top: 20),

@@ -5,17 +5,16 @@ import 'package:invoice_up/interfaces/invoice.dart';
 import 'package:invoice_up/providers/app-settings.providers.dart';
 import 'package:invoice_up/screens/home/components/list-item/list-item.dart';
 import 'package:invoice_up/utils/colors.dart';
+import 'package:invoice_up/utils/global-keys.dart';
 import 'package:provider/provider.dart';
 
 class ListContainerInvoiceUp extends StatefulWidget {
-  GlobalKey? keyList;
   List<Invoice> invoices;
   bool loading = false;
 
   ListContainerInvoiceUp({
     required this.invoices,
     this.loading = false,
-    this.keyList,
     super.key,
   });
 
@@ -35,8 +34,11 @@ class _ListContainerInvoiceUpState extends State<ListContainerInvoiceUp> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          TextInvoiceUp('',
-              textBold: S.of(context).yourInvoices, key: widget.keyList),
+          TextInvoiceUp(
+            '',
+            textBold: S.of(context).yourInvoices,
+            key: GlobalKeysInvoiceUp.keyList,
+          ),
           SizedBox(
             height: MediaQuery.of(context).size.height - 340,
             child: Container(

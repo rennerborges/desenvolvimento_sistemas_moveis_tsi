@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/widgets.dart';
 import 'package:invoice_up/api/login.dart';
+import 'package:invoice_up/interfaces/ViewScreen.dart';
 import 'package:invoice_up/interfaces/auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -11,6 +12,7 @@ class AppSettings extends ChangeNotifier {
   Locale locale = const Locale('pt');
   Auth? auth;
   String? lastUser;
+  ViewScreen? viewScreen;
 
   AppSettings() {
     _startSessings();
@@ -21,6 +23,7 @@ class AppSettings extends ChangeNotifier {
     darkTheme = getDarkTheme();
     locale = getLocale();
     lastUser = getLastUser();
+    viewScreen = getViewScreen();
     notifyListeners();
   }
 
@@ -85,6 +88,23 @@ class AppSettings extends ChangeNotifier {
   void setLastUser(String lastUser) async {
     await _prefs.setString('lastUser', lastUser);
     this.lastUser = lastUser;
+    notifyListeners();
+  }
+
+  ViewScreen getViewScreen() {
+    String? viewString = _prefs.getString('viewScreen');
+
+    if (viewString == null) {
+      return ViewScreen();
+    }
+    Map<String, dynamic> viewMap = jsonDecode(viewString);
+
+    return ViewScreen.fromJson(viewMap);
+  }
+
+  void setViewScreen(ViewScreen viewScreen) async {
+    await _prefs.setString('viewScreen', jsonEncode(viewScreen.toJson()));
+    this.viewScreen = viewScreen;
     notifyListeners();
   }
 }
