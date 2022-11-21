@@ -128,9 +128,13 @@ class _ListItemState extends State<ListItem> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
+                          width: MediaQuery.of(context).size.width - 125,
                           margin: const EdgeInsets.only(bottom: 10),
                           child: Text(
                             widget.invoice!.title,
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
+                            softWrap: false,
                             style: TextStyle(
                               color: colors.grayTextBold,
                               fontWeight: FontWeight.bold,

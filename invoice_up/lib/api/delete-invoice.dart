@@ -34,7 +34,7 @@ class DeleteInvoiceApi extends AuthApi {
 
     if (response.statusCode == 401) {
       super.logout();
-      throw data['message'];
+      throw S.of(context).logoutMessage;
     }
 
     if (response.statusCode == 400) {

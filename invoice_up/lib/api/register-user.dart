@@ -43,13 +43,15 @@ class RegisterUserApi {
 
       Provider.of<AppSettings>(context, listen: false).setLastUser(email);
 
-      Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(
-              builder: (BuildContext context) => const LoginScreen()),
-          (Route<dynamic> route) => route is LoginScreen);
+      Future.delayed(const Duration(seconds: 1), () {
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(
+                builder: (BuildContext context) => const LoginScreen()),
+            (Route<dynamic> route) => route is LoginScreen);
 
-      return true;
+        return true;
+      });
     }
 
     throw data['response']['message'] ?? data;

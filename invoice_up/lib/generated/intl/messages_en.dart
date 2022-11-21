@@ -57,8 +57,31 @@ class MessageLookup extends MessageLookupByLibrary {
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot password"),
         "gallery": MessageLookupByLibrary.simpleMessage("Gallery"),
+        "homeTourGuide1Description": MessageLookupByLibrary.simpleMessage(
+            "Here you can see only the products that are under warranty"),
+        "homeTourGuide1Title":
+            MessageLookupByLibrary.simpleMessage("Products under warranty"),
+        "homeTourGuide2Description": MessageLookupByLibrary.simpleMessage(
+            "Here you can create an invoice"),
+        "homeTourGuide2Title":
+            MessageLookupByLibrary.simpleMessage("Create invoice"),
+        "homeTourGuide3Description": MessageLookupByLibrary.simpleMessage(
+            "This is where your invoices will stay"),
+        "homeTourGuide3Title": MessageLookupByLibrary.simpleMessage("Invoices"),
+        "homeTourGuide4Description": MessageLookupByLibrary.simpleMessage(
+            "If you press the items below you can see the image"),
+        "homeTourGuide4Title":
+            MessageLookupByLibrary.simpleMessage("Invoice preview"),
+        "homeTourGuide5Description": MessageLookupByLibrary.simpleMessage(
+            "Click on an item to edit it or see more information about it"),
+        "homeTourGuide5Title": MessageLookupByLibrary.simpleMessage("Edit"),
+        "homeTourGuide6Description": MessageLookupByLibrary.simpleMessage(
+            "If you swipe from left to right you can delete the invoice"),
+        "homeTourGuide6Title": MessageLookupByLibrary.simpleMessage("Delete"),
         "imagePreview": MessageLookupByLibrary.simpleMessage("Image preview"),
         "invalidEmail": MessageLookupByLibrary.simpleMessage("Invalid e-mail"),
+        "logoutMessage": MessageLookupByLibrary.simpleMessage(
+            "Your session has expired, please sign in again!"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "passowordInvalidDescription": MessageLookupByLibrary.simpleMessage(
             "The password must have at least eight characters, at least one uppercase letter, one lowercase letter, one number and one special character"),
@@ -77,6 +100,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Please enter the date of purchase first"),
         "requiredField":
             MessageLookupByLibrary.simpleMessage("Required fields"),
+        "skip": MessageLookupByLibrary.simpleMessage("Skip"),
         "spanish": MessageLookupByLibrary.simpleMessage("Spanish"),
         "subtitleLogin":
             MessageLookupByLibrary.simpleMessage("Please login to continue"),

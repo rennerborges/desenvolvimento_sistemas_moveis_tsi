@@ -132,7 +132,7 @@ class _HomeScreenState extends State<HomeScreen> {
     tutorialCoachMark = TutorialCoachMark(
       targets: _createTargets(),
       colorShadow: const Color(0xFF152670),
-      textSkip: "SKIP",
+      textSkip: 'Skip',
       paddingFocus: 10,
       opacityShadow: 0.8,
       onFinish: () {
@@ -173,10 +173,8 @@ class _HomeScreenState extends State<HomeScreen> {
             align: ContentAlign.bottom,
             builder: (context, controller) {
               return ContainerTourGuide(
-                title: 'Produtos na garantia',
-                description:
-                    'Aqui é possivel visualizar apenas os produtos que estão dentro da garantia',
-              );
+                  title: S.of(context).homeTourGuide1Title,
+                  description: S.of(context).homeTourGuide1Description);
             },
           ),
         ],
@@ -193,8 +191,8 @@ class _HomeScreenState extends State<HomeScreen> {
             align: ContentAlign.bottom,
             builder: (context, controller) {
               return ContainerTourGuide(
-                title: 'Criar nota fiscal',
-                description: 'Aqui é possível criar uma nota fiscal',
+                title: S.of(context).homeTourGuide2Title,
+                description: S.of(context).homeTourGuide2Description,
               );
             },
           ),
@@ -215,13 +213,13 @@ class _HomeScreenState extends State<HomeScreen> {
               return Column(
                 children: [
                   ContainerTourGuide(
-                    title: 'Notas fiscais',
-                    description: 'Aqui ficarão as suas notas fiscais',
+                    title: S.of(context).homeTourGuide3Title,
+                    description: S.of(context).homeTourGuide3Description,
                   ),
                   ContainerTourGuide(
-                      title: 'Preview da nota fiscal',
-                      description:
-                          'Se você pressionar os itens que ficarão aqui em baixo é possível visualizar a imagem'),
+                    title: S.of(context).homeTourGuide4Title,
+                    description: S.of(context).homeTourGuide4Description,
+                  ),
                 ],
               );
             },
@@ -243,14 +241,12 @@ class _HomeScreenState extends State<HomeScreen> {
               return Column(
                 children: [
                   ContainerTourGuide(
-                    title: 'Editar',
-                    description:
-                        'Clique em um item para editar ou ver mais informações do mesmo',
+                    title: S.of(context).homeTourGuide5Title,
+                    description: S.of(context).homeTourGuide5Description,
                   ),
                   ContainerTourGuide(
-                      title: 'Excluir',
-                      description:
-                          'Se você deslizar da esquerda para a direita será possível deletar a nota fiscal'),
+                      title: S.of(context).homeTourGuide6Title,
+                      description: S.of(context).homeTourGuide6Description),
                 ],
               );
             },

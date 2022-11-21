@@ -46,5 +46,19 @@
   "editSuccess": "successfully edited!",
   "deleteSuccess": "successfully deleted!",
   "addImage": "Add an image",
-  "allInvoices": "Todas as notas ficais"
+  "allInvoices": "Todas as notas ficais",
+  "skip": "Skip",
+  "homeTourGuide1Title": "Products under warranty",
+  "homeTourGuide1Description": "Here you can see only the products that are under warranty",
+  "homeTourGuide2Title": "Create invoice",
+  "homeTourGuide2Description": "Here you can create an invoice",
+  "homeTourGuide3Title": "Invoices",
+  "homeTourGuide3Description": "This is where your invoices will stay",
+  "homeTourGuide4Title": "Invoice preview",
+  "homeTourGuide4Description": "If you press the items below you can see the image",
+  "homeTourGuide5Title": "Edit",
+  "homeTourGuide5Description": "Click on an item to edit it or see more information about it",
+  "homeTourGuide6Title": "Delete",
+  "homeTourGuide6Description": "If you swipe from left to right you can delete the invoice",
+  "logoutMessage": "Your session has expired, please sign in again!"
 }

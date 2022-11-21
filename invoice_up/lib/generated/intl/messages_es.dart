@@ -58,10 +58,33 @@ class MessageLookup extends MessageLookupByLibrary {
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Olvidé mi contraseña"),
         "gallery": MessageLookupByLibrary.simpleMessage("Galería"),
+        "homeTourGuide1Description": MessageLookupByLibrary.simpleMessage(
+            "Aquí es posible ver sólo los productos que están en garantía"),
+        "homeTourGuide1Title":
+            MessageLookupByLibrary.simpleMessage("Productos en garantía"),
+        "homeTourGuide2Description": MessageLookupByLibrary.simpleMessage(
+            "Aquí puede crear una factura"),
+        "homeTourGuide2Title":
+            MessageLookupByLibrary.simpleMessage("Crear factura"),
+        "homeTourGuide3Description": MessageLookupByLibrary.simpleMessage(
+            "Aquí es donde se quedarán sus facturas"),
+        "homeTourGuide3Title": MessageLookupByLibrary.simpleMessage("Facturas"),
+        "homeTourGuide4Description": MessageLookupByLibrary.simpleMessage(
+            "Si pulsa los elementos de abajo es posible ver la imagen"),
+        "homeTourGuide4Title":
+            MessageLookupByLibrary.simpleMessage("Vista previa de la factura"),
+        "homeTourGuide5Description": MessageLookupByLibrary.simpleMessage(
+            "Haga clic en un elemento para editarlo o ver más información sobre él"),
+        "homeTourGuide5Title": MessageLookupByLibrary.simpleMessage("Editar"),
+        "homeTourGuide6Description": MessageLookupByLibrary.simpleMessage(
+            "Si deslizas el dedo de izquierda a derecha puedes eliminar la factura"),
+        "homeTourGuide6Title": MessageLookupByLibrary.simpleMessage("Eliminar"),
         "imagePreview":
             MessageLookupByLibrary.simpleMessage("Vista previa de la imagen"),
         "invalidEmail": MessageLookupByLibrary.simpleMessage(
             "Dirección de e-mail inválida"),
+        "logoutMessage": MessageLookupByLibrary.simpleMessage(
+            "Tu sesión ha caducado, ¡conéctate de nuevo!"),
         "name": MessageLookupByLibrary.simpleMessage("Nombre"),
         "passowordInvalidDescription": MessageLookupByLibrary.simpleMessage(
             "La contraseña debe tener como mínimo ocho caracteres, al menos una letra mayúscula, una letra minúscula, un número y un carácter especial"),
@@ -79,6 +102,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "requiredDateOfPurchase": MessageLookupByLibrary.simpleMessage(
             "Por favor, introduzca primero la fecha de compra"),
         "requiredField": MessageLookupByLibrary.simpleMessage("Obligatorio"),
+        "skip": MessageLookupByLibrary.simpleMessage("Saltar"),
         "spanish": MessageLookupByLibrary.simpleMessage("Español"),
         "subtitleLogin": MessageLookupByLibrary.simpleMessage(
             "Inicie sesión para continuar"),

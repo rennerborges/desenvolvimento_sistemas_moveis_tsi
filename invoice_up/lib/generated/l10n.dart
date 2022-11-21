@@ -529,6 +529,146 @@ class S {
       args: [],
     );
   }
+
+  /// `Skip`
+  String get skip {
+    return Intl.message(
+      'Skip',
+      name: 'skip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Products under warranty`
+  String get homeTourGuide1Title {
+    return Intl.message(
+      'Products under warranty',
+      name: 'homeTourGuide1Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Here you can see only the products that are under warranty`
+  String get homeTourGuide1Description {
+    return Intl.message(
+      'Here you can see only the products that are under warranty',
+      name: 'homeTourGuide1Description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create invoice`
+  String get homeTourGuide2Title {
+    return Intl.message(
+      'Create invoice',
+      name: 'homeTourGuide2Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Here you can create an invoice`
+  String get homeTourGuide2Description {
+    return Intl.message(
+      'Here you can create an invoice',
+      name: 'homeTourGuide2Description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invoices`
+  String get homeTourGuide3Title {
+    return Intl.message(
+      'Invoices',
+      name: 'homeTourGuide3Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This is where your invoices will stay`
+  String get homeTourGuide3Description {
+    return Intl.message(
+      'This is where your invoices will stay',
+      name: 'homeTourGuide3Description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invoice preview`
+  String get homeTourGuide4Title {
+    return Intl.message(
+      'Invoice preview',
+      name: 'homeTourGuide4Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `If you press the items below you can see the image`
+  String get homeTourGuide4Description {
+    return Intl.message(
+      'If you press the items below you can see the image',
+      name: 'homeTourGuide4Description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit`
+  String get homeTourGuide5Title {
+    return Intl.message(
+      'Edit',
+      name: 'homeTourGuide5Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Click on an item to edit it or see more information about it`
+  String get homeTourGuide5Description {
+    return Intl.message(
+      'Click on an item to edit it or see more information about it',
+      name: 'homeTourGuide5Description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete`
+  String get homeTourGuide6Title {
+    return Intl.message(
+      'Delete',
+      name: 'homeTourGuide6Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `If you swipe from left to right you can delete the invoice`
+  String get homeTourGuide6Description {
+    return Intl.message(
+      'If you swipe from left to right you can delete the invoice',
+      name: 'homeTourGuide6Description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your session has expired, please sign in again!`
+  String get logoutMessage {
+    return Intl.message(
+      'Your session has expired, please sign in again!',
+      name: 'logoutMessage',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

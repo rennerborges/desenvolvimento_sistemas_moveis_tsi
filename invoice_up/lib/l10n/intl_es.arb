@@ -46,5 +46,19 @@
   "editSuccess": "editado con éxito!",
   "deleteSuccess": "borrado con éxito!",
   "addImage": "Agregar una imagen",
-  "allInvoices": "Todas las facturas"
+  "allInvoices": "Todas las facturas",
+  "skip": "Saltar",
+  "homeTourGuide1Title": "Productos en garantía",
+  "homeTourGuide1Description": "Aquí es posible ver sólo los productos que están en garantía",
+  "homeTourGuide2Title": "Crear factura",
+  "homeTourGuide2Description": "Aquí puede crear una factura",
+  "homeTourGuide3Title": "Facturas",
+  "homeTourGuide3Description": "Aquí es donde se quedarán sus facturas",
+  "homeTourGuide4Title": "Vista previa de la factura",
+  "homeTourGuide4Description": "Si pulsa los elementos de abajo es posible ver la imagen",
+  "homeTourGuide5Title": "Editar",
+  "homeTourGuide5Description": "Haga clic en un elemento para editarlo o ver más información sobre él",
+  "homeTourGuide6Title": "Eliminar",
+  "homeTourGuide6Description": "Si deslizas el dedo de izquierda a derecha puedes eliminar la factura",
+  "logoutMessage": "Tu sesión ha caducado, ¡conéctate de nuevo!"
 }

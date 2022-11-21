@@ -46,5 +46,19 @@
   "editSuccess": "editada com sucesso!",
   "deleteSuccess": "deletada com sucesso!",
   "addImage": "Adicione uma imagem",
-  "allInvoices": "Todas as notas ficais"
+  "allInvoices": "Todas as notas ficais",
+  "skip": "Pular",
+  "homeTourGuide1Title": "Produtos na garantia",
+  "homeTourGuide1Description": "Aqui é possivel visualizar apenas os produtos que estão dentro da garantia",
+  "homeTourGuide2Title": "Criar nota fiscal",
+  "homeTourGuide2Description": "Aqui é possível criar uma nota fiscal",
+  "homeTourGuide3Title": "Notas fiscais",
+  "homeTourGuide3Description": "Aqui ficarão as suas notas fiscais",
+  "homeTourGuide4Title": "Preview da nota fiscal",
+  "homeTourGuide4Description": "Se você pressionar os itens que ficarão aqui em baixo é possível visualizar a imagem",
+  "homeTourGuide5Title": "Editar",
+  "homeTourGuide5Description": "Clique em um item para editar ou ver mais informações do mesmo",
+  "homeTourGuide6Title": "Excluir",
+  "homeTourGuide6Description": "Se você deslizar da esquerda para a direita será possível deletar a nota fiscal",
+  "logoutMessage": "Sua sessão expirou, entre novamente!"
 }
