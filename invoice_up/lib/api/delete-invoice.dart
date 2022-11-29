@@ -30,14 +30,13 @@ class DeleteInvoiceApi extends AuthApi {
       body: json.encode(invoice.toJson()),
     );
 
-    Map data = json.decode(response.body != '' ? response.body : '{}');
-
     if (response.statusCode == 401) {
       super.logout();
       throw S.of(context).logoutMessage;
     }
 
     if (response.statusCode == 400) {
+      Map data = json.decode(response.body != '' ? response.body : '{}');
       throw data['response']['message'];
     }
 

@@ -669,6 +669,16 @@ class S {
       args: [],
     );
   }
+
+  /// `No invoice found`
+  String get invoiceNotFound {
+    return Intl.message(
+      'No invoice found',
+      name: 'invoiceNotFound',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

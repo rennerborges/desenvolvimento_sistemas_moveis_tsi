@@ -30,7 +30,7 @@ class Login {
 
     Map data = json.decode(response.body);
 
-    if (response.statusCode == 401) {
+    if (response.statusCode == 401 || response.statusCode == 404) {
       throw data['message'];
     }
 

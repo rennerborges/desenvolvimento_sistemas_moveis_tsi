@@ -40,18 +40,22 @@ class _ListContainerInvoiceUpState extends State<ListContainerInvoiceUp> {
             key: GlobalKeysInvoiceUp.keyList,
           ),
           !widget.loading && widget.invoices.isEmpty
-              ? Column(
-                  children: [
-                    const SizedBox(
-                      width: 250,
-                      child: Image(
-                        image: AssetImage('images/notfound.png'),
+              ? Container(
+                  width: double.infinity,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const SizedBox(
+                        width: 250,
+                        child: Image(
+                          image: AssetImage('images/notfound.png'),
+                        ),
                       ),
-                    ),
-                    TextInvoiceUp(
-                      'Nenhuma nota fiscal foi encontrada',
-                    ),
-                  ],
+                      TextInvoiceUp(
+                        S.of(context).invoiceNotFound,
+                      ),
+                    ],
+                  ),
                 )
               : SizedBox(
                   height: MediaQuery.of(context).size.height - 340,

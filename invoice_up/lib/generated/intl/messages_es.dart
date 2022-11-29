@@ -83,6 +83,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Vista previa de la imagen"),
         "invalidEmail": MessageLookupByLibrary.simpleMessage(
             "Dirección de e-mail inválida"),
+        "invoiceNotFound": MessageLookupByLibrary.simpleMessage(
+            "No se ha encontrado ninguna factura"),
         "logoutMessage": MessageLookupByLibrary.simpleMessage(
             "Tu sesión ha caducado, ¡conéctate de nuevo!"),
         "name": MessageLookupByLibrary.simpleMessage("Nombre"),

@@ -60,5 +60,6 @@
   "homeTourGuide5Description": "Haga clic en un elemento para editarlo o ver más información sobre él",
   "homeTourGuide6Title": "Eliminar",
   "homeTourGuide6Description": "Si deslizas el dedo de izquierda a derecha puedes eliminar la factura",
-  "logoutMessage": "Tu sesión ha caducado, ¡conéctate de nuevo!"
+  "logoutMessage": "Tu sesión ha caducado, ¡conéctate de nuevo!",
+  "invoiceNotFound": "No se ha encontrado ninguna factura"
 }

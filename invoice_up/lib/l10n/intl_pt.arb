@@ -60,5 +60,6 @@
   "homeTourGuide5Description": "Clique em um item para editar ou ver mais informações do mesmo",
   "homeTourGuide6Title": "Excluir",
   "homeTourGuide6Description": "Se você deslizar da esquerda para a direita será possível deletar a nota fiscal",
-  "logoutMessage": "Sua sessão expirou, entre novamente!"
+  "logoutMessage": "Sua sessão expirou, entre novamente!",
+  "invoiceNotFound": "Nenhuma nota fiscal foi encontrada"
 }

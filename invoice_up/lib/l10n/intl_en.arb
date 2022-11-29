@@ -60,5 +60,6 @@
   "homeTourGuide5Description": "Click on an item to edit it or see more information about it",
   "homeTourGuide6Title": "Delete",
   "homeTourGuide6Description": "If you swipe from left to right you can delete the invoice",
-  "logoutMessage": "Your session has expired, please sign in again!"
+  "logoutMessage": "Your session has expired, please sign in again!",
+  "invoiceNotFound": "No invoice found"
 }

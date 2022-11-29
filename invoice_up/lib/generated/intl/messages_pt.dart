@@ -82,6 +82,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "imagePreview":
             MessageLookupByLibrary.simpleMessage("Prévia da imagem"),
         "invalidEmail": MessageLookupByLibrary.simpleMessage("E-mail inválido"),
+        "invoiceNotFound": MessageLookupByLibrary.simpleMessage(
+            "Nenhuma nota fiscal foi encontrada"),
         "logoutMessage": MessageLookupByLibrary.simpleMessage(
             "Sua sessão expirou, entre novamente!"),
         "name": MessageLookupByLibrary.simpleMessage("Nome"),

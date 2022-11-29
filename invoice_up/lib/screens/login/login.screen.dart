@@ -150,7 +150,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          LinkInvoiceUp(S.of(context).forgotPassword),
                           LinkInvoiceUp(
                             S.of(context).register,
                             onTap: (_) {

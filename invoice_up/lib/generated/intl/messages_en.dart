@@ -80,6 +80,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "homeTourGuide6Title": MessageLookupByLibrary.simpleMessage("Delete"),
         "imagePreview": MessageLookupByLibrary.simpleMessage("Image preview"),
         "invalidEmail": MessageLookupByLibrary.simpleMessage("Invalid e-mail"),
+        "invoiceNotFound":
+            MessageLookupByLibrary.simpleMessage("No invoice found"),
         "logoutMessage": MessageLookupByLibrary.simpleMessage(
             "Your session has expired, please sign in again!"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
